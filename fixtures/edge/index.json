@@ -1,0 +1,195 @@
+[
+  {
+    "file": "valid.research_project.not_measured.json",
+    "description": "Builder figures HEY does not hold are null with a reason; Still Building is NOT_MEASURED beside stillBuilding: false (its v1 meaning).",
+    "expect": {
+      "strict": "valid",
+      "invariants": []
+    }
+  },
+  {
+    "file": "valid.research_project.instruction_like_name.json",
+    "description": "A project's name that reads like an instruction stays external_source text, flagged instructionLike: data, never an instruction.",
+    "expect": {
+      "strict": "valid",
+      "invariants": []
+    }
+  },
+  {
+    "file": "additive.research_project.unknown_fields.json",
+    "description": "Fields this package does not know: refused by the strict schema, accepted and listed with allowUnknownFields (v1 is additive).",
+    "expect": {
+      "strict": "invalid_response",
+      "tolerant": "valid",
+      "ignoredFields": [
+        "addedAfterThisPackage",
+        "data.builderState.newAdditiveField"
+      ],
+      "invariants": []
+    }
+  },
+  {
+    "file": "additive.research_project.market_in_builder_state.json",
+    "description": "Market figures placed inside builderState: refused strictly, and dropped (never read as builder data) when unknown fields are allowed.",
+    "expect": {
+      "strict": "invalid_response",
+      "tolerant": "valid",
+      "ignoredFields": [
+        "data.builderState.valuationUsd",
+        "data.builderState.liquidityUsd"
+      ],
+      "invariants": []
+    }
+  },
+  {
+    "file": "invalid.unsupported_capability.json",
+    "description": "A capability HEY does not offer.",
+    "expect": {
+      "strict": "unsupported_capability"
+    }
+  },
+  {
+    "file": "invalid.unsupported_chain.json",
+    "description": "An answer about another chain (1).",
+    "expect": {
+      "strict": "unsupported_chain"
+    }
+  },
+  {
+    "file": "invalid.unsupported_chain.subject_token.json",
+    "description": "A subject token on another chain inside a Robinhood Chain answer.",
+    "expect": {
+      "strict": "unsupported_chain",
+      "path": "subject.project.token.chainId"
+    }
+  },
+  {
+    "file": "invalid.schema_version_2.json",
+    "description": "A schemaVersion this package does not read.",
+    "expect": {
+      "strict": "unsupported_schema_version"
+    }
+  },
+  {
+    "file": "invalid.unknown_recased.json",
+    "description": "UNKNOWN re-cased to \"unknown\": refused, never coerced.",
+    "expect": {
+      "strict": "invalid_response",
+      "path": "answerStatus"
+    }
+  },
+  {
+    "file": "invalid.not_measured_as_false.json",
+    "description": "NOT_MEASURED replaced by false.",
+    "expect": {
+      "strict": "invalid_response",
+      "path": "data.builderState.stillBuildingState"
+    }
+  },
+  {
+    "file": "invalid.not_measured_as_zero.json",
+    "description": "NOT_MEASURED replaced by 0.",
+    "expect": {
+      "strict": "invalid_response",
+      "path": "data.builderState.stillBuildingState"
+    }
+  },
+  {
+    "file": "invalid.unknown_category_invented.json",
+    "description": "An unknown category outside the five.",
+    "expect": {
+      "strict": "invalid_response",
+      "path": "unknowns.0.category"
+    }
+  },
+  {
+    "file": "invalid.market_context_not_context_only.json",
+    "description": "Market context that does not say it is context only.",
+    "expect": {
+      "strict": "invalid_response",
+      "path": "data.marketContext.contextOnly"
+    }
+  },
+  {
+    "file": "invalid.boundaries_market_not_context.json",
+    "description": "Boundaries that drop \"market is context only\".",
+    "expect": {
+      "strict": "invalid_response",
+      "path": "boundaries.marketIsContextOnly"
+    }
+  },
+  {
+    "file": "invalid.text_without_origin.json",
+    "description": "A project's name with no content origin.",
+    "expect": {
+      "strict": "invalid_response",
+      "path": "data.identity.name.contentOrigin"
+    }
+  },
+  {
+    "file": "invalid.text_origin_relabelled.json",
+    "description": "Source text relabelled with an origin the contract does not have.",
+    "expect": {
+      "strict": "invalid_response",
+      "path": "data.identity.name.contentOrigin"
+    }
+  },
+  {
+    "file": "invariant.market_claim_not_context_only.json",
+    "description": "A market-reading claim without contextOnly.",
+    "expect": {
+      "strict": "valid",
+      "invariants": [
+        "market_claim_not_context_only"
+      ]
+    }
+  },
+  {
+    "file": "invariant.context_change_counts_as_building.json",
+    "description": "A market event counted as building.",
+    "expect": {
+      "strict": "valid",
+      "invariants": [
+        "context_change_counts_as_building"
+      ]
+    }
+  },
+  {
+    "file": "invariant.unknown_as_zero.json",
+    "description": "An UNKNOWN claim carrying 0.",
+    "expect": {
+      "strict": "valid",
+      "invariants": [
+        "unknown_as_zero_or_false"
+      ]
+    }
+  },
+  {
+    "file": "invariant.external_text_without_source.json",
+    "description": "Source text that does not say which kind of source.",
+    "expect": {
+      "strict": "valid",
+      "invariants": [
+        "external_text_without_source"
+      ]
+    }
+  },
+  {
+    "file": "invariant.still_building_conflict.json",
+    "description": "stillBuilding true beside NOT_MEASURED.",
+    "expect": {
+      "strict": "valid",
+      "invariants": [
+        "still_building_state_conflict"
+      ]
+    }
+  },
+  {
+    "file": "invalid.proto_key.json",
+    "description": "A \"__proto__\" key in the JSON text: refused before validation.",
+    "expect": {
+      "strict": "forbidden_key",
+      "parseText": true
+    }
+  }
+]

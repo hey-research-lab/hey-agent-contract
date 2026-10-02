@@ -1,0 +1,997 @@
+{
+  "schema": "hey.agent-intelligence-response",
+  "schemaVersion": "1",
+  "capability": "research_project",
+  "status": "ok",
+  "query": {
+    "chainId": 1,
+    "project": "agentos"
+  },
+  "chain": {
+    "chainId": 1,
+    "name": "Robinhood Chain"
+  },
+  "subject": {
+    "kind": "project",
+    "project": {
+      "slug": "agentos",
+      "name": {
+        "text": "AgentOS",
+        "contentOrigin": "external_source",
+        "source": "project_record"
+      },
+      "url": "https://heyresearch.xyz/project/agentos",
+      "token": {
+        "chainId": 4663,
+        "address": "0xcab1bc0b34806c6cc867a981f6ba3808d64fcb07"
+      }
+    }
+  },
+  "answer": {
+    "text": "agentos: activity status SHIPPING, last meaningful ship 2026-10-01; 30 meaningful events in 30 days. The token HEY tracks for it is not the one its own site names: this building does not apply to that token. HEY lists 7 things it does not know (coverage gaps and unverified identity) under unknowns.",
+    "contentOrigin": "derived"
+  },
+  "answerStatus": "DERIVED",
+  "claims": [
+    {
+      "id": "summary.build",
+      "dimension": "build",
+      "statement": {
+        "text": "Shipping: 30 meaningful events in 30 days; latest release yesterday.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": null,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-01T17:41:32.000Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "daily",
+      "evidence": [
+        {
+          "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.10.1.post1"
+        },
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os"
+        }
+      ],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/timeline",
+      "evidenceKind": "evidence_record"
+    },
+    {
+      "id": "summary.usage",
+      "dimension": "usage",
+      "statement": {
+        "text": "The project has a contract, but HEY does not count its calls yet: a token joins the watch once it takes calls in a thirty-day window, and any contract the project’s own sources name is watched. Unknown, not zero.",
+        "contentOrigin": "derived"
+      },
+      "status": "UNKNOWN",
+      "value": null,
+      "source": null,
+      "observedAt": null,
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "unknown",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/usage",
+      "reason": "contract_not_in_method_watch",
+      "contextOnly": true,
+      "evidenceKind": "not_held"
+    },
+    {
+      "id": "summary.market",
+      "dimension": "market",
+      "statement": {
+        "text": "Trading inactive: HEY holds a valuation and does not publish it while the market is not live.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": null,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-02T07:32:07.535Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/market",
+      "reason": "launch_pool_no_trades",
+      "contextOnly": true,
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "summary.contract",
+      "dimension": "contract",
+      "statement": {
+        "text": "1 contract watched, 1 with verified source; no implementation or interface change recorded.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": null,
+      "source": {
+        "name": "Robinhood Chain explorer and RPC",
+        "type": "chain"
+      },
+      "observedAt": "2026-09-26T13:27:47.103Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "weekly",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/contracts",
+      "evidenceKind": "registry_record"
+    },
+    {
+      "id": "summary.security",
+      "dimension": "security",
+      "statement": {
+        "text": "OSV lists no advisory for the published package versions HEY reads (a reading of OSV only). Context, never a verdict on the project.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": null,
+      "source": {
+        "name": "official site and registries",
+        "type": "project_site"
+      },
+      "observedAt": "2026-09-29T01:10:03.269Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "weekly",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/coverage",
+      "contextOnly": true,
+      "evidenceKind": "canonical_read"
+    },
+    {
+      "id": "summary.latestChange",
+      "dimension": "latestChange",
+      "statement": {
+        "text": "Yesterday: Active development: 100+ commits since 2026-09-23 across 7 contributors.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": null,
+      "source": {
+        "name": "GitHub",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-01T17:41:32.000Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "daily",
+      "evidence": [
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os"
+        }
+      ],
+      "explainUrl": "https://heyresearch.xyz/api/changes?project=agentos",
+      "evidenceKind": "evidence_record"
+    },
+    {
+      "id": "summary.unknown",
+      "dimension": "unknown",
+      "statement": {
+        "text": "4 gaps: Official docs (no source), API description (no source), Official site changes (no source), +1 more. Only docs others link to; none the project publishes itself.",
+        "contentOrigin": "derived"
+      },
+      "status": "UNKNOWN",
+      "value": null,
+      "source": null,
+      "observedAt": null,
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "unknown",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/coverage",
+      "reason": "context_only_docs",
+      "evidenceKind": "not_held"
+    },
+    {
+      "id": "build.activity_status",
+      "dimension": "build",
+      "statement": {
+        "text": "Activity status SHIPPING under HEY's activity rule (hbm-v22).",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": "SHIPPING",
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf"
+        },
+        {
+          "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87"
+        },
+        {
+          "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae"
+        },
+        {
+          "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c"
+        },
+        {
+          "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da"
+        }
+      ],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "build.last_meaningful_ship",
+      "dimension": "build",
+      "statement": {
+        "text": "The newest meaningful ship HEY recorded is dated 2026-10-01.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": "2026-10-01T17:41:32.000Z",
+      "source": {
+        "name": "builder sources",
+        "type": "builder_source"
+      },
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "occurredAt": "2026-10-01T17:41:32.000Z",
+      "precision": "WEEK",
+      "freshness": "recent",
+      "evidence": [
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os"
+        }
+      ],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
+      "evidenceKind": "evidence_record"
+    },
+    {
+      "id": "build.meaningful_events_30d",
+      "dimension": "build",
+      "statement": {
+        "text": "30 meaningful building events in the last 30 days.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": 30,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "recent",
+      "evidence": [
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os"
+        },
+        {
+          "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.10.1.post1"
+        },
+        {
+          "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.10.1"
+        },
+        {
+          "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.9.29.post1"
+        },
+        {
+          "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.9.29"
+        }
+      ],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "build.momentum",
+      "dimension": "build",
+      "statement": {
+        "text": "Build Momentum 80.1 (0–100, from development evidence only; never price).",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": 80.1,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf"
+        },
+        {
+          "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87"
+        },
+        {
+          "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae"
+        },
+        {
+          "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c"
+        },
+        {
+          "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da"
+        }
+      ],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=build.momentum",
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "build.still_building",
+      "dimension": "build",
+      "statement": {
+        "text": "Still Building is not measured for this project: the token has no live market HEY tracks.",
+        "contentOrigin": "hey"
+      },
+      "status": "UNKNOWN",
+      "value": null,
+      "source": null,
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [],
+      "reason": "market_not_live",
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=still_building",
+      "evidenceKind": "not_held"
+    },
+    {
+      "id": "contract.token_verification",
+      "dimension": "contract",
+      "statement": {
+        "text": "The project’s own site names a different contract than the token HEY tracks: its building activity does not apply to this token.",
+        "contentOrigin": "hey"
+      },
+      "status": "FACT",
+      "value": "MISMATCH",
+      "source": {
+        "name": "project’s own voice",
+        "type": "project_site"
+      },
+      "observedAt": null,
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "unknown",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=token.verification",
+      "evidenceKind": "registry_record",
+      "reason": "site_names_another_contract"
+    },
+    {
+      "id": "market.valuation",
+      "dimension": "market",
+      "statement": {
+        "text": "HEY holds a market reading for this token and withholds the valuation: the market is not live.",
+        "contentOrigin": "hey"
+      },
+      "status": "DERIVED",
+      "value": null,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": null,
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=market.valuation",
+      "reason": "launch_pool_no_trades",
+      "contextOnly": true,
+      "evidenceKind": "rule_output"
+    }
+  ],
+  "unknowns": [
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "tokenOwnership",
+      "statement": {
+        "text": "The project’s own site names a different contract than the token HEY tracks for it: its building activity does not apply to this token.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "reason": "token_site_names_another_contract",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=token.verification"
+    },
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "projectOwner",
+      "statement": {
+        "text": "No owner has proved control of this project’s site, repository or contract to HEY.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "reason": "owner_not_verified"
+    },
+    {
+      "category": "NOT_MEASURED",
+      "dimension": "usage",
+      "statement": {
+        "text": "HEY does not watch this project’s contracts for product usage, so use is not measured.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not measured this. Do not read it as zero, as absent or as negative evidence about the project.",
+        "contentOrigin": "hey"
+      },
+      "reason": "contract_not_in_method_watch"
+    },
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "officialDocs",
+      "statement": {
+        "text": "Only docs others link to; none the project publishes itself.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NO_SOURCE",
+      "reason": "context_only_docs",
+      "asOf": "2026-09-04T11:08:41.409Z",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    },
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "apiDocs",
+      "statement": {
+        "text": "Its website is not yet confirmed as the project’s own.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NO_SOURCE",
+      "reason": "site_not_corroborated",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    },
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "sourceChanges",
+      "statement": {
+        "text": "Its website is not yet confirmed as the project’s own.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NO_SOURCE",
+      "reason": "site_not_corroborated",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    },
+    {
+      "category": "INSUFFICIENT_EVIDENCE",
+      "dimension": "distribution",
+      "statement": {
+        "text": "No balance changed in the window HEY reads.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has read too little of this to say. Do not treat a partial figure as the whole, or the gap as a finding.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NOT_ENOUGH_YET",
+      "reason": "no_balance_change_in_window",
+      "asOf": "2026-09-29T00:56:13.199Z",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    }
+  ],
+  "freshness": [
+    {
+      "family": "builder_sources",
+      "observedAt": "2026-10-02T10:50:11.249Z",
+      "dataAsOf": "2026-10-02T10:50:11.249Z",
+      "freshnessStatus": "recent",
+      "staleAfterHours": 72,
+      "refresh": {
+        "job": "REFRESH_GITHUB",
+        "everyMinutes": 60,
+        "slowestMinutes": 4320,
+        "basis": {
+          "text": "Repositories, release feeds and changelogs are re-read by refresh tier (HOT hourly, WARM every 6 hours, COOL daily, COLD every 3 days); the tier follows the activity status and the last meaningful ship. A failing source backs off. A reading is stale after 72 hours, or one and a half cadences of its tier where that is longer (108 hours on COLD).",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": "2026-10-02T11:50:11.249Z"
+    },
+    {
+      "family": "market",
+      "observedAt": "2026-10-02T07:32:07.535Z",
+      "dataAsOf": "2026-10-02T07:32:07.535Z",
+      "freshnessStatus": "recent",
+      "staleAfterHours": 24,
+      "refresh": {
+        "job": "REFRESH_MARKET_BATCH",
+        "everyMinutes": 10,
+        "slowestMinutes": 1440,
+        "basis": {
+          "text": "Market readings are refreshed by tier (HOT every 10 minutes, WARM hourly, COOL every 6 hours, COLD daily); a token priced only by the paced fallback waits at least 2 hours, and one with no reading backs off up to 14 days. A reading is stale after 24 hours, or one and a half cadences of its tier where that is longer (36 hours on COLD).",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": null,
+      "nextExpectedRefreshReason": "overdue"
+    },
+    {
+      "family": "contracts",
+      "observedAt": "2026-10-01T09:00:52.327Z",
+      "dataAsOf": "2026-10-01T09:00:52.327Z",
+      "freshnessStatus": "daily",
+      "staleAfterHours": 252,
+      "refresh": {
+        "job": "CONTRACT_ABI_WATCH",
+        "everyMinutes": 60,
+        "slowestMinutes": 10080,
+        "basis": {
+          "text": "The contract upgrade and interface watches run hourly over batches of watched contracts; how soon one contract is read again depends on the batch, within 7 days. A reading is stale after one and a half of those.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": null,
+      "nextExpectedRefreshReason": "variable_cadence"
+    },
+    {
+      "family": "locks",
+      "observedAt": null,
+      "dataAsOf": null,
+      "freshnessStatus": "unknown",
+      "staleAfterHours": 48,
+      "refresh": {
+        "job": "SYNC_HOODLOCK",
+        "everyMinutes": 360,
+        "slowestMinutes": 360,
+        "basis": {
+          "text": "HoodLock locks and unlocks are synced every 6 hours. Only HoodLock is read; other lockers are not.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": null,
+      "nextExpectedRefreshReason": "never_read"
+    },
+    {
+      "family": "activity_score",
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "dataAsOf": "2026-10-02T09:29:34.574Z",
+      "freshnessStatus": "recent",
+      "staleAfterHours": 24,
+      "refresh": {
+        "job": "RECALCULATE_SCORES",
+        "everyMinutes": 720,
+        "slowestMinutes": 720,
+        "basis": {
+          "text": "A project is due for rescoring once its score is 12 hours old (RESCORE_MIN_INTERVAL_HOURS); a newly recorded ship queues a rescore within the quarter hour. The next refresh is the latest expected time, not a promise: a backlog can delay it.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": "2026-10-02T21:29:34.574Z"
+    },
+    {
+      "family": "usage",
+      "observedAt": null,
+      "dataAsOf": null,
+      "freshnessStatus": "unknown",
+      "staleAfterHours": 72,
+      "refresh": {
+        "job": "ROLLUP_USAGE_DAYS",
+        "everyMinutes": 360,
+        "slowestMinutes": 360,
+        "basis": {
+          "text": "Product usage is rolled up from decoded calls every 6 hours, per UTC day, for contracts in the method watch.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": null,
+      "nextExpectedRefreshReason": "never_read"
+    },
+    {
+      "family": "peers",
+      "observedAt": "2026-10-02T02:07:25.696Z",
+      "dataAsOf": "2026-10-02T02:07:25.696Z",
+      "freshnessStatus": "daily",
+      "staleAfterHours": 36,
+      "refresh": {
+        "job": "REFRESH_PEER_CONTEXT",
+        "everyMinutes": 1440,
+        "slowestMinutes": 1440,
+        "basis": {
+          "text": "Peer cohorts are recomputed once a day.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": "2026-10-03T02:07:25.696Z"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87",
+      "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.10.1.post1"
+    },
+    {
+      "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+      "sourceUrl": "https://github.com/use-agent-os/agent-os"
+    },
+    {
+      "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae"
+    },
+    {
+      "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c"
+    },
+    {
+      "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da"
+    }
+  ],
+  "data": {
+    "identity": {
+      "slug": "agentos",
+      "name": {
+        "text": "AgentOS",
+        "contentOrigin": "external_source",
+        "source": "project_record"
+      },
+      "symbol": {
+        "text": "AgentOS",
+        "contentOrigin": "external_source",
+        "source": "token_metadata"
+      },
+      "projectKind": "OTHER",
+      "researchLevel": "VERIFIED_BUILDER",
+      "catalogStatus": "VERIFIED_BUILDER",
+      "narrative": {
+        "slug": "devtools",
+        "name": {
+          "text": "Dev Tools",
+          "contentOrigin": "derived"
+        }
+      },
+      "firstRecordedByHeyAt": "2026-09-03T06:07:13.965Z",
+      "websiteUrl": "https://useagentos.dev/",
+      "url": "https://heyresearch.xyz/project/agentos"
+    },
+    "builderState": {
+      "activityStatus": "SHIPPING",
+      "activityMeasured": true,
+      "lastMeaningfulShipAt": "2026-10-01T17:41:32.000Z",
+      "meaningfulEvents30d": 30,
+      "buildMomentum": 80.1,
+      "stillBuilding": false,
+      "stillBuildingWithheld": "market_not_live",
+      "stillBuildingState": "NOT_MEASURED",
+      "scoringVersion": "hbm-v22",
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status"
+    },
+    "latestMeaningfulChange": {
+      "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+      "revision": 9,
+      "type": "build.code_activity",
+      "domain": "build",
+      "occurredAt": "2026-10-01T17:41:32.000Z",
+      "precision": "WEEK",
+      "detectedAt": "2026-09-28T05:46:58.943Z",
+      "recordedAt": "2026-10-02T09:24:14.764Z",
+      "summary": {
+        "text": "Active development: 100+ commits since 2026-09-23 across 7 contributors",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "countsAsBuilding": true,
+      "project": {
+        "slug": "agentos",
+        "url": "https://heyresearch.xyz/project/agentos"
+      },
+      "evidence": [
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "sourceUrl": "https://github.com/use-agent-os/agent-os"
+        }
+      ],
+      "source": "github"
+    },
+    "recentChanges": {
+      "available": true,
+      "items": [
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "revision": 9,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-10-01T17:41:32.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-09-28T05:46:58.943Z",
+          "recordedAt": "2026-10-02T09:24:14.764Z",
+          "summary": {
+            "text": "Active development: 100+ commits since 2026-09-23 across 7 contributors",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "project": {
+            "slug": "agentos",
+            "url": "https://heyresearch.xyz/project/agentos"
+          },
+          "evidence": [
+            {
+              "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+              "sourceUrl": "https://github.com/use-agent-os/agent-os"
+            }
+          ],
+          "source": "github"
+        },
+        {
+          "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+          "revision": 2,
+          "type": "build.release",
+          "domain": "build",
+          "occurredAt": "2026-10-01T17:03:50.000Z",
+          "precision": "EXACT",
+          "detectedAt": "2026-10-01T19:18:48.727Z",
+          "recordedAt": "2026-10-01T20:15:03.505Z",
+          "summary": {
+            "text": "AgentOS 2026.10.1.post1",
+            "contentOrigin": "external_source",
+            "source": "source_title",
+            "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.10.1.post1"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "project": {
+            "slug": "agentos",
+            "url": "https://heyresearch.xyz/project/agentos"
+          },
+          "evidence": [
+            {
+              "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87",
+              "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.10.1.post1"
+            }
+          ],
+          "source": "github"
+        },
+        {
+          "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
+          "revision": 2,
+          "type": "build.release",
+          "domain": "build",
+          "occurredAt": "2026-10-01T07:53:52.000Z",
+          "precision": "EXACT",
+          "detectedAt": "2026-10-01T19:18:48.765Z",
+          "recordedAt": "2026-10-01T20:15:03.505Z",
+          "summary": {
+            "text": "AgentOS 2026.10.1",
+            "contentOrigin": "external_source",
+            "source": "source_title",
+            "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.10.1"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "project": {
+            "slug": "agentos",
+            "url": "https://heyresearch.xyz/project/agentos"
+          },
+          "evidence": [
+            {
+              "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae",
+              "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.10.1"
+            }
+          ],
+          "source": "github"
+        },
+        {
+          "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+          "revision": 2,
+          "type": "build.release",
+          "domain": "build",
+          "occurredAt": "2026-09-29T15:28:30.000Z",
+          "precision": "EXACT",
+          "detectedAt": "2026-09-29T16:21:59.028Z",
+          "recordedAt": "2026-09-29T17:10:04.028Z",
+          "summary": {
+            "text": "AgentOS 2026.9.29.post1",
+            "contentOrigin": "external_source",
+            "source": "source_title",
+            "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.9.29.post1"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "project": {
+            "slug": "agentos",
+            "url": "https://heyresearch.xyz/project/agentos"
+          },
+          "evidence": [
+            {
+              "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+              "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.9.29.post1"
+            }
+          ],
+          "source": "github"
+        },
+        {
+          "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
+          "revision": 2,
+          "type": "build.release",
+          "domain": "build",
+          "occurredAt": "2026-09-29T08:13:24.000Z",
+          "precision": "EXACT",
+          "detectedAt": "2026-09-29T16:21:59.070Z",
+          "recordedAt": "2026-09-29T17:10:04.028Z",
+          "summary": {
+            "text": "AgentOS 2026.9.29",
+            "contentOrigin": "external_source",
+            "source": "source_title",
+            "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.9.29"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "project": {
+            "slug": "agentos",
+            "url": "https://heyresearch.xyz/project/agentos"
+          },
+          "evidence": [
+            {
+              "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da",
+              "sourceUrl": "https://github.com/use-agent-os/agent-os/releases/tag/v2026.9.29"
+            }
+          ],
+          "source": "github"
+        }
+      ],
+      "url": "https://heyresearch.xyz/api/changes?project=agentos"
+    },
+    "contractIdentity": {
+      "token": {
+        "chainId": 4663,
+        "address": "0xcab1bc0b34806c6cc867a981f6ba3808d64fcb07",
+        "verification": "MISMATCH",
+        "verificationReason": "site_names_another_contract"
+      },
+      "ownerVerified": false,
+      "contractsUrl": "https://heyresearch.xyz/api/projects/agentos/contracts"
+    },
+    "marketContext": {
+      "contextOnly": true,
+      "valuation": null,
+      "valuationWithheld": "launch_pool_no_trades",
+      "liquidityUsd": 42032764.9392,
+      "liquidityKind": "launch_inventory",
+      "volume24hUsd": 0,
+      "tokenMarketStatus": "TRADING_INACTIVE",
+      "url": "https://heyresearch.xyz/api/projects/agentos/market"
+    },
+    "usageContext": {
+      "contextOnly": true,
+      "state": "NOT_WATCHED",
+      "reason": "contract_not_in_method_watch",
+      "windowDays": 7,
+      "calls": null,
+      "activeContracts": null,
+      "watchedContracts": 0,
+      "observedAt": null,
+      "url": "https://heyresearch.xyz/api/projects/agentos/usage"
+    }
+  },
+  "methodology": {
+    "rules": [
+      {
+        "id": "activity.status",
+        "version": "hbm-v22"
+      },
+      {
+        "id": "research_summary",
+        "version": "summary-v1"
+      },
+      {
+        "id": "peers",
+        "version": "peers-v1"
+      },
+      {
+        "id": "agent_freshness",
+        "version": "agent-freshness-v2"
+      },
+      {
+        "id": "machine_text",
+        "version": "machine-text-v1"
+      }
+    ],
+    "url": "https://heyresearch.xyz/methodology"
+  },
+  "links": {
+    "self": "https://heyresearch.xyz/api/agent/research_project?project=agentos",
+    "page": "https://heyresearch.xyz/project/agentos",
+    "canonical": [
+      "https://heyresearch.xyz/api/projects/agentos/snapshot",
+      "https://heyresearch.xyz/api/projects/agentos/coverage",
+      "https://heyresearch.xyz/api/projects/agentos/explain",
+      "https://heyresearch.xyz/api/changes?project=agentos"
+    ]
+  },
+  "citation": {
+    "kind": "hey_agent_answer",
+    "capability": "research_project",
+    "schemaVersion": "1",
+    "url": "https://heyresearch.xyz/api/agent/research_project?project=agentos",
+    "asOf": "2026-10-02T11:37:33.503Z",
+    "project": "agentos",
+    "scoringVersion": "hbm-v22"
+  },
+  "boundaries": {
+    "notAdvice": true,
+    "notProvided": [
+      "investment_recommendation",
+      "buy_or_sell_signal",
+      "price_prediction",
+      "price_target",
+      "position_size",
+      "leverage",
+      "stop_loss",
+      "ranking_by_expected_return",
+      "risk_score",
+      "safety_verdict",
+      "smart_money_label",
+      "wallet_pnl",
+      "wallet_profile"
+    ],
+    "marketIsContextOnly": true,
+    "disclaimer": {
+      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "contentOrigin": "hey"
+    }
+  },
+  "asOf": "2026-10-02T11:37:33.503Z"
+}

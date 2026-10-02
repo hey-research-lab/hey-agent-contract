@@ -1,0 +1,924 @@
+{
+  "schema": "hey.agent-intelligence-response",
+  "schemaVersion": "1",
+  "capability": "what_changed",
+  "status": "ok",
+  "query": {
+    "chainId": 4663,
+    "days": 1,
+    "limit": 5
+  },
+  "chain": {
+    "chainId": 4663,
+    "name": "Robinhood Chain"
+  },
+  "subject": {
+    "kind": "chain"
+  },
+  "answer": {
+    "text": "1584 changes recorded for Robinhood Chain projects in the last day. 75 count as building (64 weeks of code activity, 11 releases); the other 1509 are context and HEY’s own records (555 sources added, 343 market status changes, 227 liquidity moves, 105 research publications, …). Showing the newest 5 of every type; ask with building=only for building alone.",
+    "contentOrigin": "derived"
+  },
+  "answerStatus": "FACT",
+  "claims": [
+    {
+      "id": "window.counts_as_building",
+      "dimension": "build",
+      "statement": {
+        "text": "75 of 1584 changes count toward activity status in the 1-day window.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 75,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.research.source_added",
+      "dimension": "research",
+      "statement": {
+        "text": "555 sources added in the 1-day window (research.source_added).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 555,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.market.status_changed",
+      "dimension": "market",
+      "statement": {
+        "text": "343 market status changes in the 1-day window (market.status_changed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 343,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [
+        {
+          "id": "state:3ee9f103-f67a-4d3b-b529-529313730682:market_status:13197",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A3ee9f103-f67a-4d3b-b529-529313730682%3Amarket_status%3A13197"
+        },
+        {
+          "id": "state:95985982-6ee3-47f5-b227-90be006f68d7:market_status:13195",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A95985982-6ee3-47f5-b227-90be006f68d7%3Amarket_status%3A13195"
+        },
+        {
+          "id": "state:3817861f-8181-49cd-a87d-5599b16e1d0a:market_status:13190",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A3817861f-8181-49cd-a87d-5599b16e1d0a%3Amarket_status%3A13190"
+        },
+        {
+          "id": "state:8e615e85-0c83-4a41-9040-719c47adafba:market_status:13185",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A8e615e85-0c83-4a41-9040-719c47adafba%3Amarket_status%3A13185"
+        }
+      ],
+      "evidenceKind": "ledger_count",
+      "contextOnly": true
+    },
+    {
+      "id": "window.market.liquidity_moved",
+      "dimension": "market",
+      "statement": {
+        "text": "227 liquidity moves in the 1-day window (market.liquidity_moved).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 227,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count",
+      "contextOnly": true
+    },
+    {
+      "id": "window.research.published",
+      "dimension": "research",
+      "statement": {
+        "text": "105 research publications in the 1-day window (research.published).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 105,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [
+        {
+          "id": "state:45e44760-2cb0-4bdc-a68b-e2a0073c4628:catalog_status:13178",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A45e44760-2cb0-4bdc-a68b-e2a0073c4628%3Acatalog_status%3A13178"
+        }
+      ],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.research.narrative_assigned",
+      "dimension": "research",
+      "statement": {
+        "text": "84 narrative assignments in the 1-day window (research.narrative_assigned).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 84,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.build.code_activity",
+      "dimension": "build",
+      "statement": {
+        "text": "81 weeks of code activity in the 1-day window (build.code_activity).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 81,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.market_integrity.event",
+      "dimension": "market_integrity",
+      "statement": {
+        "text": "29 market-integrity events in the 1-day window (market_integrity.event).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 29,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count",
+      "contextOnly": true
+    },
+    {
+      "id": "window.research.builder_verified",
+      "dimension": "research",
+      "statement": {
+        "text": "28 builder verifications in the 1-day window (research.builder_verified).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 28,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.market.volume_spike",
+      "dimension": "market",
+      "statement": {
+        "text": "26 volume spikes in the 1-day window (market.volume_spike).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 26,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count",
+      "contextOnly": true
+    },
+    {
+      "id": "window.build.status_changed",
+      "dimension": "build",
+      "statement": {
+        "text": "18 activity status changes in the 1-day window (build.status_changed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 18,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.market.distribution_changed",
+      "dimension": "market",
+      "statement": {
+        "text": "18 distribution changes in the 1-day window (market.distribution_changed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 18,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count",
+      "contextOnly": true
+    },
+    {
+      "id": "window.contract.usage_changed",
+      "dimension": "contract",
+      "statement": {
+        "text": "17 usage changes in the 1-day window (contract.usage_changed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 17,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count",
+      "contextOnly": true
+    },
+    {
+      "id": "window.build.release",
+      "dimension": "build",
+      "statement": {
+        "text": "11 releases in the 1-day window (build.release).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 11,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.contract.deployed",
+      "dimension": "contract",
+      "statement": {
+        "text": "9 contract deployments in the 1-day window (contract.deployed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 9,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.contract.source_verified",
+      "dimension": "contract",
+      "statement": {
+        "text": "7 source verifications in the 1-day window (contract.source_verified).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 7,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.token.verification_changed",
+      "dimension": "token",
+      "statement": {
+        "text": "6 token verification changes in the 1-day window (token.verification_changed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 6,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.token.launch_stage_changed",
+      "dimension": "token",
+      "statement": {
+        "text": "5 launch stage changes in the 1-day window (token.launch_stage_changed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 5,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.build.accelerating",
+      "dimension": "build",
+      "statement": {
+        "text": "4 acceleration signals in the 1-day window (build.accelerating).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 4,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.build.dormant",
+      "dimension": "build",
+      "statement": {
+        "text": "4 moves to dormant in the 1-day window (build.dormant).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 4,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.lock.unlock_due",
+      "dimension": "lock",
+      "statement": {
+        "text": "2 scheduled unlocks in the 1-day window (lock.unlock_due).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 2,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.build.resumed",
+      "dimension": "build",
+      "statement": {
+        "text": "1 resumption after dormancy in the 1-day window (build.resumed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 1,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.lock.observed",
+      "dimension": "lock",
+      "statement": {
+        "text": "1 lock observed in the 1-day window (lock.observed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 1,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.lock.withdrawn",
+      "dimension": "lock",
+      "statement": {
+        "text": "1 lock withdrawal in the 1-day window (lock.withdrawn).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 1,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.research.source_changed",
+      "dimension": "research",
+      "statement": {
+        "text": "1 source change in the 1-day window (research.source_changed).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 1,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "window.research.source_unavailable",
+      "dimension": "research",
+      "statement": {
+        "text": "1 source unavailable in the 1-day window (research.source_unavailable).",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 1,
+      "source": {
+        "name": "change ledger",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    }
+  ],
+  "unknowns": [],
+  "freshness": [
+    {
+      "family": "change_ledger",
+      "observedAt": "2026-10-02T11:35:02.091Z",
+      "dataAsOf": "2026-10-02T11:35:02.091Z",
+      "freshnessStatus": "live",
+      "staleAfterHours": 1,
+      "refresh": {
+        "job": "PROJECT_CHANGE_EVENTS",
+        "everyMinutes": 5,
+        "slowestMinutes": 5,
+        "basis": {
+          "text": "The ledger projector runs every 5 minutes and indexes what HEY recorded since its last run.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": "2026-10-02T11:40:02.091Z"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "state:3ee9f103-f67a-4d3b-b529-529313730682:market_status:13197",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A3ee9f103-f67a-4d3b-b529-529313730682%3Amarket_status%3A13197"
+    },
+    {
+      "id": "state:95985982-6ee3-47f5-b227-90be006f68d7:market_status:13195",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A95985982-6ee3-47f5-b227-90be006f68d7%3Amarket_status%3A13195"
+    },
+    {
+      "id": "state:3817861f-8181-49cd-a87d-5599b16e1d0a:market_status:13190",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A3817861f-8181-49cd-a87d-5599b16e1d0a%3Amarket_status%3A13190"
+    },
+    {
+      "id": "state:8e615e85-0c83-4a41-9040-719c47adafba:market_status:13185",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A8e615e85-0c83-4a41-9040-719c47adafba%3Amarket_status%3A13185"
+    },
+    {
+      "id": "state:45e44760-2cb0-4bdc-a68b-e2a0073c4628:catalog_status:13178",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A45e44760-2cb0-4bdc-a68b-e2a0073c4628%3Acatalog_status%3A13178"
+    }
+  ],
+  "data": {
+    "scope": "chain",
+    "window": {
+      "days": 1,
+      "from": "2026-10-01T11:37:36.436Z",
+      "to": "2026-10-02T11:37:36.436Z",
+      "basis": "occurred_else_detected"
+    },
+    "types": null,
+    "total": 1584,
+    "countsAsBuilding": 75,
+    "byType": [
+      {
+        "type": "research.source_added",
+        "count": 555
+      },
+      {
+        "type": "market.status_changed",
+        "count": 343
+      },
+      {
+        "type": "market.liquidity_moved",
+        "count": 227
+      },
+      {
+        "type": "research.published",
+        "count": 105
+      },
+      {
+        "type": "research.narrative_assigned",
+        "count": 84
+      },
+      {
+        "type": "build.code_activity",
+        "count": 81
+      },
+      {
+        "type": "market_integrity.event",
+        "count": 29
+      },
+      {
+        "type": "research.builder_verified",
+        "count": 28
+      },
+      {
+        "type": "market.volume_spike",
+        "count": 26
+      },
+      {
+        "type": "build.status_changed",
+        "count": 18
+      },
+      {
+        "type": "market.distribution_changed",
+        "count": 18
+      },
+      {
+        "type": "contract.usage_changed",
+        "count": 17
+      },
+      {
+        "type": "build.release",
+        "count": 11
+      },
+      {
+        "type": "contract.deployed",
+        "count": 9
+      },
+      {
+        "type": "contract.source_verified",
+        "count": 7
+      },
+      {
+        "type": "token.verification_changed",
+        "count": 6
+      },
+      {
+        "type": "token.launch_stage_changed",
+        "count": 5
+      },
+      {
+        "type": "build.accelerating",
+        "count": 4
+      },
+      {
+        "type": "build.dormant",
+        "count": 4
+      },
+      {
+        "type": "lock.unlock_due",
+        "count": 2
+      },
+      {
+        "type": "build.resumed",
+        "count": 1
+      },
+      {
+        "type": "lock.observed",
+        "count": 1
+      },
+      {
+        "type": "lock.withdrawn",
+        "count": 1
+      },
+      {
+        "type": "research.source_changed",
+        "count": 1
+      },
+      {
+        "type": "research.source_unavailable",
+        "count": 1
+      }
+    ],
+    "shown": 5,
+    "items": [
+      {
+        "id": "state:3ee9f103-f67a-4d3b-b529-529313730682:market_status:13197",
+        "revision": 1,
+        "type": "market.status_changed",
+        "domain": "market",
+        "occurredAt": null,
+        "precision": "OBSERVED",
+        "detectedAt": "2026-10-02T11:14:01.681Z",
+        "recordedAt": "2026-10-02T11:15:22.569Z",
+        "summary": {
+          "text": "Token market moved from Active market to Trading inactive",
+          "contentOrigin": "derived"
+        },
+        "status": "DERIVED",
+        "countsAsBuilding": false,
+        "project": {
+          "slug": "parcel-rush",
+          "url": "https://heyresearch.xyz/project/parcel-rush"
+        },
+        "evidence": [
+          {
+            "id": "state:3ee9f103-f67a-4d3b-b529-529313730682:market_status:13197",
+            "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A3ee9f103-f67a-4d3b-b529-529313730682%3Amarket_status%3A13197"
+          }
+        ],
+        "source": "hey_state"
+      },
+      {
+        "id": "state:95985982-6ee3-47f5-b227-90be006f68d7:market_status:13195",
+        "revision": 1,
+        "type": "market.status_changed",
+        "domain": "market",
+        "occurredAt": null,
+        "precision": "OBSERVED",
+        "detectedAt": "2026-10-02T11:14:01.681Z",
+        "recordedAt": "2026-10-02T11:15:22.569Z",
+        "summary": {
+          "text": "Token market moved from Trading inactive to Active market",
+          "contentOrigin": "derived"
+        },
+        "status": "DERIVED",
+        "countsAsBuilding": false,
+        "project": {
+          "slug": "crosshair",
+          "url": "https://heyresearch.xyz/project/crosshair"
+        },
+        "evidence": [
+          {
+            "id": "state:95985982-6ee3-47f5-b227-90be006f68d7:market_status:13195",
+            "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A95985982-6ee3-47f5-b227-90be006f68d7%3Amarket_status%3A13195"
+          }
+        ],
+        "source": "hey_state"
+      },
+      {
+        "id": "state:3817861f-8181-49cd-a87d-5599b16e1d0a:market_status:13190",
+        "revision": 1,
+        "type": "market.status_changed",
+        "domain": "market",
+        "occurredAt": null,
+        "precision": "OBSERVED",
+        "detectedAt": "2026-10-02T11:14:01.681Z",
+        "recordedAt": "2026-10-02T11:15:22.569Z",
+        "summary": {
+          "text": "Token market moved from Active market to Trading inactive",
+          "contentOrigin": "derived"
+        },
+        "status": "DERIVED",
+        "countsAsBuilding": false,
+        "project": {
+          "slug": "sonder-protocol",
+          "url": "https://heyresearch.xyz/project/sonder-protocol"
+        },
+        "evidence": [
+          {
+            "id": "state:3817861f-8181-49cd-a87d-5599b16e1d0a:market_status:13190",
+            "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A3817861f-8181-49cd-a87d-5599b16e1d0a%3Amarket_status%3A13190"
+          }
+        ],
+        "source": "hey_state"
+      },
+      {
+        "id": "state:8e615e85-0c83-4a41-9040-719c47adafba:market_status:13185",
+        "revision": 1,
+        "type": "market.status_changed",
+        "domain": "market",
+        "occurredAt": null,
+        "precision": "OBSERVED",
+        "detectedAt": "2026-10-02T11:14:01.681Z",
+        "recordedAt": "2026-10-02T11:15:22.569Z",
+        "summary": {
+          "text": "Token market moved from Active market to Trading inactive",
+          "contentOrigin": "derived"
+        },
+        "status": "DERIVED",
+        "countsAsBuilding": false,
+        "project": {
+          "slug": "the-nvidia-heist",
+          "url": "https://heyresearch.xyz/project/the-nvidia-heist"
+        },
+        "evidence": [
+          {
+            "id": "state:8e615e85-0c83-4a41-9040-719c47adafba:market_status:13185",
+            "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A8e615e85-0c83-4a41-9040-719c47adafba%3Amarket_status%3A13185"
+          }
+        ],
+        "source": "hey_state"
+      },
+      {
+        "id": "state:45e44760-2cb0-4bdc-a68b-e2a0073c4628:catalog_status:13178",
+        "revision": 1,
+        "type": "research.published",
+        "domain": "research",
+        "occurredAt": null,
+        "precision": "OBSERVED",
+        "detectedAt": "2026-10-02T11:14:01.681Z",
+        "recordedAt": "2026-10-02T11:15:22.569Z",
+        "summary": {
+          "text": "Project page published",
+          "contentOrigin": "derived"
+        },
+        "status": "DERIVED",
+        "countsAsBuilding": false,
+        "project": {
+          "slug": "hunch-0976f3",
+          "url": "https://heyresearch.xyz/project/hunch-0976f3"
+        },
+        "evidence": [
+          {
+            "id": "state:45e44760-2cb0-4bdc-a68b-e2a0073c4628:catalog_status:13178",
+            "receiptUrl": "https://heyresearch.xyz/api/evidence/state%3A45e44760-2cb0-4bdc-a68b-e2a0073c4628%3Acatalog_status%3A13178"
+          }
+        ],
+        "source": "hey_state"
+      }
+    ],
+    "ledger": {
+      "projectorRanAt": "2026-10-02T11:35:02.091Z",
+      "newestRecordedAt": "2026-10-02T11:35:02.091Z",
+      "collectionStart": "2026-09-26T11:35:57.227Z",
+      "transitionsFrom": "2026-09-26T11:32:48.791Z"
+    },
+    "more": "https://heyresearch.xyz/api/changes"
+  },
+  "methodology": {
+    "rules": [
+      {
+        "id": "agent_freshness",
+        "version": "agent-freshness-v2"
+      },
+      {
+        "id": "machine_text",
+        "version": "machine-text-v1"
+      }
+    ],
+    "url": "https://heyresearch.xyz/methodology"
+  },
+  "links": {
+    "self": "https://heyresearch.xyz/api/agent/what_changed?days=1&limit=5",
+    "canonical": [
+      "https://heyresearch.xyz/api/changes"
+    ]
+  },
+  "citation": {
+    "kind": "hey_agent_answer",
+    "capability": "what_changed",
+    "schemaVersion": "1",
+    "url": "https://heyresearch.xyz/api/agent/what_changed?days=1&limit=5",
+    "asOf": "2026-10-02T11:37:36.436Z"
+  },
+  "boundaries": {
+    "notAdvice": true,
+    "notProvided": [
+      "investment_recommendation",
+      "buy_or_sell_signal",
+      "price_prediction",
+      "price_target",
+      "position_size",
+      "leverage",
+      "stop_loss",
+      "ranking_by_expected_return",
+      "risk_score",
+      "safety_verdict",
+      "smart_money_label",
+      "wallet_pnl",
+      "wallet_profile"
+    ],
+    "marketIsContextOnly": true,
+    "disclaimer": {
+      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "contentOrigin": "hey"
+    }
+  },
+  "asOf": "2026-10-02T11:37:36.436Z"
+}

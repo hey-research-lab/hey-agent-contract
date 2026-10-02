@@ -1,0 +1,338 @@
+{
+  "schema": "hey.agent-intelligence-response",
+  "schemaVersion": "1",
+  "capability": "unknowns",
+  "status": "ok",
+  "query": {
+    "chainId": 4663,
+    "project": "agentos"
+  },
+  "chain": {
+    "chainId": 4663,
+    "name": "Robinhood Chain"
+  },
+  "subject": {
+    "kind": "project",
+    "project": {
+      "slug": "agentos",
+      "name": {
+        "text": "AgentOS",
+        "contentOrigin": "external_source",
+        "source": "project_record"
+      },
+      "url": "https://heyresearch.xyz/project/agentos",
+      "token": {
+        "chainId": 4663,
+        "address": "0xcab1bc0b34806c6cc867a981f6ba3808d64fcb07"
+      }
+    }
+  },
+  "answer": {
+    "text": "HEY does not know 7 things about agentos (1 NOT_MEASURED, 5 NOT_VERIFIED, 1 INSUFFICIENT_EVIDENCE). None of them is evidence for or against the project; each says what not to conclude.",
+    "contentOrigin": "derived"
+  },
+  "answerStatus": "FACT",
+  "claims": [
+    {
+      "id": "coverage.measured",
+      "dimension": "coverage",
+      "statement": {
+        "text": "HEY measured 16 of 21 coverage dimensions for agentos: identity, builderEvidence, repositories, releases, marketCurrent, marketHistory, contractDeployment, contractActivity, contractSource, contractInterface, locks, marketIntegrity, timeline, gitHost, package, securityContext. Figures there are measurements, zeros included.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 16,
+      "source": {
+        "name": "project coverage",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-10-02T11:37:42.015Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "live",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/coverage",
+      "evidenceKind": "coverage_state"
+    }
+  ],
+  "unknowns": [
+    {
+      "category": "ABSENT",
+      "dimension": "tokenOwnership",
+      "statement": {
+        "text": "The project’s own site names a different contract than the token HEY tracks for it: its building activity does not apply to this token.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "reason": "token_site_names_another_contract",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=token.verification"
+    },
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "projectOwner",
+      "statement": {
+        "text": "No owner has proved control of this project’s site, repository or contract to HEY.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "reason": "owner_not_verified"
+    },
+    {
+      "category": "NOT_MEASURED",
+      "dimension": "usage",
+      "statement": {
+        "text": "HEY does not watch this project’s contracts for product usage, so use is not measured.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not measured this. Do not read it as zero, as absent or as negative evidence about the project.",
+        "contentOrigin": "hey"
+      },
+      "reason": "contract_not_in_method_watch"
+    },
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "officialDocs",
+      "statement": {
+        "text": "Only docs others link to; none the project publishes itself.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NO_SOURCE",
+      "reason": "context_only_docs",
+      "asOf": "2026-09-04T11:08:41.409Z",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    },
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "apiDocs",
+      "statement": {
+        "text": "Its website is not yet confirmed as the project’s own.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NO_SOURCE",
+      "reason": "site_not_corroborated",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    },
+    {
+      "category": "NOT_VERIFIED",
+      "dimension": "sourceChanges",
+      "statement": {
+        "text": "Its website is not yet confirmed as the project’s own.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NO_SOURCE",
+      "reason": "site_not_corroborated",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    },
+    {
+      "category": "INSUFFICIENT_EVIDENCE",
+      "dimension": "distribution",
+      "statement": {
+        "text": "No balance changed in the window HEY reads.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has read too little of this to say. Do not treat a partial figure as the whole, or the gap as a finding.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NOT_ENOUGH_YET",
+      "reason": "no_balance_change_in_window",
+      "asOf": "2026-09-29T00:56:13.199Z",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    }
+  ],
+  "freshness": [
+    {
+      "family": "builder_sources",
+      "observedAt": "2026-10-02T10:50:11.249Z",
+      "dataAsOf": "2026-10-02T10:50:11.249Z",
+      "freshnessStatus": "recent",
+      "staleAfterHours": 72,
+      "refresh": {
+        "job": "REFRESH_GITHUB",
+        "everyMinutes": 60,
+        "slowestMinutes": 4320,
+        "basis": {
+          "text": "Repositories, release feeds and changelogs are re-read by refresh tier (HOT hourly, WARM every 6 hours, COOL daily, COLD every 3 days); the tier follows the activity status and the last meaningful ship. A failing source backs off. A reading is stale after 72 hours, or one and a half cadences of its tier where that is longer (108 hours on COLD).",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": "2026-10-02T11:50:11.249Z"
+    },
+    {
+      "family": "market",
+      "observedAt": "2026-10-02T07:32:07.535Z",
+      "dataAsOf": "2026-10-02T07:32:07.535Z",
+      "freshnessStatus": "recent",
+      "staleAfterHours": 24,
+      "refresh": {
+        "job": "REFRESH_MARKET_BATCH",
+        "everyMinutes": 10,
+        "slowestMinutes": 1440,
+        "basis": {
+          "text": "Market readings are refreshed by tier (HOT every 10 minutes, WARM hourly, COOL every 6 hours, COLD daily); a token priced only by the paced fallback waits at least 2 hours, and one with no reading backs off up to 14 days. A reading is stale after 24 hours, or one and a half cadences of its tier where that is longer (36 hours on COLD).",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": null,
+      "nextExpectedRefreshReason": "overdue"
+    },
+    {
+      "family": "contracts",
+      "observedAt": "2026-10-01T09:00:52.327Z",
+      "dataAsOf": "2026-10-01T09:00:52.327Z",
+      "freshnessStatus": "daily",
+      "staleAfterHours": 252,
+      "refresh": {
+        "job": "CONTRACT_ABI_WATCH",
+        "everyMinutes": 60,
+        "slowestMinutes": 10080,
+        "basis": {
+          "text": "The contract upgrade and interface watches run hourly over batches of watched contracts; how soon one contract is read again depends on the batch, within 7 days. A reading is stale after one and a half of those.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": null,
+      "nextExpectedRefreshReason": "variable_cadence"
+    },
+    {
+      "family": "locks",
+      "observedAt": null,
+      "dataAsOf": null,
+      "freshnessStatus": "unknown",
+      "staleAfterHours": 48,
+      "refresh": {
+        "job": "SYNC_HOODLOCK",
+        "everyMinutes": 360,
+        "slowestMinutes": 360,
+        "basis": {
+          "text": "HoodLock locks and unlocks are synced every 6 hours. Only HoodLock is read; other lockers are not.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": null,
+      "nextExpectedRefreshReason": "never_read"
+    },
+    {
+      "family": "activity_score",
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "dataAsOf": "2026-10-02T09:29:34.574Z",
+      "freshnessStatus": "recent",
+      "staleAfterHours": 24,
+      "refresh": {
+        "job": "RECALCULATE_SCORES",
+        "everyMinutes": 720,
+        "slowestMinutes": 720,
+        "basis": {
+          "text": "A project is due for rescoring once its score is 12 hours old (RESCORE_MIN_INTERVAL_HOURS); a newly recorded ship queues a rescore within the quarter hour. The next refresh is the latest expected time, not a promise: a backlog can delay it.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": "2026-10-02T21:29:34.574Z"
+    }
+  ],
+  "evidence": [],
+  "data": {
+    "counts": {
+      "UNKNOWN": 0,
+      "NOT_MEASURED": 1,
+      "NOT_VERIFIED": 5,
+      "STALE": 0,
+      "INSUFFICIENT_EVIDENCE": 1
+    },
+    "measured": [
+      "identity",
+      "builderEvidence",
+      "repositories",
+      "releases",
+      "marketCurrent",
+      "marketHistory",
+      "contractDeployment",
+      "contractActivity",
+      "contractSource",
+      "contractInterface",
+      "locks",
+      "marketIntegrity",
+      "timeline",
+      "gitHost",
+      "package",
+      "securityContext"
+    ],
+    "notApplicable": [
+      "protocolEconomics"
+    ],
+    "withheld": [],
+    "coverageUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+  },
+  "methodology": {
+    "rules": [
+      {
+        "id": "agent_freshness",
+        "version": "agent-freshness-v2"
+      },
+      {
+        "id": "machine_text",
+        "version": "machine-text-v1"
+      }
+    ],
+    "url": "https://heyresearch.xyz/methodology"
+  },
+  "links": {
+    "self": "https://heyresearch.xyz/api/agent/unknowns?project=agentos",
+    "page": "https://heyresearch.xyz/project/agentos",
+    "canonical": [
+      "https://heyresearch.xyz/api/projects/agentos/coverage",
+      "https://heyresearch.xyz/api/projects/agentos/snapshot"
+    ]
+  },
+  "citation": {
+    "kind": "hey_agent_answer",
+    "capability": "unknowns",
+    "schemaVersion": "1",
+    "url": "https://heyresearch.xyz/api/agent/unknowns?project=agentos",
+    "asOf": "2026-10-02T11:37:42.015Z",
+    "project": "agentos"
+  },
+  "boundaries": {
+    "notAdvice": true,
+    "notProvided": [
+      "investment_recommendation",
+      "buy_or_sell_signal",
+      "price_prediction",
+      "price_target",
+      "position_size",
+      "leverage",
+      "stop_loss",
+      "ranking_by_expected_return",
+      "risk_score",
+      "safety_verdict",
+      "smart_money_label",
+      "wallet_pnl",
+      "wallet_profile"
+    ],
+    "marketIsContextOnly": true,
+    "disclaimer": {
+      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "contentOrigin": "hey"
+    }
+  },
+  "asOf": "2026-10-02T11:37:42.015Z"
+}

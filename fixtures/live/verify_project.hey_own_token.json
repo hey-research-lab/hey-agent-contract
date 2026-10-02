@@ -1,0 +1,197 @@
+{
+  "schema": "hey.agent-intelligence-response",
+  "schemaVersion": "1",
+  "capability": "verify_project",
+  "status": "ok",
+  "query": {
+    "chainId": 4663,
+    "address": "0xb33eb16782776b4d738c0fd643577cb0284db610"
+  },
+  "chain": {
+    "chainId": 4663,
+    "name": "Robinhood Chain"
+  },
+  "subject": {
+    "kind": "contract",
+    "contract": {
+      "chainId": 4663,
+      "address": "0xb33eb16782776b4d738c0fd643577cb0284db610"
+    },
+    "project": {
+      "slug": "hey-research-lab",
+      "name": {
+        "text": "Hey Research Lab",
+        "contentOrigin": "external_source",
+        "source": "project_record"
+      },
+      "url": "https://heyresearch.xyz/project/hey-research-lab"
+    }
+  },
+  "answer": {
+    "text": "VERIFIED: the project \"hey-research-lab\" itself names 0xb33eb16782776b4d738c0fd643577cb0284db610. This is attribution, not a safety reading.",
+    "contentOrigin": "derived"
+  },
+  "answerStatus": "FACT",
+  "claims": [
+    {
+      "id": "verify.verdict",
+      "dimension": "contract",
+      "statement": {
+        "text": "VERIFIED (token_onchain_signature): HEY records this contract as the project’s tracked token. The project’s owner proved control of the deployer or the contract with an on-chain signature.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": "VERIFIED",
+      "source": {
+        "name": "on-chain signature",
+        "type": "chain"
+      },
+      "observedAt": "2026-09-11T05:50:05.340Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "stale",
+      "evidence": [],
+      "evidenceKind": "registry_record",
+      "explainUrl": "https://heyresearch.xyz/api/projects/hey-research-lab/explain?fact=token.verification",
+      "reason": "token_onchain_signature"
+    },
+    {
+      "id": "verify.recorded_project",
+      "dimension": "contract",
+      "statement": {
+        "text": "HEY records this contract under \"hey-research-lab\" as its tracked token.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": "hey-research-lab",
+      "source": {
+        "name": "contract registry",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-09-11T05:50:05.340Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "stale",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/token/4663/0xb33eb16782776b4d738c0fd643577cb0284db610",
+      "evidenceKind": "registry_record",
+      "reason": "recorded_as_token"
+    }
+  ],
+  "unknowns": [],
+  "freshness": [
+    {
+      "family": "contracts",
+      "observedAt": "2026-10-01T10:05:16.956Z",
+      "dataAsOf": "2026-10-01T10:05:16.956Z",
+      "freshnessStatus": "daily",
+      "staleAfterHours": 252,
+      "refresh": {
+        "job": "CONTRACT_ABI_WATCH",
+        "everyMinutes": 60,
+        "slowestMinutes": 10080,
+        "basis": {
+          "text": "The contract upgrade and interface watches run hourly over batches of watched contracts; how soon one contract is read again depends on the batch, within 7 days. A reading is stale after one and a half of those.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": null,
+      "nextExpectedRefreshReason": "variable_cadence"
+    }
+  ],
+  "evidence": [],
+  "data": {
+    "chainId": 4663,
+    "address": "0xb33eb16782776b4d738c0fd643577cb0284db610",
+    "verdict": "VERIFIED",
+    "reasonCode": "token_onchain_signature",
+    "reasons": [
+      {
+        "text": "HEY records this contract as the project’s tracked token.",
+        "contentOrigin": "hey"
+      },
+      {
+        "text": "The project’s owner proved control of the deployer or the contract with an on-chain signature.",
+        "contentOrigin": "hey"
+      }
+    ],
+    "recordedProject": {
+      "slug": "hey-research-lab",
+      "url": "https://heyresearch.xyz/project/hey-research-lab",
+      "role": "token"
+    },
+    "askedProject": null,
+    "tokenVerification": {
+      "status": "VERIFIED",
+      "reason": "onchain_signature"
+    },
+    "activityAppliesToContract": true,
+    "contractUrl": "https://heyresearch.xyz/api/contracts/4663/0xb33eb16782776b4d738c0fd643577cb0284db610",
+    "scanUrl": "https://heyresearch.xyz/scan/0xb33eb16782776b4d738c0fd643577cb0284db610"
+  },
+  "methodology": {
+    "rules": [
+      {
+        "id": "agent_freshness",
+        "version": "agent-freshness-v2"
+      },
+      {
+        "id": "machine_text",
+        "version": "machine-text-v1"
+      }
+    ],
+    "url": "https://heyresearch.xyz/methodology"
+  },
+  "links": {
+    "self": "https://heyresearch.xyz/api/agent/verify_project?address=0xb33eb16782776b4d738c0fd643577cb0284db610",
+    "page": "https://heyresearch.xyz/project/hey-research-lab",
+    "canonical": [
+      "https://heyresearch.xyz/api/token/4663/0xb33eb16782776b4d738c0fd643577cb0284db610",
+      "https://heyresearch.xyz/api/contracts/4663/0xb33eb16782776b4d738c0fd643577cb0284db610"
+    ]
+  },
+  "citation": {
+    "kind": "hey_agent_answer",
+    "capability": "verify_project",
+    "schemaVersion": "1",
+    "url": "https://heyresearch.xyz/api/agent/verify_project?address=0xb33eb16782776b4d738c0fd643577cb0284db610",
+    "asOf": "2026-10-02T11:37:39.230Z",
+    "project": "hey-research-lab"
+  },
+  "boundaries": {
+    "notAdvice": true,
+    "notProvided": [
+      "investment_recommendation",
+      "buy_or_sell_signal",
+      "price_prediction",
+      "price_target",
+      "position_size",
+      "leverage",
+      "stop_loss",
+      "ranking_by_expected_return",
+      "risk_score",
+      "safety_verdict",
+      "smart_money_label",
+      "wallet_pnl",
+      "wallet_profile"
+    ],
+    "marketIsContextOnly": true,
+    "disclaimer": {
+      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "contentOrigin": "hey"
+    }
+  },
+  "disclosures": [
+    {
+      "code": "hey_own_token",
+      "statement": {
+        "text": "HEY’s own token — researched by the same rules",
+        "contentOrigin": "hey"
+      },
+      "projects": [
+        "hey-research-lab"
+      ]
+    }
+  ],
+  "asOf": "2026-10-02T11:37:39.230Z"
+}

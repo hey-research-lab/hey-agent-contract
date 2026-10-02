@@ -1,0 +1,475 @@
+{
+  "schema": "hey.agent-intelligence-response",
+  "schemaVersion": "1",
+  "capability": "compare_builders",
+  "status": "ok",
+  "query": {
+    "chainId": 4663,
+    "projects": [
+      "agentos",
+      "hey-research-lab"
+    ]
+  },
+  "chain": {
+    "chainId": 4663,
+    "name": "Robinhood Chain"
+  },
+  "subject": {
+    "kind": "projects",
+    "projects": [
+      {
+        "slug": "agentos",
+        "name": {
+          "text": "AgentOS",
+          "contentOrigin": "external_source",
+          "source": "project_record"
+        },
+        "url": "https://heyresearch.xyz/project/agentos"
+      },
+      {
+        "slug": "hey-research-lab",
+        "name": {
+          "text": "Hey Research Lab",
+          "contentOrigin": "external_source",
+          "source": "project_record"
+        },
+        "url": "https://heyresearch.xyz/project/hey-research-lab"
+      }
+    ]
+  },
+  "answer": {
+    "text": "Side by side over 30 days: agentos SHIPPING, 30 meaningful events in 30 days; hey-research-lab SHIPPING, 5 meaningful events in 30 days. No winner: HEY compares building records, not investments.",
+    "contentOrigin": "derived"
+  },
+  "answerStatus": "DERIVED",
+  "claims": [
+    {
+      "id": "compare.agentos.activity_status",
+      "dimension": "build",
+      "statement": {
+        "text": "agentos: activity status SHIPPING.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": "SHIPPING",
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [
+        {
+          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf"
+        },
+        {
+          "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87"
+        },
+        {
+          "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae"
+        },
+        {
+          "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c"
+        },
+        {
+          "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da"
+        }
+      ],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "compare.agentos.meaningful_events_30d",
+      "dimension": "build",
+      "statement": {
+        "text": "agentos: 30 meaningful events in the last 30 days.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": 30,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "recent",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "compare.agentos.last_meaningful_ship",
+      "dimension": "build",
+      "statement": {
+        "text": "agentos: newest meaningful ship dated 2026-10-01.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": "2026-10-01T17:41:32.000Z",
+      "source": {
+        "name": "builder sources",
+        "type": "builder_source"
+      },
+      "observedAt": "2026-10-02T09:29:34.574Z",
+      "occurredAt": "2026-10-01T17:41:32.000Z",
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
+      "evidenceKind": "canonical_read"
+    },
+    {
+      "id": "compare.hey-research-lab.activity_status",
+      "dimension": "build",
+      "statement": {
+        "text": "hey-research-lab: activity status SHIPPING.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": "SHIPPING",
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-02T07:57:17.715Z",
+      "occurredAt": null,
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [
+        {
+          "id": "ship:b0abe7b6-5a88-43b9-a497-bd207446c201",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ab0abe7b6-5a88-43b9-a497-bd207446c201"
+        },
+        {
+          "id": "ship:09e27608-9e41-4891-8424-18843b16e3fb",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A09e27608-9e41-4891-8424-18843b16e3fb"
+        },
+        {
+          "id": "ship:84d86822-6f1d-4830-afb4-334f98efe60f",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A84d86822-6f1d-4830-afb4-334f98efe60f"
+        },
+        {
+          "id": "ship:addd8f14-3f78-4618-8bc5-c5db6fa8e955",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aaddd8f14-3f78-4618-8bc5-c5db6fa8e955"
+        },
+        {
+          "id": "ship:1e83ff2e-5dcd-4114-9b9e-3297ad343bd9",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1e83ff2e-5dcd-4114-9b9e-3297ad343bd9"
+        }
+      ],
+      "explainUrl": "https://heyresearch.xyz/api/projects/hey-research-lab/explain?fact=activity.status",
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "compare.hey-research-lab.meaningful_events_30d",
+      "dimension": "build",
+      "statement": {
+        "text": "hey-research-lab: 5 meaningful events in the last 30 days.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": 5,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-10-02T07:57:17.715Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "recent",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/hey-research-lab/explain?fact=activity.status",
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "compare.hey-research-lab.last_meaningful_ship",
+      "dimension": "build",
+      "statement": {
+        "text": "hey-research-lab: newest meaningful ship dated 2026-10-02.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": "2026-10-02T06:57:35.000Z",
+      "source": {
+        "name": "builder sources",
+        "type": "builder_source"
+      },
+      "observedAt": "2026-10-02T07:57:17.715Z",
+      "occurredAt": "2026-10-02T06:57:35.000Z",
+      "precision": null,
+      "freshness": "recent",
+      "evidence": [],
+      "explainUrl": "https://heyresearch.xyz/api/projects/hey-research-lab/explain?fact=activity.status",
+      "evidenceKind": "canonical_read"
+    }
+  ],
+  "unknowns": [],
+  "freshness": [
+    {
+      "family": "activity_score",
+      "observedAt": "2026-10-02T07:57:17.715Z",
+      "dataAsOf": "2026-10-02T07:57:17.715Z",
+      "freshnessStatus": "recent",
+      "staleAfterHours": 24,
+      "refresh": {
+        "job": "RECALCULATE_SCORES",
+        "everyMinutes": 720,
+        "slowestMinutes": 720,
+        "basis": {
+          "text": "A project is due for rescoring once its score is 12 hours old (RESCORE_MIN_INTERVAL_HOURS); a newly recorded ship queues a rescore within the quarter hour. The next refresh is the latest expected time, not a promise: a backlog can delay it.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": "2026-10-02T19:57:17.715Z"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf"
+    },
+    {
+      "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87"
+    },
+    {
+      "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae"
+    },
+    {
+      "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c"
+    },
+    {
+      "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da"
+    },
+    {
+      "id": "ship:b0abe7b6-5a88-43b9-a497-bd207446c201",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ab0abe7b6-5a88-43b9-a497-bd207446c201"
+    },
+    {
+      "id": "ship:09e27608-9e41-4891-8424-18843b16e3fb",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A09e27608-9e41-4891-8424-18843b16e3fb"
+    },
+    {
+      "id": "ship:84d86822-6f1d-4830-afb4-334f98efe60f",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A84d86822-6f1d-4830-afb4-334f98efe60f"
+    },
+    {
+      "id": "ship:addd8f14-3f78-4618-8bc5-c5db6fa8e955",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aaddd8f14-3f78-4618-8bc5-c5db6fa8e955"
+    },
+    {
+      "id": "ship:1e83ff2e-5dcd-4114-9b9e-3297ad343bd9",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1e83ff2e-5dcd-4114-9b9e-3297ad343bd9"
+    }
+  ],
+  "data": {
+    "windowDays": 30,
+    "projects": [
+      {
+        "slug": "agentos",
+        "name": {
+          "text": "AgentOS",
+          "contentOrigin": "external_source",
+          "source": "project_record"
+        },
+        "url": "https://heyresearch.xyz/project/agentos",
+        "activityStatus": "SHIPPING",
+        "lastMeaningfulShipAt": "2026-10-01T17:41:32.000Z",
+        "meaningfulEvents30d": 30,
+        "meaningfulEventsPrevious30d": null,
+        "velocityState": "NEW",
+        "releaseCadence": {
+          "state": "MEASURED",
+          "medianIntervalDays": 1
+        },
+        "activeWeeks": {
+          "weeks": null,
+          "windowWeeks": 12
+        },
+        "buildMomentum": 80.1,
+        "buildMomentumConsistency": {
+          "score": 100,
+          "activeWeeks": 6,
+          "windowWeeks": 6
+        },
+        "category": {
+          "text": "Dev Tools",
+          "contentOrigin": "hey"
+        },
+        "verifiedBuilder": true,
+        "sources": {
+          "verified": 0,
+          "total": 5
+        },
+        "peer": {
+          "rulesVersion": "peers-v1",
+          "state": "NO_COHORT",
+          "cohort": null,
+          "reason": "kind_not_classified"
+        },
+        "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status"
+      },
+      {
+        "slug": "hey-research-lab",
+        "name": {
+          "text": "Hey Research Lab",
+          "contentOrigin": "external_source",
+          "source": "project_record"
+        },
+        "url": "https://heyresearch.xyz/project/hey-research-lab",
+        "activityStatus": "SHIPPING",
+        "lastMeaningfulShipAt": "2026-10-02T06:57:35.000Z",
+        "meaningfulEvents30d": 5,
+        "meaningfulEventsPrevious30d": null,
+        "velocityState": "NEW",
+        "releaseCadence": {
+          "state": "INSUFFICIENT_RELEASES",
+          "medianIntervalDays": null
+        },
+        "activeWeeks": {
+          "weeks": null,
+          "windowWeeks": 12
+        },
+        "buildMomentum": 48.2,
+        "buildMomentumConsistency": {
+          "score": 67,
+          "activeWeeks": 4,
+          "windowWeeks": 6
+        },
+        "category": {
+          "text": "Infrastructure",
+          "contentOrigin": "hey"
+        },
+        "verifiedBuilder": true,
+        "sources": {
+          "verified": 2,
+          "total": 25
+        },
+        "peer": {
+          "rulesVersion": "peers-v1",
+          "state": "COMPUTED",
+          "cohort": "infrastructure:product",
+          "reason": null
+        },
+        "explainUrl": "https://heyresearch.xyz/api/projects/hey-research-lab/explain?fact=activity.status"
+      }
+    ],
+    "missing": [],
+    "completeness": "complete",
+    "ignored": [],
+    "sameCohort": null,
+    "order": "as_requested",
+    "method": {
+      "text": "The figures each project page shows, side by side, with the same gates: builder metrics only. No winner, no ranking, no combined score. Projects in different peer cohorts are shown side by side and never placed against each other (peers-v1).",
+      "contentOrigin": "hey"
+    },
+    "excludedContext": [
+      {
+        "item": "valuation",
+        "statement": {
+          "text": "Market cap and FDV: market context, never a builder comparison.",
+          "contentOrigin": "hey"
+        }
+      },
+      {
+        "item": "liquidity_and_volume",
+        "statement": {
+          "text": "Liquidity and volume.",
+          "contentOrigin": "hey"
+        }
+      },
+      {
+        "item": "market_attention",
+        "statement": {
+          "text": "Market attention and the Discovery Gap, which weigh building against a market.",
+          "contentOrigin": "hey"
+        }
+      },
+      {
+        "item": "expected_return",
+        "statement": {
+          "text": "Any view on which token would perform better. HEY compares records, not investments.",
+          "contentOrigin": "hey"
+        }
+      }
+    ]
+  },
+  "methodology": {
+    "rules": [
+      {
+        "id": "peers",
+        "version": "peers-v1"
+      },
+      {
+        "id": "agent_freshness",
+        "version": "agent-freshness-v2"
+      },
+      {
+        "id": "machine_text",
+        "version": "machine-text-v1"
+      }
+    ],
+    "url": "https://heyresearch.xyz/methodology"
+  },
+  "links": {
+    "self": "https://heyresearch.xyz/api/agent/compare_builders?projects=agentos%2Chey-research-lab",
+    "canonical": [
+      "https://heyresearch.xyz/api/compare?slugs=agentos,hey-research-lab"
+    ]
+  },
+  "citation": {
+    "kind": "hey_agent_answer",
+    "capability": "compare_builders",
+    "schemaVersion": "1",
+    "url": "https://heyresearch.xyz/api/agent/compare_builders?projects=agentos%2Chey-research-lab",
+    "asOf": "2026-10-02T11:37:40.626Z"
+  },
+  "boundaries": {
+    "notAdvice": true,
+    "notProvided": [
+      "investment_recommendation",
+      "buy_or_sell_signal",
+      "price_prediction",
+      "price_target",
+      "position_size",
+      "leverage",
+      "stop_loss",
+      "ranking_by_expected_return",
+      "risk_score",
+      "safety_verdict",
+      "smart_money_label",
+      "wallet_pnl",
+      "wallet_profile"
+    ],
+    "marketIsContextOnly": true,
+    "disclaimer": {
+      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "contentOrigin": "hey"
+    }
+  },
+  "disclosures": [
+    {
+      "code": "hey_own_token",
+      "statement": {
+        "text": "HEY’s own token — researched by the same rules",
+        "contentOrigin": "hey"
+      },
+      "projects": [
+        "hey-research-lab"
+      ]
+    }
+  ],
+  "asOf": "2026-10-02T11:37:40.626Z"
+}
