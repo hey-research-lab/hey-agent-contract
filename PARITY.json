@@ -1,0 +1,37 @@
+{
+  "contract": "hey.agent-intelligence-response",
+  "schemaVersion": "1",
+  "source": "HEY Research Lab's production agent contract (packages/agent-provider-core/src, also published in hey-research-open)",
+  "commit": "21775391f6c0fb4494575e0b4463df535c65cb96",
+  "extractedAt": "2026-10-02",
+  "files": {
+    "capabilities.ts": "2b43914a5cd58af5aad748b93aa7991557503e432f374c25f3a6b2fba99f3da1",
+    "schema.ts": "c197c323c43e5469eaa632b8ead769c82bdb99a089843afc57b59ad9dcec4448",
+    "evidence-kinds.ts": "16bc2ed4123dd832e83b5124235c501ba8ff8e355d4ec25ef163dabcf26ff477",
+    "freshness.ts": "cf3fe6da5debee06f28de868dc5fb222ba2b87ef60df058af6f220e9c3fae02a",
+    "unknowns.ts": "3191e2197f444e3eb54e8cb5eb2eb763c8f8cee6b40215c6ca8c163971962d49",
+    "text.ts": "c8244cbf4f7692925dde8f106f307103fb645b8192bbd43f9d2eaa9902ff0dbb",
+    "disclosures.ts": "f03307ab6d5b1cd02f2bf1027291d638c7f832e448fed74b4097f2637e3f3a99",
+    "words.ts": "8969a63b1e52f2fc711643a18743e5ac7b313b14ed63a91f66cacb8a5f5b99f1",
+    "records.ts": "fb84d5f188550d8945034ddc677792177f47554617a6c47964323e78f9ee6278",
+    "request.ts": "293ed6156ad9039a13f61a6c3cf43fa63dbdba269fb92da47a60e986a796b35e"
+  },
+  "excerpts": [
+    {
+      "from": "compose/common.ts",
+      "sha256": "c76c06dc9eeeb51b6a75ab5b45b05bb57bdb521221d5ba153a7eb08436b60911"
+    },
+    {
+      "from": "compose/common.ts",
+      "sha256": "e6b13dc6ee4593e55b61d7fde3321686b28f2999313d09f527872aa30f7ec63e"
+    },
+    {
+      "from": "adapters/provider.ts",
+      "sha256": "455ae1976651854f6f5b5dbed71f95272768f7589eb0d0cec5fc8ec149f9e354"
+    },
+    {
+      "from": "adapters/provider.ts",
+      "sha256": "78ad297b5a1a240399f21d32fc08c13899941dc4e9fc586e811556990df490bb"
+    }
+  ]
+}
