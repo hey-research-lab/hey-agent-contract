@@ -1,0 +1,11 @@
+node_modules
+dist
+coverage
+pnpm-lock.yaml
+# Byte-for-byte copies of HEY's production contract: never reformatted (see CONTRIBUTING.md).
+src/contract
+# Recorded responses and generated schemas: kept exactly as recorded or generated.
+fixtures
+schema
+# Copied verbatim from the ecosystem leak-scan template.
+scripts/scan.mjs
