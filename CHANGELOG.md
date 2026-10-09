@@ -5,6 +5,11 @@ All notable changes to this package are documented here. The format follows
 [Semantic Versioning](https://semver.org/). The contract's own `schemaVersion` is independent of
 the package version.
 
+## Unreleased
+
+- Development: vitest 4.1.11 / tsup 8.5.1, with esbuild held at ^0.28.1 by a pnpm override; clears
+  dev-only advisories in the test and build toolchain. No runtime change.
+
 ## 0.2.0 — 2026-10-09
 
 Brought up to production as of 2026-10-09. The AgentIntelligenceResponse v1 schema itself is
