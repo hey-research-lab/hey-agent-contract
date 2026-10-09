@@ -82,8 +82,8 @@
   "freshness": [
     {
       "family": "contracts",
-      "observedAt": "2026-10-01T10:05:16.956Z",
-      "dataAsOf": "2026-10-01T10:05:16.956Z",
+      "observedAt": "2026-10-08T11:03:33.508Z",
+      "dataAsOf": "2026-10-08T11:03:33.508Z",
       "freshnessStatus": "daily",
       "staleAfterHours": 252,
       "refresh": {
@@ -155,7 +155,7 @@
     "capability": "verify_project",
     "schemaVersion": "1",
     "url": "https://heyresearch.xyz/api/agent/verify_project?address=0xb33eb16782776b4d738c0fd643577cb0284db610",
-    "asOf": "2026-10-02T11:37:39.230Z",
+    "asOf": "2026-10-09T04:13:57.803Z",
     "project": "hey-research-lab"
   },
   "boundaries": {
@@ -193,5 +193,5 @@
       ]
     }
   ],
-  "asOf": "2026-10-02T11:37:39.230Z"
+  "asOf": "2026-10-09T04:13:57.803Z"
 }

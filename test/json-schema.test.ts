@@ -31,6 +31,7 @@ describe('the generated JSON Schemas (schema/)', () => {
         schema: contract.AGENT_SCHEMA,
         schemaVersion: '1',
         productionCommit: contract.PRODUCTION_CONTRACT_COMMIT,
+        productionAsOf: contract.PRODUCTION_CONTRACT_AS_OF,
       },
     });
   });

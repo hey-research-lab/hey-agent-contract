@@ -46,6 +46,7 @@ export function buildJsonSchemas(contract) {
       schema: contract.AGENT_SCHEMA,
       schemaVersion: contract.AGENT_SCHEMA_VERSION,
       productionCommit: contract.PRODUCTION_CONTRACT_COMMIT,
+      productionAsOf: contract.PRODUCTION_CONTRACT_AS_OF,
       generatedFrom: '@hey-research-lab/agent-contract (Zod), by zod-to-json-schema',
     },
   });

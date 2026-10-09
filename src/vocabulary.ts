@@ -97,7 +97,10 @@ export const AGENT_WHAT_CHANGED_SCOPES = ['project', 'chain'] as const;
 
 /**
  * HEY's canonical coverage states, as `unknowns[].coverageState` carries them (the contract's
- * `CoverageStateCode` type). `MEASURED`, `NOT_APPLICABLE` and `WITHHELD` are not gaps.
+ * `CoverageStateCode` type). `MEASURED`, `NOT_APPLICABLE` and `WITHHELD` are not gaps. `PARTIAL`
+ * (part of it measured → `INSUFFICIENT_EVIDENCE`) and `MAPPING_BLOCKED` (a candidate HEY holds that
+ * nothing yet ties to the project → `NOT_VERIFIED`) are production's since 2026-10-09. The schema
+ * types `coverageState` as an open machine code: handle a state this list does not know.
  */
 export const AGENT_COVERAGE_STATES = [
   'MEASURED',
@@ -109,6 +112,8 @@ export const AGENT_COVERAGE_STATES = [
   'NOT_RESEARCHED',
   'ERROR',
   'WITHHELD',
+  'PARTIAL',
+  'MAPPING_BLOCKED',
 ] as const;
 
 /**

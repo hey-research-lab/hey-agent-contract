@@ -26,6 +26,18 @@ function notMeasured() {
     stillBuildingWithheld: 'market_too_thin',
     stillBuildingState: 'NOT_MEASURED',
   });
+  // Usage HEY does not watch: null figures with the reason, never 0 (the recorded project's usage
+  // may be measured on the day the live answers were recorded).
+  if (r.data.usageContext) {
+    Object.assign(r.data.usageContext, {
+      state: 'NOT_WATCHED',
+      reason: 'contract_not_in_method_watch',
+      calls: null,
+      activeContracts: null,
+      watchedContracts: 0,
+      observedAt: null,
+    });
+  }
   r.claims = r.claims.map((claim) =>
     claim.id === 'build.momentum'
       ? {

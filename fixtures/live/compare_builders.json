@@ -38,7 +38,7 @@
     ]
   },
   "answer": {
-    "text": "Side by side over 30 days: agentos SHIPPING, 30 meaningful events in 30 days; hey-research-lab SHIPPING, 5 meaningful events in 30 days. No winner: HEY compares building records, not investments.",
+    "text": "Side by side over 30 days: agentos SHIPPING, 25 meaningful events in 30 days; hey-research-lab SHIPPING, 6 meaningful events in 30 days. No winner: HEY compares building records, not investments.",
     "contentOrigin": "derived"
   },
   "answerStatus": "DERIVED",
@@ -56,30 +56,30 @@
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-02T09:29:34.574Z",
+      "observedAt": "2026-10-09T04:13:10.037Z",
       "occurredAt": null,
       "precision": null,
-      "freshness": "recent",
+      "freshness": "live",
       "evidence": [
         {
-          "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf"
+          "id": "ship:74c59f0e-6b30-446f-9058-757632b3c056",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A74c59f0e-6b30-446f-9058-757632b3c056"
         },
         {
-          "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87"
+          "id": "ship:31ecea7f-01b7-4d7d-ae89-a41b20dc7b92",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A31ecea7f-01b7-4d7d-ae89-a41b20dc7b92"
         },
         {
-          "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae"
+          "id": "ship:a5979090-b594-43d2-a2ba-f46870f1fe72",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa5979090-b594-43d2-a2ba-f46870f1fe72"
         },
         {
-          "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c"
+          "id": "ship:3393733e-1008-44d8-b8f5-413dda563f46",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A3393733e-1008-44d8-b8f5-413dda563f46"
         },
         {
-          "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da"
+          "id": "ship:a723cd1b-e5f6-4294-a734-19b025d6a1a6",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa723cd1b-e5f6-4294-a734-19b025d6a1a6"
         }
       ],
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
@@ -89,19 +89,19 @@
       "id": "compare.agentos.meaningful_events_30d",
       "dimension": "build",
       "statement": {
-        "text": "agentos: 30 meaningful events in the last 30 days.",
+        "text": "agentos: 25 meaningful events in the last 30 days.",
         "contentOrigin": "derived"
       },
       "status": "DERIVED",
-      "value": 30,
+      "value": 25,
       "source": {
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-02T09:29:34.574Z",
+      "observedAt": "2026-10-09T04:13:10.037Z",
       "occurredAt": null,
       "precision": "WINDOW",
-      "freshness": "recent",
+      "freshness": "live",
       "evidence": [],
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
       "evidenceKind": "rule_output"
@@ -110,19 +110,19 @@
       "id": "compare.agentos.last_meaningful_ship",
       "dimension": "build",
       "statement": {
-        "text": "agentos: newest meaningful ship dated 2026-10-01.",
+        "text": "agentos: newest meaningful ship dated 2026-10-09.",
         "contentOrigin": "derived"
       },
       "status": "FACT",
-      "value": "2026-10-01T17:41:32.000Z",
+      "value": "2026-10-09T03:43:12.000Z",
       "source": {
         "name": "builder sources",
         "type": "builder_source"
       },
-      "observedAt": "2026-10-02T09:29:34.574Z",
-      "occurredAt": "2026-10-01T17:41:32.000Z",
+      "observedAt": "2026-10-09T04:13:10.037Z",
+      "occurredAt": "2026-10-09T03:43:12.000Z",
       "precision": null,
-      "freshness": "recent",
+      "freshness": "live",
       "evidence": [],
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
       "evidenceKind": "canonical_read"
@@ -140,11 +140,15 @@
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-02T07:57:17.715Z",
+      "observedAt": "2026-10-08T23:17:19.491Z",
       "occurredAt": null,
       "precision": null,
       "freshness": "recent",
       "evidence": [
+        {
+          "id": "ship:e35cd069-5795-4836-92ee-f7a21964207c",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae35cd069-5795-4836-92ee-f7a21964207c"
+        },
         {
           "id": "ship:b0abe7b6-5a88-43b9-a497-bd207446c201",
           "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ab0abe7b6-5a88-43b9-a497-bd207446c201"
@@ -160,10 +164,6 @@
         {
           "id": "ship:addd8f14-3f78-4618-8bc5-c5db6fa8e955",
           "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aaddd8f14-3f78-4618-8bc5-c5db6fa8e955"
-        },
-        {
-          "id": "ship:1e83ff2e-5dcd-4114-9b9e-3297ad343bd9",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1e83ff2e-5dcd-4114-9b9e-3297ad343bd9"
         }
       ],
       "explainUrl": "https://heyresearch.xyz/api/projects/hey-research-lab/explain?fact=activity.status",
@@ -173,16 +173,16 @@
       "id": "compare.hey-research-lab.meaningful_events_30d",
       "dimension": "build",
       "statement": {
-        "text": "hey-research-lab: 5 meaningful events in the last 30 days.",
+        "text": "hey-research-lab: 6 meaningful events in the last 30 days.",
         "contentOrigin": "derived"
       },
       "status": "DERIVED",
-      "value": 5,
+      "value": 6,
       "source": {
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-02T07:57:17.715Z",
+      "observedAt": "2026-10-08T23:17:19.491Z",
       "occurredAt": null,
       "precision": "WINDOW",
       "freshness": "recent",
@@ -194,17 +194,17 @@
       "id": "compare.hey-research-lab.last_meaningful_ship",
       "dimension": "build",
       "statement": {
-        "text": "hey-research-lab: newest meaningful ship dated 2026-10-02.",
+        "text": "hey-research-lab: newest meaningful ship dated 2026-10-09.",
         "contentOrigin": "derived"
       },
       "status": "FACT",
-      "value": "2026-10-02T06:57:35.000Z",
+      "value": "2026-10-09T03:32:54.000Z",
       "source": {
         "name": "builder sources",
         "type": "builder_source"
       },
-      "observedAt": "2026-10-02T07:57:17.715Z",
-      "occurredAt": "2026-10-02T06:57:35.000Z",
+      "observedAt": "2026-10-08T23:17:19.491Z",
+      "occurredAt": "2026-10-09T03:32:54.000Z",
       "precision": null,
       "freshness": "recent",
       "evidence": [],
@@ -216,8 +216,8 @@
   "freshness": [
     {
       "family": "activity_score",
-      "observedAt": "2026-10-02T07:57:17.715Z",
-      "dataAsOf": "2026-10-02T07:57:17.715Z",
+      "observedAt": "2026-10-08T23:17:19.491Z",
+      "dataAsOf": "2026-10-08T23:17:19.491Z",
       "freshnessStatus": "recent",
       "staleAfterHours": 24,
       "refresh": {
@@ -229,29 +229,33 @@
           "contentOrigin": "hey"
         }
       },
-      "nextExpectedRefresh": "2026-10-02T19:57:17.715Z"
+      "nextExpectedRefresh": "2026-10-09T11:17:19.491Z"
     }
   ],
   "evidence": [
     {
-      "id": "ship:0b4f3ed2-48a0-48c1-8501-becb0098e3cf",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0b4f3ed2-48a0-48c1-8501-becb0098e3cf"
+      "id": "ship:74c59f0e-6b30-446f-9058-757632b3c056",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A74c59f0e-6b30-446f-9058-757632b3c056"
     },
     {
-      "id": "ship:4e3e657b-05a7-4f68-95ba-b545087d8e87",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4e3e657b-05a7-4f68-95ba-b545087d8e87"
+      "id": "ship:31ecea7f-01b7-4d7d-ae89-a41b20dc7b92",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A31ecea7f-01b7-4d7d-ae89-a41b20dc7b92"
     },
     {
-      "id": "ship:9c135da9-26c9-4b26-83e1-bf6af0059fae",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A9c135da9-26c9-4b26-83e1-bf6af0059fae"
+      "id": "ship:a5979090-b594-43d2-a2ba-f46870f1fe72",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa5979090-b594-43d2-a2ba-f46870f1fe72"
     },
     {
-      "id": "ship:7e0c22df-00e5-42f5-ad71-fccd4be1703c",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A7e0c22df-00e5-42f5-ad71-fccd4be1703c"
+      "id": "ship:3393733e-1008-44d8-b8f5-413dda563f46",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A3393733e-1008-44d8-b8f5-413dda563f46"
     },
     {
-      "id": "ship:224c14e1-a1a7-41c5-b220-baad49cd04da",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A224c14e1-a1a7-41c5-b220-baad49cd04da"
+      "id": "ship:a723cd1b-e5f6-4294-a734-19b025d6a1a6",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa723cd1b-e5f6-4294-a734-19b025d6a1a6"
+    },
+    {
+      "id": "ship:e35cd069-5795-4836-92ee-f7a21964207c",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae35cd069-5795-4836-92ee-f7a21964207c"
     },
     {
       "id": "ship:b0abe7b6-5a88-43b9-a497-bd207446c201",
@@ -268,10 +272,6 @@
     {
       "id": "ship:addd8f14-3f78-4618-8bc5-c5db6fa8e955",
       "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aaddd8f14-3f78-4618-8bc5-c5db6fa8e955"
-    },
-    {
-      "id": "ship:1e83ff2e-5dcd-4114-9b9e-3297ad343bd9",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1e83ff2e-5dcd-4114-9b9e-3297ad343bd9"
     }
   ],
   "data": {
@@ -286,8 +286,8 @@
         },
         "url": "https://heyresearch.xyz/project/agentos",
         "activityStatus": "SHIPPING",
-        "lastMeaningfulShipAt": "2026-10-01T17:41:32.000Z",
-        "meaningfulEvents30d": 30,
+        "lastMeaningfulShipAt": "2026-10-09T03:43:12.000Z",
+        "meaningfulEvents30d": 25,
         "meaningfulEventsPrevious30d": null,
         "velocityState": "NEW",
         "releaseCadence": {
@@ -298,20 +298,20 @@
           "weeks": null,
           "windowWeeks": 12
         },
-        "buildMomentum": 80.1,
+        "buildMomentum": 81.7,
         "buildMomentumConsistency": {
           "score": 100,
           "activeWeeks": 6,
           "windowWeeks": 6
         },
         "category": {
-          "text": "Dev Tools",
+          "text": "AI",
           "contentOrigin": "hey"
         },
         "verifiedBuilder": true,
         "sources": {
-          "verified": 0,
-          "total": 5
+          "verified": 1,
+          "total": 15
         },
         "peer": {
           "rulesVersion": "peers-v1",
@@ -330,8 +330,8 @@
         },
         "url": "https://heyresearch.xyz/project/hey-research-lab",
         "activityStatus": "SHIPPING",
-        "lastMeaningfulShipAt": "2026-10-02T06:57:35.000Z",
-        "meaningfulEvents30d": 5,
+        "lastMeaningfulShipAt": "2026-10-09T03:32:54.000Z",
+        "meaningfulEvents30d": 6,
         "meaningfulEventsPrevious30d": null,
         "velocityState": "NEW",
         "releaseCadence": {
@@ -342,10 +342,10 @@
           "weeks": null,
           "windowWeeks": 12
         },
-        "buildMomentum": 48.2,
+        "buildMomentum": 52.3,
         "buildMomentumConsistency": {
-          "score": 67,
-          "activeWeeks": 4,
+          "score": 83,
+          "activeWeeks": 5,
           "windowWeeks": 6
         },
         "category": {
@@ -355,7 +355,7 @@
         "verifiedBuilder": true,
         "sources": {
           "verified": 2,
-          "total": 25
+          "total": 46
         },
         "peer": {
           "rulesVersion": "peers-v1",
@@ -434,7 +434,7 @@
     "capability": "compare_builders",
     "schemaVersion": "1",
     "url": "https://heyresearch.xyz/api/agent/compare_builders?projects=agentos%2Chey-research-lab",
-    "asOf": "2026-10-02T11:37:40.626Z"
+    "asOf": "2026-10-09T04:13:59.237Z"
   },
   "boundaries": {
     "notAdvice": true,
@@ -471,5 +471,5 @@
       ]
     }
   ],
-  "asOf": "2026-10-02T11:37:40.626Z"
+  "asOf": "2026-10-09T04:13:59.237Z"
 }

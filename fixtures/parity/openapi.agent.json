@@ -1,6 +1,6 @@
 {
   "recordedFrom": "https://heyresearch.xyz/openapi.json",
-  "recordedAt": "2026-10-02T11:36:00.000Z",
+  "recordedAt": "2026-10-09T04:12:57.910Z",
   "openapi": "3.1.0",
   "infoVersion": "1",
   "paths": {
@@ -70,7 +70,8 @@
             "description": "A project slug: required for research_project and builder_status; optional for what_changed (else chain-wide) and verify_project; unknowns takes this or `address`.",
             "schema": {
               "type": "string",
-              "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              "pattern": "^[a-z0-9][a-z0-9-]{0,79}$",
+              "maxLength": 80
             }
           },
           {

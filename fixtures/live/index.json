@@ -3,60 +3,60 @@
     "name": "research_project",
     "url": "https://heyresearch.xyz/api/agent/research_project?project=agentos",
     "httpStatus": 200,
-    "recordedAt": "2026-10-02T11:37:33.665Z"
+    "recordedAt": "2026-10-09T04:13:52.102Z"
   },
   {
     "name": "what_changed.project",
     "url": "https://heyresearch.xyz/api/agent/what_changed?project=agentos&days=30&limit=10",
     "httpStatus": 200,
-    "recordedAt": "2026-10-02T11:37:35.080Z"
+    "recordedAt": "2026-10-09T04:13:53.480Z"
   },
   {
     "name": "what_changed.chain",
     "url": "https://heyresearch.xyz/api/agent/what_changed?days=1&limit=5",
     "httpStatus": 200,
-    "recordedAt": "2026-10-02T11:37:36.479Z"
+    "recordedAt": "2026-10-09T04:13:55.080Z"
   },
   {
     "name": "builder_status",
     "url": "https://heyresearch.xyz/api/agent/builder_status?project=agentos",
     "httpStatus": 200,
-    "recordedAt": "2026-10-02T11:37:37.810Z"
+    "recordedAt": "2026-10-09T04:13:56.440Z"
   },
   {
     "name": "verify_project.hey_own_token",
     "url": "https://heyresearch.xyz/api/agent/verify_project?address=0xb33eb16782776b4d738c0fd643577cb0284db610",
     "httpStatus": 200,
-    "recordedAt": "2026-10-02T11:37:39.259Z"
+    "recordedAt": "2026-10-09T04:13:57.792Z"
   },
   {
     "name": "compare_builders",
     "url": "https://heyresearch.xyz/api/agent/compare_builders?projects=agentos,hey-research-lab",
     "httpStatus": 200,
-    "recordedAt": "2026-10-02T11:37:40.657Z"
+    "recordedAt": "2026-10-09T04:13:59.252Z"
   },
   {
     "name": "unknowns",
     "url": "https://heyresearch.xyz/api/agent/unknowns?project=agentos",
     "httpStatus": 200,
-    "recordedAt": "2026-10-02T11:37:42.023Z"
+    "recordedAt": "2026-10-09T04:14:00.633Z"
   },
   {
     "name": "refusal.unsupported_chain",
     "url": "https://heyresearch.xyz/api/agent/research_project?project=agentos&chainId=1",
     "httpStatus": 400,
-    "recordedAt": "2026-10-02T11:37:43.322Z"
+    "recordedAt": "2026-10-09T04:14:01.888Z"
   },
   {
     "name": "refusal.not_found",
     "url": "https://heyresearch.xyz/api/agent/research_project?project=zz-no-such-project-0",
     "httpStatus": 404,
-    "recordedAt": "2026-10-02T11:37:44.616Z"
+    "recordedAt": "2026-10-09T04:14:03.151Z"
   },
   {
     "name": "refusal.unknown_capability",
     "url": "https://heyresearch.xyz/api/agent/price_prediction?project=agentos",
     "httpStatus": 404,
-    "recordedAt": "2026-10-02T11:37:45.944Z"
+    "recordedAt": "2026-10-09T04:14:04.443Z"
   }
 ]

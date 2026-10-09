@@ -1,6 +1,6 @@
 {
   "name": "@hey-research-lab/agent-contract",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The public contract of HEY's agent answers (AgentIntelligenceResponse v1): Zod schemas, TypeScript types, capability and unknown vocabularies, fixtures and test vectors.",
   "license": "MIT",
   "author": "HEY Research Lab",

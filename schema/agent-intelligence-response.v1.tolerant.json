@@ -6,7 +6,8 @@
   "x-hey-contract": {
     "schema": "hey.agent-intelligence-response",
     "schemaVersion": "1",
-    "productionCommit": "21775391f6c0fb4494575e0b4463df535c65cb96",
+    "productionCommit": "23d0813d81edb1cba0f489977df44fb9a96274c8",
+    "productionAsOf": "2026-10-09",
     "generatedFrom": "@hey-research-lab/agent-contract (Zod), by zod-to-json-schema"
   },
   "anyOf": [

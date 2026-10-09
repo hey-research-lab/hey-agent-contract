@@ -53,3 +53,21 @@ export function restStatusOf(response: Pick<AgentIntelligenceResponse, 'status'>
   }
 }
 // </verbatim>
+
+/**
+ * The typed evidence id families HEY resolves at `https://heyresearch.xyz/api/evidence/{id}`, and
+ * production's shape check for an evidence id (an event id with a suffix such as
+ * `source:<uuid>:added` is not one). Since 0.2.0 (production as of 2026-10-09).
+ */
+// <verbatim from="compose/common.ts">
+export const HEY_EVIDENCE_FAMILIES = ['ship', 'signal', 'abi', 'impl', 'lock', 'source', 'claim', 'state', 'integrity', 'narrative', 'method', 'sourcechange', 'security', 'v4hook'] as const;
+/** The families as a reader lists them: `integrity:` only where Market Integrity is public. */
+export function evidenceFamiliesFor(options: { marketIntegrityPublic: boolean }): readonly string[] {
+  return HEY_EVIDENCE_FAMILIES.filter((family) => options.marketIntegrityPublic || family !== 'integrity');
+}
+const EVIDENCE_FAMILIES: ReadonlySet<string> = new Set(HEY_EVIDENCE_FAMILIES);
+export function looksLikeEvidenceId(id: string): boolean {
+  const family = id.split(':')[0] ?? '';
+  return EVIDENCE_FAMILIES.has(family) && /^[a-z][a-z0-9]*:[A-Za-z0-9:._-]{1,220}$/.test(id) && !/:(added|removed|restored|unavailable|changed)$/.test(id);
+}
+// </verbatim>

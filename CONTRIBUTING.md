@@ -32,12 +32,15 @@ the saved fixtures. Never commit secrets or a `.env` with values.
 
 ## Parity with production
 
-`src/contract/` was extracted from HEY Research Lab's production contract at commit
-`21775391f6c0fb4494575e0b4463df535c65cb96`: the zod-only modules `capabilities.ts`, `schema.ts`,
+`src/contract/` matches HEY Research Lab's production contract as of 2026-10-09 (0.1.0 matched
+2026-10-02). It is copied from the public mirror
+[hey-research-open](https://github.com/hey-research-lab/hey-research-open), commit recorded in
+`PARITY.json`: the zod-only modules `capabilities.ts`, `schema.ts`,
 `evidence-kinds.ts`, `freshness.ts`, `unknowns.ts`, `text.ts`, `disclosures.ts`, `words.ts`,
 `records.ts` and `request.ts` of `packages/agent-provider-core/src` (the same package is
-published in [hey-research-open](https://github.com/hey-research-lab/hey-research-open)), plus four
-excerpts (`AGENT_NOT_PROVIDED`, `isContextChange`, `ADAPTER_REQUIRED_FIELDS`, `restStatusOf`). The
+published in [hey-research-open](https://github.com/hey-research-lab/hey-research-open)), plus five
+excerpts (`AGENT_NOT_PROVIDED`, `isContextChange`, `ADAPTER_REQUIRED_FIELDS`, `restStatusOf`,
+`HEY_EVIDENCE_FAMILIES` with `evidenceFamiliesFor` and `looksLikeEvidenceId`). The
 composers, transport adapters, benchmark, database loaders, compare loader, entitlement and
 analytics code are deliberately not copied.
 

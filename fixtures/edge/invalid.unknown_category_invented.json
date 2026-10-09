@@ -23,12 +23,12 @@
       "url": "https://heyresearch.xyz/project/agentos",
       "token": {
         "chainId": 4663,
-        "address": "0xcab1bc0b34806c6cc867a981f6ba3808d64fcb07"
+        "address": "0x6eda83fc299c10d474068a7e69771c809bcbbba3"
       }
     }
   },
   "answer": {
-    "text": "HEY does not know 7 things about agentos (1 NOT_MEASURED, 5 NOT_VERIFIED, 1 INSUFFICIENT_EVIDENCE). None of them is evidence for or against the project; each says what not to conclude.",
+    "text": "HEY does not know 4 things about agentos (1 NOT_VERIFIED, 3 INSUFFICIENT_EVIDENCE). None of them is evidence for or against the project; each says what not to conclude.",
     "contentOrigin": "derived"
   },
   "answerStatus": "FACT",
@@ -37,16 +37,16 @@
       "id": "coverage.measured",
       "dimension": "coverage",
       "statement": {
-        "text": "HEY measured 16 of 21 coverage dimensions for agentos: identity, builderEvidence, repositories, releases, marketCurrent, marketHistory, contractDeployment, contractActivity, contractSource, contractInterface, locks, marketIntegrity, timeline, gitHost, package, securityContext. Figures there are measurements, zeros included.",
+        "text": "HEY measured 18 of 21 coverage dimensions for agentos: identity, builderEvidence, repositories, releases, marketCurrent, marketHistory, contractDeployment, contractActivity, contractSource, contractInterface, distribution, locks, marketIntegrity, timeline, officialDocs, gitHost, package, securityContext. Figures there are measurements, zeros included.",
         "contentOrigin": "derived"
       },
       "status": "FACT",
-      "value": 16,
+      "value": 18,
       "source": {
         "name": "project coverage",
         "type": "hey_record"
       },
-      "observedAt": "2026-10-02T11:37:42.015Z",
+      "observedAt": "2026-10-09T04:14:00.616Z",
       "occurredAt": null,
       "precision": null,
       "freshness": "live",
@@ -58,20 +58,6 @@
   "unknowns": [
     {
       "category": "ABSENT",
-      "dimension": "tokenOwnership",
-      "statement": {
-        "text": "The project’s own site names a different contract than the token HEY tracks for it: its building activity does not apply to this token.",
-        "contentOrigin": "hey"
-      },
-      "doNotConclude": {
-        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
-        "contentOrigin": "hey"
-      },
-      "reason": "token_site_names_another_contract",
-      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=token.verification"
-    },
-    {
-      "category": "NOT_VERIFIED",
       "dimension": "projectOwner",
       "statement": {
         "text": "No owner has proved control of this project’s site, repository or contract to HEY.",
@@ -84,69 +70,10 @@
       "reason": "owner_not_verified"
     },
     {
-      "category": "NOT_MEASURED",
-      "dimension": "usage",
-      "statement": {
-        "text": "HEY does not watch this project’s contracts for product usage, so use is not measured.",
-        "contentOrigin": "hey"
-      },
-      "doNotConclude": {
-        "text": "HEY has not measured this. Do not read it as zero, as absent or as negative evidence about the project.",
-        "contentOrigin": "hey"
-      },
-      "reason": "contract_not_in_method_watch"
-    },
-    {
-      "category": "NOT_VERIFIED",
-      "dimension": "officialDocs",
-      "statement": {
-        "text": "Only docs others link to; none the project publishes itself.",
-        "contentOrigin": "hey"
-      },
-      "doNotConclude": {
-        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
-        "contentOrigin": "hey"
-      },
-      "coverageState": "NO_SOURCE",
-      "reason": "context_only_docs",
-      "asOf": "2026-09-04T11:08:41.409Z",
-      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
-    },
-    {
-      "category": "NOT_VERIFIED",
+      "category": "INSUFFICIENT_EVIDENCE",
       "dimension": "apiDocs",
       "statement": {
-        "text": "Its website is not yet confirmed as the project’s own.",
-        "contentOrigin": "hey"
-      },
-      "doNotConclude": {
-        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
-        "contentOrigin": "hey"
-      },
-      "coverageState": "NO_SOURCE",
-      "reason": "site_not_corroborated",
-      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
-    },
-    {
-      "category": "NOT_VERIFIED",
-      "dimension": "sourceChanges",
-      "statement": {
-        "text": "Its website is not yet confirmed as the project’s own.",
-        "contentOrigin": "hey"
-      },
-      "doNotConclude": {
-        "text": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.",
-        "contentOrigin": "hey"
-      },
-      "coverageState": "NO_SOURCE",
-      "reason": "site_not_corroborated",
-      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
-    },
-    {
-      "category": "INSUFFICIENT_EVIDENCE",
-      "dimension": "distribution",
-      "statement": {
-        "text": "No balance changed in the window HEY reads.",
+        "text": "HEY has not read its website’s published files yet.",
         "contentOrigin": "hey"
       },
       "doNotConclude": {
@@ -154,16 +81,46 @@
         "contentOrigin": "hey"
       },
       "coverageState": "NOT_ENOUGH_YET",
-      "reason": "no_balance_change_in_window",
-      "asOf": "2026-09-29T00:56:13.199Z",
+      "reason": "site_files_not_read_yet",
       "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    },
+    {
+      "category": "INSUFFICIENT_EVIDENCE",
+      "dimension": "sourceChanges",
+      "statement": {
+        "text": "HEY has no first reading of its website to compare against yet.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has read too little of this to say. Do not treat a partial figure as the whole, or the gap as a finding.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "NOT_ENOUGH_YET",
+      "reason": "no_baseline_yet",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/coverage"
+    },
+    {
+      "category": "INSUFFICIENT_EVIDENCE",
+      "dimension": "contractActivity",
+      "statement": {
+        "text": "Some days’ events were decoded; on others only the calls could be read.",
+        "contentOrigin": "hey"
+      },
+      "doNotConclude": {
+        "text": "HEY has read too little of this to say. Do not treat a partial figure as the whole, or the gap as a finding.",
+        "contentOrigin": "hey"
+      },
+      "coverageState": "PARTIAL",
+      "reason": "partial_events_unreadable_some_days",
+      "asOf": "2026-10-08T00:00:00.000Z",
+      "detailUrl": "https://heyresearch.xyz/api/projects/agentos/market"
     }
   ],
   "freshness": [
     {
       "family": "builder_sources",
-      "observedAt": "2026-10-02T10:50:11.249Z",
-      "dataAsOf": "2026-10-02T10:50:11.249Z",
+      "observedAt": "2026-10-09T03:49:39.662Z",
+      "dataAsOf": "2026-10-09T03:49:39.662Z",
       "freshnessStatus": "recent",
       "staleAfterHours": 72,
       "refresh": {
@@ -175,12 +132,12 @@
           "contentOrigin": "hey"
         }
       },
-      "nextExpectedRefresh": "2026-10-02T11:50:11.249Z"
+      "nextExpectedRefresh": "2026-10-09T04:49:39.662Z"
     },
     {
       "family": "market",
-      "observedAt": "2026-10-02T07:32:07.535Z",
-      "dataAsOf": "2026-10-02T07:32:07.535Z",
+      "observedAt": "2026-10-09T03:55:20.132Z",
+      "dataAsOf": "2026-10-09T03:55:20.132Z",
       "freshnessStatus": "recent",
       "staleAfterHours": 24,
       "refresh": {
@@ -197,9 +154,9 @@
     },
     {
       "family": "contracts",
-      "observedAt": "2026-10-01T09:00:52.327Z",
-      "dataAsOf": "2026-10-01T09:00:52.327Z",
-      "freshnessStatus": "daily",
+      "observedAt": "2026-10-03T07:10:30.873Z",
+      "dataAsOf": "2026-10-03T07:10:30.873Z",
+      "freshnessStatus": "weekly",
       "staleAfterHours": 252,
       "refresh": {
         "job": "CONTRACT_ABI_WATCH",
@@ -233,9 +190,9 @@
     },
     {
       "family": "activity_score",
-      "observedAt": "2026-10-02T09:29:34.574Z",
-      "dataAsOf": "2026-10-02T09:29:34.574Z",
-      "freshnessStatus": "recent",
+      "observedAt": "2026-10-09T04:13:10.037Z",
+      "dataAsOf": "2026-10-09T04:13:10.037Z",
+      "freshnessStatus": "live",
       "staleAfterHours": 24,
       "refresh": {
         "job": "RECALCULATE_SCORES",
@@ -246,17 +203,17 @@
           "contentOrigin": "hey"
         }
       },
-      "nextExpectedRefresh": "2026-10-02T21:29:34.574Z"
+      "nextExpectedRefresh": "2026-10-09T16:13:10.037Z"
     }
   ],
   "evidence": [],
   "data": {
     "counts": {
       "UNKNOWN": 0,
-      "NOT_MEASURED": 1,
-      "NOT_VERIFIED": 5,
+      "NOT_MEASURED": 0,
+      "NOT_VERIFIED": 1,
       "STALE": 0,
-      "INSUFFICIENT_EVIDENCE": 1
+      "INSUFFICIENT_EVIDENCE": 3
     },
     "measured": [
       "identity",
@@ -269,9 +226,11 @@
       "contractActivity",
       "contractSource",
       "contractInterface",
+      "distribution",
       "locks",
       "marketIntegrity",
       "timeline",
+      "officialDocs",
       "gitHost",
       "package",
       "securityContext"
@@ -308,7 +267,7 @@
     "capability": "unknowns",
     "schemaVersion": "1",
     "url": "https://heyresearch.xyz/api/agent/unknowns?project=agentos",
-    "asOf": "2026-10-02T11:37:42.015Z",
+    "asOf": "2026-10-09T04:14:00.616Z",
     "project": "agentos"
   },
   "boundaries": {
@@ -334,5 +293,5 @@
       "contentOrigin": "hey"
     }
   },
-  "asOf": "2026-10-02T11:37:42.015Z"
+  "asOf": "2026-10-09T04:14:00.616Z"
 }

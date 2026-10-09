@@ -2,5 +2,5 @@
   "error": "not_found",
   "message": "No such agent capability. capability must be one of: research_project, what_changed, builder_status, verify_project, compare_builders, unknowns. The list is at https://heyresearch.xyz/api/agent.",
   "retryable": false,
-  "requestId": "5113dced-0ada-4cdc-ac91-71059342dadb"
+  "requestId": "4a4df11d-a44b-40e3-9825-720f721edf43"
 }

@@ -22,7 +22,7 @@ if (process.env.HEY_LIVE !== '1') {
 const BASE = 'https://heyresearch.xyz';
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'fixtures', 'parity');
 const USER_AGENT =
-  'hey-agent-contract-parity/0.1.0 (+https://github.com/hey-research-lab/hey-agent-contract)';
+  'hey-agent-contract-parity/0.2.0 (+https://github.com/hey-research-lab/hey-agent-contract)';
 const MAX_BYTES = 2 * 1024 * 1024;
 
 async function getJson(path) {

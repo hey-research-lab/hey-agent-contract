@@ -5,6 +5,43 @@ All notable changes to this package are documented here. The format follows
 [Semantic Versioning](https://semver.org/). The contract's own `schemaVersion` is independent of
 the package version.
 
+## 0.2.0 — 2026-10-09
+
+Brought up to production as of 2026-10-09. The AgentIntelligenceResponse v1 schema itself is
+unchanged (`schema.ts` is byte-identical); every change below is additive.
+
+### Added
+
+- Coverage states `PARTIAL` (part of it measured → `INSUFFICIENT_EVIDENCE`) and `MAPPING_BLOCKED`
+  (a candidate HEY holds that nothing yet ties to the project → `NOT_VERIFIED`), in
+  `CoverageStateCode`, `categoryOfCoverage` and `AGENT_COVERAGE_STATES`.
+- Valuation-gate reasons `chain_evidence_contradicts` and `sources_disagree` in
+  `VALUATION_NOT_PLAUSIBLE_CODES`, with their words in `valuationWithheldClause`.
+- `unknownCategorySummary`: production's one wording for the categories a list of unknowns holds.
+- `HEY_EVIDENCE_FAMILIES` (all fourteen typed evidence id families, `sourcechange`, `security` and
+  `v4hook` included), `evidenceFamiliesFor` and `looksLikeEvidenceId`, as a fifth verbatim excerpt.
+- `PRODUCTION_CONTRACT_AS_OF` (`'2026-10-09'`), also in `AGENT_CONTRACT_VERSION.productionAsOf` and
+  the JSON Schemas' `x-hey-contract.productionAsOf`.
+
+### Changed
+
+- `src/contract/` is now copied from the public mirror
+  [hey-research-open](https://github.com/hey-research-lab/hey-research-open);
+  `PRODUCTION_CONTRACT_COMMIT` and `PARITY.json` record that public commit, so anyone can check the
+  copy with `pnpm parity:source`.
+- Live fixtures, edge cases and the parity snapshot re-recorded from production. The
+  not-measured edge case now sets its usage figures itself instead of relying on the recorded
+  project's usage being unwatched.
+
+### Notes
+
+- Production's `verify_project` may now answer `reasonCode: "issuer_token"` (a token an issuer
+  minted, such as a Robinhood stock token, which is never any project's token) with a FACT claim
+  `verify.issuer_token`; the verdict stays `UNKNOWN`. `reasonCode` is an open machine code, so v1
+  readers accept it without an upgrade.
+- An `UNKNOWN` claim now always carries `source: null` in production's answers, as
+  `checkAgentInvariants` already required.
+
 ## 0.1.0 — 2026-10-02
 
 Initial release.

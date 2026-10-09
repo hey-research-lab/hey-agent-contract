@@ -23,7 +23,7 @@ const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'fixtures', 'liv
 const PACE_MS = 1200;
 const MAX_BYTES = 256 * 1024;
 const USER_AGENT =
-  'hey-agent-contract-fixtures/0.1.0 (+https://github.com/hey-research-lab/hey-agent-contract)';
+  'hey-agent-contract-fixtures/0.2.0 (+https://github.com/hey-research-lab/hey-agent-contract)';
 
 // HEY's own token, a public fact (https://heyresearch.xyz/openapi.json, info.x-hey.token).
 const HEY_TOKEN = '0xb33eb16782776b4d738c0fd643577cb0284db610';
