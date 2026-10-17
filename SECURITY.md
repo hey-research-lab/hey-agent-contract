@@ -5,6 +5,8 @@
 Please report privately through GitHub's "Report a vulnerability" (Security → Advisories) on this
 repository, or email hi@heyresearch.xyz with "security" in the subject. Do not open a public issue.
 We aim to acknowledge within 3 working days. There is no bug bounty for this repository.
+For HEY Research Lab's hosted site and API, the same contact is published at
+<https://heyresearch.xyz/.well-known/security.txt>.
 
 ## Scope
 
