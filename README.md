@@ -11,8 +11,9 @@ test vectors.
 
 ## Why it exists
 
-HEY answers six research questions for AI agents — over REST (`/api/agent/{capability}`), its
-hosted MCP server and A2A — in one transport-neutral shape. Until now that shape lived only inside
+HEY answers seven research questions for AI agents — over REST (`/api/agent/{capability}`), its
+hosted MCP server and A2A — in one transport-neutral shape. This release covers six of them;
+`chain_brief`, added to HEY after the recorded commit, is not in it yet. Until now that shape lived only inside
 HEY's codebase. This package lets anyone validate a HEY answer, type it, and build or test tooling
 against it without reading HEY's code or calling HEY at test time.
 
