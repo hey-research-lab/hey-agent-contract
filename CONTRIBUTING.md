@@ -23,6 +23,7 @@ the saved fixtures. Never commit secrets or a `.env` with values.
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `src/contract/`            | Byte-for-byte copies of the pure modules of HEY's production contract. **Never edit by hand.**                                    |
 | `src/contract/excerpts.ts` | Pure constants and functions production keeps beside its composers and adapters, copied verbatim between `// <verbatim>` markers. |
+| `src/vendor/`              | Byte-for-byte copies of the pure modules of HEY's other packages that the copied contract imports. **Never edit by hand.**        |
 | `src/*.ts`                 | This package's own additions: vocabulary arrays, validation, invariants, chain rule, version.                                     |
 | `PARITY.json`              | The production commit and the SHA-256 of every copied file and excerpt.                                                           |
 | `schema/`                  | JSON Schemas generated from the Zod schemas by `pnpm build`. Committed; do not edit.                                              |
@@ -32,8 +33,8 @@ the saved fixtures. Never commit secrets or a `.env` with values.
 
 ## Parity with production
 
-`src/contract/` matches HEY Research Lab's production contract as of 2026-10-09 (0.1.0 matched
-2026-10-02). It is copied from the public mirror
+`src/contract/` matches HEY Research Lab's production contract as of 2026-11-01 (0.2.0 matched
+2026-10-09, 0.1.0 matched 2026-10-02). It is copied from the public mirror
 [hey-research-open](https://github.com/hey-research-lab/hey-research-open), commit recorded in
 `PARITY.json`: the zod-only modules `capabilities.ts`, `schema.ts`,
 `evidence-kinds.ts`, `freshness.ts`, `unknowns.ts`, `text.ts`, `disclosures.ts`, `words.ts`,
@@ -43,6 +44,15 @@ excerpts (`AGENT_NOT_PROVIDED`, `isContextChange`, `ADAPTER_REQUIRED_FIELDS`, `r
 `HEY_EVIDENCE_FAMILIES` with `evidenceFamiliesFor` and `looksLikeEvidenceId`). The
 composers, transport adapters, benchmark, database loaders, compare loader, entitlement and
 analytics code are deliberately not copied.
+
+Two copied files import modules of HEY's other packages: `words.ts` imports
+`@hey/scoring/verification-words` and `request.ts` imports `@hey/config/zod-messages`. Both modules
+are pure (they import only zod) and are vendored byte for byte under `src/vendor/`, each listed
+under `vendored` in `PARITY.json` with its path in HEY's `packages/` directory and its SHA-256.
+`tsconfig.json` (`paths`) and `vitest.config.ts` (`resolve.alias`) map the import to the copy, and
+tsup bundles it into `dist/`, so the published package imports nothing from `@hey/`. The parity
+check and `test/contract-copy.test.ts` hold the vendored files to their hashes and to the source,
+like the contract files. A new import of this kind needs the same three entries.
 
 Three checks hold the copy to production:
 

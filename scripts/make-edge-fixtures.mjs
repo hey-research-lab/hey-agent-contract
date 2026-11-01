@@ -257,7 +257,21 @@ add(
 }
 {
   const r = live('what_changed.chain');
-  const market = r.data.items.find((item) => item.domain === 'market');
+  let market = r.data.items.find((item) => item.domain === 'market');
+  if (!market) {
+    // The recorded window held no market event: the first item becomes one, with production's
+    // own type and words for a market status change.
+    market = r.data.items[0];
+    Object.assign(market, {
+      type: 'market.status_changed',
+      domain: 'market',
+      summary: {
+        text: 'Token market moved from Trading inactive to Active market',
+        contentOrigin: 'derived',
+      },
+      status: 'DERIVED',
+    });
+  }
   market.countsAsBuilding = true;
   add(
     'invariant.context_change_counts_as_building.json',

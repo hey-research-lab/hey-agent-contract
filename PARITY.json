@@ -1,20 +1,20 @@
 {
   "contract": "hey.agent-intelligence-response",
   "schemaVersion": "1",
-  "source": "HEY Research Lab's production agent contract as of 2026-10-09 (packages/agent-provider-core/src, copied from its public mirror hey-research-lab/hey-research-open)",
-  "commit": "23d0813d81edb1cba0f489977df44fb9a96274c8",
-  "extractedAt": "2026-10-09",
+  "source": "HEY Research Lab's production agent contract as of 2026-11-01 (packages/agent-provider-core/src, copied from its public mirror hey-research-lab/hey-research-open)",
+  "commit": "90823dc5fd50b4c31d55ce5d4e29b0939b9451c3",
+  "extractedAt": "2026-11-01",
   "files": {
-    "capabilities.ts": "2b43914a5cd58af5aad748b93aa7991557503e432f374c25f3a6b2fba99f3da1",
-    "schema.ts": "c197c323c43e5469eaa632b8ead769c82bdb99a089843afc57b59ad9dcec4448",
+    "capabilities.ts": "cc03ac3ef7586aa9c9c2d74329b107861b74994b24357fa35f4e701c965cd9b8",
+    "schema.ts": "a084edac55db6ea8980aea566c76819e3a5bd196b58576ead4eae93a517cd238",
     "evidence-kinds.ts": "16bc2ed4123dd832e83b5124235c501ba8ff8e355d4ec25ef163dabcf26ff477",
     "freshness.ts": "cf3fe6da5debee06f28de868dc5fb222ba2b87ef60df058af6f220e9c3fae02a",
-    "unknowns.ts": "4f8fbf4fd37aea7a222ede9acc73434bc9c5e67a6b16b7d177d13db78bf35878",
+    "unknowns.ts": "743d403f5791d106f5fe1e63c1a326715d6fa3d3378c82a852ca6b81a2663201",
     "text.ts": "c8244cbf4f7692925dde8f106f307103fb645b8192bbd43f9d2eaa9902ff0dbb",
-    "disclosures.ts": "f03307ab6d5b1cd02f2bf1027291d638c7f832e448fed74b4097f2637e3f3a99",
-    "words.ts": "d4192797f59aca680f4492963e1293fccd720416f0f5e5287cb6318193c965ca",
+    "disclosures.ts": "3618af0ef786e1614eb6582c5df5c122f426ac367ef1b947322d8898daa809da",
+    "words.ts": "0c387f10ba4bdb74ab1ad93b9e25893c542f3c825e043d43385461c41496175c",
     "records.ts": "fb84d5f188550d8945034ddc677792177f47554617a6c47964323e78f9ee6278",
-    "request.ts": "293ed6156ad9039a13f61a6c3cf43fa63dbdba269fb92da47a60e986a796b35e"
+    "request.ts": "93b3e03595dd59b4a7900ab9f3946de7346b149d6afb23592605bb3ff9a53605"
   },
   "excerpts": [
     {
@@ -23,7 +23,7 @@
     },
     {
       "from": "compose/common.ts",
-      "sha256": "e6b13dc6ee4593e55b61d7fde3321686b28f2999313d09f527872aa30f7ec63e"
+      "sha256": "694abb9a9f36add59c47d5d79d6225f6db044680111cc03a04670d7399c0ea5b"
     },
     {
       "from": "adapters/provider.ts",
@@ -35,9 +35,21 @@
     },
     {
       "from": "compose/common.ts",
-      "sha256": "f75275ef2a4e6696f4955e43a323bbc6ab903d98313d00cbd47f23d3901c1c56"
+      "sha256": "a204f916687c14187f3fb4bcfe6924a49b1e567256782a93cf1118d94879345a"
     }
   ],
+  "vendored": {
+    "@hey/scoring/verification-words": {
+      "from": "scoring/src/verification-words.ts",
+      "to": "src/vendor/scoring/verification-words.ts",
+      "sha256": "99ab88cb53d15dbe38cf7932000bf51eaf8364c47ba2f7847a52dac59a227bfb"
+    },
+    "@hey/config/zod-messages": {
+      "from": "config/src/zod-messages.ts",
+      "to": "src/vendor/config/zod-messages.ts",
+      "sha256": "b4822196727d13e292508d54f13fe51267139bb04b4d9cee2ba2aef9a5f14c7e"
+    }
+  },
   "commitRepository": "https://github.com/hey-research-lab/hey-research-open",
-  "productionAsOf": "2026-10-09"
+  "productionAsOf": "2026-11-01"
 }

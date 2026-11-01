@@ -1,4 +1,6 @@
-import type { ZodIssue } from 'zod';
+import type { core } from 'zod';
+
+import { ZOD_MESSAGES, zod3Issues } from '@hey/config/zod-messages';
 
 import { CHAIN_ID, UnsupportedChainError } from './chain';
 import { AGENT_CAPABILITIES, type AgentCapability } from './contract/capabilities';
@@ -31,7 +33,7 @@ export type AgentContractErrorCode =
   | 'not_an_agent_response'
   /** `schemaVersion` is not "1" (a semantic change is a new version served beside v1). */
   | 'unsupported_schema_version'
-  /** `capability` is not one of the six. */
+  /** `capability` is not one of the seven. */
   | 'unsupported_capability'
   /** A chain id other than 4663 (Robinhood Chain). */
   | 'unsupported_chain'
@@ -72,7 +74,7 @@ export type AgentParseResult =
   | { success: true; data: AgentIntelligenceResponse; ignoredFields: readonly string[] }
   | { success: false; error: AgentContractError };
 
-/** Whether `value` is one of HEY's six agent capabilities. */
+/** Whether `value` is one of HEY's seven agent capabilities. */
 export function isSupportedCapability(value: unknown): value is AgentCapability {
   return typeof value === 'string' && (AGENT_CAPABILITIES as readonly string[]).includes(value);
 }
@@ -83,7 +85,21 @@ const MAX_DEPTH = 64;
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value);
 
-const pathOf = (path: readonly (string | number)[]): string => path.map(String).join('.');
+/** zod 4 types an issue path as PropertyKey[]; a JSON value's keys are strings and numbers, and a symbol is named by String(). */
+const pathOf = (path: readonly PropertyKey[]): string => path.map(String).join('.');
+
+type ZodIssue = core.$ZodIssue;
+
+/**
+ * Parses with production's schema, keeping the messages zod 3 wrote (the same map HEY's own
+ * request validator uses), and lists the issues zod 3 would have listed.
+ */
+const parseResponse = (value: unknown) => {
+  const parsed = agentIntelligenceResponseSchema.safeParse(value, ZOD_MESSAGES);
+  return parsed.success
+    ? parsed
+    : { success: false as const, issues: zod3Issues(parsed.error.issues) };
+};
 
 /** The first own key anywhere in `value` that could pollute a prototype, or nesting too deep. */
 function unsafeKey(value: unknown, path: (string | number)[] = []): AgentContractIssue | null {
@@ -156,7 +172,7 @@ function withoutUnknownKeys(value: unknown, issues: readonly ZodIssue[]): string
     let target: unknown = value;
     for (const part of issue.path) {
       target =
-        isRecord(target) || Array.isArray(target)
+        typeof part !== 'symbol' && (isRecord(target) || Array.isArray(target))
           ? (target as Record<string | number, unknown>)[part]
           : undefined;
     }
@@ -220,7 +236,7 @@ export function safeParseAgentResponse(
       [
         {
           path: 'capability',
-          message: 'not one of the six capabilities',
+          message: 'not one of the seven capabilities',
           code: 'unsupported_capability',
         },
       ],
@@ -237,7 +253,7 @@ export function safeParseAgentResponse(
 
   let candidate: unknown = input;
   let ignoredFields: string[] = [];
-  let parsed = agentIntelligenceResponseSchema.safeParse(candidate);
+  let parsed = parseResponse(candidate);
   if (!parsed.success && options.allowUnknownFields) {
     try {
       candidate = structuredClone(input);
@@ -246,15 +262,15 @@ export function safeParseAgentResponse(
     }
     // Each pass removes the unknown keys Zod reported; a few passes reach any nesting the schema has.
     for (let pass = 0; pass < 8 && !parsed.success; pass += 1) {
-      if (!parsed.error.issues.every((issue) => issue.code === 'unrecognized_keys')) break;
-      const removed = withoutUnknownKeys(candidate, parsed.error.issues);
+      if (!parsed.issues.every((issue) => issue.code === 'unrecognized_keys')) break;
+      const removed = withoutUnknownKeys(candidate, parsed.issues);
       if (removed.length === 0) break;
       ignoredFields = [...ignoredFields, ...removed];
-      parsed = agentIntelligenceResponseSchema.safeParse(candidate);
+      parsed = parseResponse(candidate);
     }
   }
   if (!parsed.success) {
-    const issues = parsed.error.issues.map(toIssue);
+    const issues = parsed.issues.map(toIssue);
     const first = issues[0];
     return fail(
       'invalid_response',

@@ -38,7 +38,9 @@ export const edgeIndex = (): EdgeIndexEntry[] =>
 
 /** One capability's object schema inside the discriminated union. */
 export function variantOf(capability: AgentCapability) {
-  const schema = agentIntelligenceResponseSchema.optionsMap.get(capability);
+  const schema = agentIntelligenceResponseSchema.options.find(
+    (option) => option.shape.capability.value === capability,
+  );
   if (!schema) throw new Error(`no variant for ${capability}`);
   return schema;
 }

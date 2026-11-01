@@ -87,6 +87,36 @@ blocks.forEach((block, i) => {
   }
 });
 
+// Pure modules of HEY's other packages that a copied file imports (since 0.3.0: words.ts imports
+// `@hey/scoring/verification-words`), copied byte for byte under src/vendor/ and mapped to the
+// import by tsconfig `paths` and the vitest alias. `from` is relative to HEY's packages directory,
+// two levels above HEY_CONTRACT_SOURCE.
+const packagesDir = source ? resolve(source, '..', '..') : null;
+const vendoredFile = (name) => {
+  const path = resolve(packagesDir, name);
+  if (!path.startsWith(`${packagesDir}/`))
+    throw new Error(`refusing a path outside HEY's packages: ${name}`);
+  if (!existsSync(path) || lstatSync(path).isSymbolicLink()) return null;
+  return path;
+};
+for (const [specifier, entry] of Object.entries(parity.vendored ?? {})) {
+  const local = join(ROOT, entry.to);
+  if (update) {
+    const from = vendoredFile(entry.from);
+    if (!from) problems.push(`${specifier}: missing in the source`);
+    else copyFileSync(from, local);
+  }
+  const text = read(local);
+  if (update) entry.sha256 = sha256(text);
+  else if (sha256(text) !== entry.sha256)
+    problems.push(`${specifier}: edited (hash differs from PARITY.json)`);
+  if (source && !update) {
+    const from = vendoredFile(entry.from);
+    if (!from) problems.push(`${specifier}: missing in the source`);
+    else if (read(from) !== text) problems.push(`${specifier}: differs from the source`);
+  }
+}
+
 if (update && problems.length === 0) {
   parity.commit = process.env.HEY_CONTRACT_COMMIT;
   parity.extractedAt = new Date().toISOString().slice(0, 10);
@@ -98,5 +128,5 @@ if (problems.length) {
   process.exit(1);
 }
 console.log(
-  `contract parity ok: ${Object.keys(parity.files).length} files, ${blocks.length} excerpts, commit ${parity.commit}${source ? ' (checked against the source)' : ''}`,
+  `contract parity ok: ${Object.keys(parity.files).length} files, ${blocks.length} excerpts, ${Object.keys(parity.vendored ?? {}).length} vendored, commit ${parity.commit}${source ? ' (checked against the source)' : ''}`,
 );

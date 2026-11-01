@@ -15,6 +15,7 @@ const parity = readJson<{
   commit: string;
   files: Record<string, string>;
   excerpts: { from: string; sha256: string }[];
+  vendored: Record<string, { from: string; to: string; sha256: string }>;
 }>('PARITY.json');
 const sha256 = (text: string) => createHash('sha256').update(text).digest('hex');
 
@@ -47,11 +48,44 @@ describe('the copied production contract', () => {
   });
 
   it('copies no composer, adapter, database or provider code', () => {
-    const all = readdirSync(join(ROOT, 'src', 'contract'))
-      .map((file) => readText('src', 'contract', file))
-      .join('\n');
+    const vendored = Object.keys(parity.vendored);
+    const all = [
+      ...readdirSync(join(ROOT, 'src', 'contract')).map((file) =>
+        readText('src', 'contract', file),
+      ),
+      ...Object.values(parity.vendored).map((entry) => readText(entry.to)),
+    ]
+      .join('\n')
+      // The modules production's contract imports from HEY's other packages are vendored, byte for byte.
+      .replace(/from '(@hey\/[^']+)'/g, (match, specifier: string) =>
+        vendored.includes(specifier) ? "from '<vendored>'" : match,
+      );
     expect(all).not.toMatch(
       /from '\.\/compose|from '\.\/adapters|from '@hey\/|@hey-research-lab\/sdk|fetch\(|process\.env/,
     );
+  });
+});
+
+describe('the vendored modules production’s contract imports', () => {
+  const tsconfig = readJson<{ compilerOptions: { paths: Record<string, string[]> } }>(
+    'tsconfig.json',
+  );
+  const vitestConfig = readText('vitest.config.ts');
+
+  for (const [specifier, entry] of Object.entries(parity.vendored)) {
+    it(`${specifier} is unedited, and mapped where the copy imports it`, () => {
+      expect(entry.to.startsWith('src/vendor/')).toBe(true);
+      expect(sha256(readText(entry.to))).toBe(entry.sha256);
+      expect(tsconfig.compilerOptions.paths[specifier]).toEqual([`./${entry.to}`]);
+      expect(vitestConfig).toContain(`'${specifier}': vendored('./${entry.to}')`);
+    });
+  }
+
+  it('imports nothing but zod and one another', () => {
+    for (const entry of Object.values(parity.vendored)) {
+      const imports = [...readText(entry.to).matchAll(/from '([^']+)'/g)].map((m) => m[1]);
+      for (const specifier of imports)
+        expect(specifier === 'zod' || specifier! in parity.vendored, entry.to).toBe(true);
+    }
   });
 });

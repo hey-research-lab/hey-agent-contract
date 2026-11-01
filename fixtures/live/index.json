@@ -3,60 +3,66 @@
     "name": "research_project",
     "url": "https://heyresearch.xyz/api/agent/research_project?project=agentos",
     "httpStatus": 200,
-    "recordedAt": "2026-10-09T04:13:52.102Z"
+    "recordedAt": "2026-11-01T11:10:54.899Z"
   },
   {
     "name": "what_changed.project",
     "url": "https://heyresearch.xyz/api/agent/what_changed?project=agentos&days=30&limit=10",
     "httpStatus": 200,
-    "recordedAt": "2026-10-09T04:13:53.480Z"
+    "recordedAt": "2026-11-01T11:10:56.492Z"
   },
   {
     "name": "what_changed.chain",
     "url": "https://heyresearch.xyz/api/agent/what_changed?days=1&limit=5",
     "httpStatus": 200,
-    "recordedAt": "2026-10-09T04:13:55.080Z"
+    "recordedAt": "2026-11-01T11:10:58.017Z"
   },
   {
     "name": "builder_status",
     "url": "https://heyresearch.xyz/api/agent/builder_status?project=agentos",
     "httpStatus": 200,
-    "recordedAt": "2026-10-09T04:13:56.440Z"
+    "recordedAt": "2026-11-01T11:10:59.547Z"
   },
   {
     "name": "verify_project.hey_own_token",
     "url": "https://heyresearch.xyz/api/agent/verify_project?address=0xb33eb16782776b4d738c0fd643577cb0284db610",
     "httpStatus": 200,
-    "recordedAt": "2026-10-09T04:13:57.792Z"
+    "recordedAt": "2026-11-01T11:11:01.139Z"
   },
   {
     "name": "compare_builders",
     "url": "https://heyresearch.xyz/api/agent/compare_builders?projects=agentos,hey-research-lab",
     "httpStatus": 200,
-    "recordedAt": "2026-10-09T04:13:59.252Z"
+    "recordedAt": "2026-11-01T11:11:03.570Z"
   },
   {
     "name": "unknowns",
     "url": "https://heyresearch.xyz/api/agent/unknowns?project=agentos",
     "httpStatus": 200,
-    "recordedAt": "2026-10-09T04:14:00.633Z"
+    "recordedAt": "2026-11-01T11:11:05.346Z"
+  },
+  {
+    "name": "chain_brief",
+    "url": "https://heyresearch.xyz/api/agent/chain_brief",
+    "httpStatus": 200,
+    "recordedAt": "2026-11-01T11:11:06.889Z"
   },
   {
     "name": "refusal.unsupported_chain",
     "url": "https://heyresearch.xyz/api/agent/research_project?project=agentos&chainId=1",
     "httpStatus": 400,
-    "recordedAt": "2026-10-09T04:14:01.888Z"
+    "recordedAt": "2026-11-01T11:11:08.512Z"
   },
   {
     "name": "refusal.not_found",
     "url": "https://heyresearch.xyz/api/agent/research_project?project=zz-no-such-project-0",
     "httpStatus": 404,
-    "recordedAt": "2026-10-09T04:14:03.151Z"
+    "recordedAt": "2026-11-01T11:11:09.942Z"
   },
   {
     "name": "refusal.unknown_capability",
     "url": "https://heyresearch.xyz/api/agent/price_prediction?project=agentos",
     "httpStatus": 404,
-    "recordedAt": "2026-10-09T04:14:04.443Z"
+    "recordedAt": "2026-11-01T11:11:11.442Z"
   }
 ]

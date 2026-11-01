@@ -26,9 +26,12 @@ export const AGENT_NOT_PROVIDED = [
 // </verbatim>
 
 // <verbatim from="compose/common.ts">
-/** Change domains and types whose events are context, never building (2026-09-30): market readings, market integrity, product usage. */
+/**
+ * Change domains and types whose events are context, never building (2026-09-30): market readings, market integrity, product usage,
+ * and new Uniswap v4 pools on a project's attributed hook (2026-10-15: the hook's use, not the project's work).
+ */
 const CONTEXT_DOMAINS: ReadonlySet<string> = new Set(['market', 'market_integrity']);
-const CONTEXT_TYPES: ReadonlySet<string> = new Set(['contract.usage_changed', 'contract.method_first_observed', 'contract.method_resumed']);
+const CONTEXT_TYPES: ReadonlySet<string> = new Set(['contract.usage_changed', 'contract.method_first_observed', 'contract.method_resumed', 'contract.v4_pool_initialized']);
 export const isContextChange = (change: { domain: string; type: string }): boolean => CONTEXT_DOMAINS.has(change.domain) || CONTEXT_TYPES.has(change.type);
 // </verbatim>
 
@@ -60,7 +63,7 @@ export function restStatusOf(response: Pick<AgentIntelligenceResponse, 'status'>
  * `source:<uuid>:added` is not one). Since 0.2.0 (production as of 2026-10-09).
  */
 // <verbatim from="compose/common.ts">
-export const HEY_EVIDENCE_FAMILIES = ['ship', 'signal', 'abi', 'impl', 'lock', 'source', 'claim', 'state', 'integrity', 'narrative', 'method', 'sourcechange', 'security', 'v4hook'] as const;
+export const HEY_EVIDENCE_FAMILIES = ['ship', 'signal', 'abi', 'impl', 'lock', 'source', 'claim', 'state', 'integrity', 'narrative', 'method', 'sourcechange', 'security', 'v4hook', 'v4pool', 'ponsgrad'] as const;
 /** The families as a reader lists them: `integrity:` only where Market Integrity is public. */
 export function evidenceFamiliesFor(options: { marketIntegrityPublic: boolean }): readonly string[] {
   return HEY_EVIDENCE_FAMILIES.filter((family) => options.marketIntegrityPublic || family !== 'integrity');

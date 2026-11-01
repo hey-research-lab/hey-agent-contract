@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { ZodObject, ZodRawShape, ZodTypeAny } from 'zod';
+import type { ZodObject, ZodRawShape, ZodType } from 'zod';
 
 import {
   AGENT_CAPABILITIES,
@@ -84,12 +84,12 @@ const catalogue = readJson<
 >('fixtures', 'parity', 'agent-catalogue.json');
 
 const response = openapi.components.schemas.AgentIntelligenceResponse;
-const shapeOf = (schema: ZodTypeAny): ZodRawShape =>
+const shapeOf = (schema: ZodType): ZodRawShape =>
   (schema as unknown as ZodObject<ZodRawShape>).shape;
-const keys = (schema: ZodTypeAny): string[] => Object.keys(shapeOf(schema)).sort();
-const requiredKeys = (schema: ZodTypeAny): string[] =>
+const keys = (schema: ZodType): string[] => Object.keys(shapeOf(schema)).sort();
+const requiredKeys = (schema: ZodType): string[] =>
   Object.entries(shapeOf(schema))
-    .filter(([, field]) => !field.isOptional())
+    .filter(([, field]) => (field as ZodType).safeParse(undefined).success === false)
     .map(([key]) => key)
     .sort();
 const sorted = (list: readonly unknown[] | undefined): unknown[] =>
@@ -104,7 +104,7 @@ describe('parity with production’s OpenAPI document (AgentIntelligenceResponse
     expect(openapi.infoVersion).toBe('1');
   });
 
-  it('offers the same six capabilities, in order, on the response and the route', () => {
+  it('offers the same seven capabilities, in order, on the response and the route', () => {
     expect(response.properties.capability!.enum).toEqual([...AGENT_CAPABILITIES]);
     const param = openapi.paths['/api/agent/{capability}']!.get.parameters.find(
       (p) => p.name === 'capability',
@@ -182,7 +182,7 @@ describe('parity with production’s agent catalogue (GET /api/agent)', () => {
     expect(catalogue.chain).toEqual({ name: 'Robinhood Chain', chainId: 4663 });
   });
 
-  it('describes the six capabilities in the same words', () => {
+  it('describes the seven capabilities in the same words', () => {
     expect(catalogue.capabilities.map((c) => c.id)).toEqual([...AGENT_CAPABILITIES]);
     for (const capability of catalogue.capabilities) {
       const info = AGENT_CAPABILITY_INFO[capability.id as (typeof AGENT_CAPABILITIES)[number]];

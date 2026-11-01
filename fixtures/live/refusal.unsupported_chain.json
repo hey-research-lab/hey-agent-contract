@@ -59,7 +59,7 @@
     ],
     "marketIsContextOnly": true,
     "disclaimer": {
-      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "text": "Public, source-backed activity HEY recorded. Still Building means counted ships during a market drawdown HEY itself tracked — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
       "contentOrigin": "hey"
     }
   },
@@ -70,5 +70,5 @@
       "contentOrigin": "derived"
     }
   },
-  "asOf": "2026-10-09T04:14:01.994Z"
+  "asOf": "2026-11-01T11:11:08.355Z"
 }

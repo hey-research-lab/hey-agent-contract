@@ -38,7 +38,7 @@
     ]
   },
   "answer": {
-    "text": "Side by side over 30 days: agentos SHIPPING, 25 meaningful events in 30 days; hey-research-lab SHIPPING, 6 meaningful events in 30 days. No winner: HEY compares building records, not investments.",
+    "text": "Side by side over 30 days: agentos SHIPPING, 17 counted ships in 30 days; hey-research-lab SHIPPING, 14 counted ships in 30 days. No winner: HEY compares building records, not investments.",
     "contentOrigin": "derived"
   },
   "answerStatus": "DERIVED",
@@ -56,30 +56,30 @@
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-09T04:13:10.037Z",
+      "observedAt": "2026-11-01T04:37:39.355Z",
       "occurredAt": null,
       "precision": null,
-      "freshness": "live",
+      "freshness": "daily",
       "evidence": [
         {
-          "id": "ship:74c59f0e-6b30-446f-9058-757632b3c056",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A74c59f0e-6b30-446f-9058-757632b3c056"
+          "id": "ship:4cd7cdc8-49fc-4112-98fe-c9913e38e420",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4cd7cdc8-49fc-4112-98fe-c9913e38e420"
         },
         {
-          "id": "ship:31ecea7f-01b7-4d7d-ae89-a41b20dc7b92",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A31ecea7f-01b7-4d7d-ae89-a41b20dc7b92"
+          "id": "ship:0bc202cb-765d-4867-b09c-46abe9a2bb5d",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0bc202cb-765d-4867-b09c-46abe9a2bb5d"
         },
         {
-          "id": "ship:a5979090-b594-43d2-a2ba-f46870f1fe72",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa5979090-b594-43d2-a2ba-f46870f1fe72"
+          "id": "ship:22b38879-891e-4612-91ee-c784c8613e1d",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A22b38879-891e-4612-91ee-c784c8613e1d"
         },
         {
-          "id": "ship:3393733e-1008-44d8-b8f5-413dda563f46",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A3393733e-1008-44d8-b8f5-413dda563f46"
+          "id": "ship:c67b0f1c-6e1c-4bcc-bdbf-911856df3ddf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ac67b0f1c-6e1c-4bcc-bdbf-911856df3ddf"
         },
         {
-          "id": "ship:a723cd1b-e5f6-4294-a734-19b025d6a1a6",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa723cd1b-e5f6-4294-a734-19b025d6a1a6"
+          "id": "ship:1b2beea1-b685-49cc-95fb-35a3771a3aaa",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1b2beea1-b685-49cc-95fb-35a3771a3aaa"
         }
       ],
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
@@ -89,19 +89,19 @@
       "id": "compare.agentos.meaningful_events_30d",
       "dimension": "build",
       "statement": {
-        "text": "agentos: 25 meaningful events in the last 30 days.",
+        "text": "agentos: 17 counted ships in the last 30 days.",
         "contentOrigin": "derived"
       },
       "status": "DERIVED",
-      "value": 25,
+      "value": 17,
       "source": {
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-09T04:13:10.037Z",
+      "observedAt": "2026-11-01T04:37:39.355Z",
       "occurredAt": null,
       "precision": "WINDOW",
-      "freshness": "live",
+      "freshness": "daily",
       "evidence": [],
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
       "evidenceKind": "rule_output"
@@ -110,19 +110,19 @@
       "id": "compare.agentos.last_meaningful_ship",
       "dimension": "build",
       "statement": {
-        "text": "agentos: newest meaningful ship dated 2026-10-09.",
+        "text": "agentos: newest meaningful ship dated 2026-10-30.",
         "contentOrigin": "derived"
       },
       "status": "FACT",
-      "value": "2026-10-09T03:43:12.000Z",
+      "value": "2026-10-30T03:25:48.000Z",
       "source": {
         "name": "builder sources",
         "type": "builder_source"
       },
-      "observedAt": "2026-10-09T04:13:10.037Z",
-      "occurredAt": "2026-10-09T03:43:12.000Z",
+      "observedAt": "2026-11-01T04:37:39.355Z",
+      "occurredAt": "2026-10-30T03:25:48.000Z",
       "precision": null,
-      "freshness": "live",
+      "freshness": "daily",
       "evidence": [],
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
       "evidenceKind": "canonical_read"
@@ -140,30 +140,30 @@
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-08T23:17:19.491Z",
+      "observedAt": "2026-11-01T09:36:55.359Z",
       "occurredAt": null,
       "precision": null,
       "freshness": "recent",
       "evidence": [
         {
+          "id": "ship:5ba40255-1026-4e34-8b87-b3d736460d7b",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A5ba40255-1026-4e34-8b87-b3d736460d7b"
+        },
+        {
+          "id": "ship:bffd7034-1889-4b9f-8e0c-03b04031715f",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Abffd7034-1889-4b9f-8e0c-03b04031715f"
+        },
+        {
+          "id": "ship:603495dd-9be5-4fdd-8633-8d9e04e2e104",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A603495dd-9be5-4fdd-8633-8d9e04e2e104"
+        },
+        {
+          "id": "ship:4a135ecc-d0da-4530-87ba-1b79b28e75b4",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4a135ecc-d0da-4530-87ba-1b79b28e75b4"
+        },
+        {
           "id": "ship:e35cd069-5795-4836-92ee-f7a21964207c",
           "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae35cd069-5795-4836-92ee-f7a21964207c"
-        },
-        {
-          "id": "ship:b0abe7b6-5a88-43b9-a497-bd207446c201",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ab0abe7b6-5a88-43b9-a497-bd207446c201"
-        },
-        {
-          "id": "ship:09e27608-9e41-4891-8424-18843b16e3fb",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A09e27608-9e41-4891-8424-18843b16e3fb"
-        },
-        {
-          "id": "ship:84d86822-6f1d-4830-afb4-334f98efe60f",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A84d86822-6f1d-4830-afb4-334f98efe60f"
-        },
-        {
-          "id": "ship:addd8f14-3f78-4618-8bc5-c5db6fa8e955",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aaddd8f14-3f78-4618-8bc5-c5db6fa8e955"
         }
       ],
       "explainUrl": "https://heyresearch.xyz/api/projects/hey-research-lab/explain?fact=activity.status",
@@ -173,16 +173,16 @@
       "id": "compare.hey-research-lab.meaningful_events_30d",
       "dimension": "build",
       "statement": {
-        "text": "hey-research-lab: 6 meaningful events in the last 30 days.",
+        "text": "hey-research-lab: 14 counted ships in the last 30 days.",
         "contentOrigin": "derived"
       },
       "status": "DERIVED",
-      "value": 6,
+      "value": 14,
       "source": {
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-08T23:17:19.491Z",
+      "observedAt": "2026-11-01T09:36:55.359Z",
       "occurredAt": null,
       "precision": "WINDOW",
       "freshness": "recent",
@@ -194,17 +194,17 @@
       "id": "compare.hey-research-lab.last_meaningful_ship",
       "dimension": "build",
       "statement": {
-        "text": "hey-research-lab: newest meaningful ship dated 2026-10-09.",
+        "text": "hey-research-lab: newest meaningful ship dated 2026-10-31.",
         "contentOrigin": "derived"
       },
       "status": "FACT",
-      "value": "2026-10-09T03:32:54.000Z",
+      "value": "2026-10-31T20:51:02.000Z",
       "source": {
         "name": "builder sources",
         "type": "builder_source"
       },
-      "observedAt": "2026-10-08T23:17:19.491Z",
-      "occurredAt": "2026-10-09T03:32:54.000Z",
+      "observedAt": "2026-11-01T09:36:55.359Z",
+      "occurredAt": "2026-10-31T20:51:02.000Z",
       "precision": null,
       "freshness": "recent",
       "evidence": [],
@@ -216,9 +216,9 @@
   "freshness": [
     {
       "family": "activity_score",
-      "observedAt": "2026-10-08T23:17:19.491Z",
-      "dataAsOf": "2026-10-08T23:17:19.491Z",
-      "freshnessStatus": "recent",
+      "observedAt": "2026-11-01T04:37:39.355Z",
+      "dataAsOf": "2026-11-01T04:37:39.355Z",
+      "freshnessStatus": "daily",
       "staleAfterHours": 24,
       "refresh": {
         "job": "RECALCULATE_SCORES",
@@ -229,49 +229,49 @@
           "contentOrigin": "hey"
         }
       },
-      "nextExpectedRefresh": "2026-10-09T11:17:19.491Z"
+      "nextExpectedRefresh": "2026-11-01T16:37:39.355Z"
     }
   ],
   "evidence": [
     {
-      "id": "ship:74c59f0e-6b30-446f-9058-757632b3c056",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A74c59f0e-6b30-446f-9058-757632b3c056"
+      "id": "ship:4cd7cdc8-49fc-4112-98fe-c9913e38e420",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4cd7cdc8-49fc-4112-98fe-c9913e38e420"
     },
     {
-      "id": "ship:31ecea7f-01b7-4d7d-ae89-a41b20dc7b92",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A31ecea7f-01b7-4d7d-ae89-a41b20dc7b92"
+      "id": "ship:0bc202cb-765d-4867-b09c-46abe9a2bb5d",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0bc202cb-765d-4867-b09c-46abe9a2bb5d"
     },
     {
-      "id": "ship:a5979090-b594-43d2-a2ba-f46870f1fe72",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa5979090-b594-43d2-a2ba-f46870f1fe72"
+      "id": "ship:22b38879-891e-4612-91ee-c784c8613e1d",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A22b38879-891e-4612-91ee-c784c8613e1d"
     },
     {
-      "id": "ship:3393733e-1008-44d8-b8f5-413dda563f46",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A3393733e-1008-44d8-b8f5-413dda563f46"
+      "id": "ship:c67b0f1c-6e1c-4bcc-bdbf-911856df3ddf",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ac67b0f1c-6e1c-4bcc-bdbf-911856df3ddf"
     },
     {
-      "id": "ship:a723cd1b-e5f6-4294-a734-19b025d6a1a6",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa723cd1b-e5f6-4294-a734-19b025d6a1a6"
+      "id": "ship:1b2beea1-b685-49cc-95fb-35a3771a3aaa",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1b2beea1-b685-49cc-95fb-35a3771a3aaa"
+    },
+    {
+      "id": "ship:5ba40255-1026-4e34-8b87-b3d736460d7b",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A5ba40255-1026-4e34-8b87-b3d736460d7b"
+    },
+    {
+      "id": "ship:bffd7034-1889-4b9f-8e0c-03b04031715f",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Abffd7034-1889-4b9f-8e0c-03b04031715f"
+    },
+    {
+      "id": "ship:603495dd-9be5-4fdd-8633-8d9e04e2e104",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A603495dd-9be5-4fdd-8633-8d9e04e2e104"
+    },
+    {
+      "id": "ship:4a135ecc-d0da-4530-87ba-1b79b28e75b4",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4a135ecc-d0da-4530-87ba-1b79b28e75b4"
     },
     {
       "id": "ship:e35cd069-5795-4836-92ee-f7a21964207c",
       "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae35cd069-5795-4836-92ee-f7a21964207c"
-    },
-    {
-      "id": "ship:b0abe7b6-5a88-43b9-a497-bd207446c201",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ab0abe7b6-5a88-43b9-a497-bd207446c201"
-    },
-    {
-      "id": "ship:09e27608-9e41-4891-8424-18843b16e3fb",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A09e27608-9e41-4891-8424-18843b16e3fb"
-    },
-    {
-      "id": "ship:84d86822-6f1d-4830-afb4-334f98efe60f",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A84d86822-6f1d-4830-afb4-334f98efe60f"
-    },
-    {
-      "id": "ship:addd8f14-3f78-4618-8bc5-c5db6fa8e955",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aaddd8f14-3f78-4618-8bc5-c5db6fa8e955"
     }
   ],
   "data": {
@@ -286,19 +286,19 @@
         },
         "url": "https://heyresearch.xyz/project/agentos",
         "activityStatus": "SHIPPING",
-        "lastMeaningfulShipAt": "2026-10-09T03:43:12.000Z",
-        "meaningfulEvents30d": 25,
+        "lastMeaningfulShipAt": "2026-10-30T03:25:48.000Z",
+        "meaningfulEvents30d": 17,
         "meaningfulEventsPrevious30d": null,
         "velocityState": "NEW",
         "releaseCadence": {
           "state": "MEASURED",
-          "medianIntervalDays": 1
+          "medianIntervalDays": 2
         },
         "activeWeeks": {
           "weeks": null,
           "windowWeeks": 12
         },
-        "buildMomentum": 81.7,
+        "buildMomentum": 81.4,
         "buildMomentumConsistency": {
           "score": 100,
           "activeWeeks": 6,
@@ -314,7 +314,7 @@
           "total": 15
         },
         "peer": {
-          "rulesVersion": "peers-v1",
+          "rulesVersion": "peers-v2",
           "state": "NO_COHORT",
           "cohort": null,
           "reason": "kind_not_classified"
@@ -330,8 +330,8 @@
         },
         "url": "https://heyresearch.xyz/project/hey-research-lab",
         "activityStatus": "SHIPPING",
-        "lastMeaningfulShipAt": "2026-10-09T03:32:54.000Z",
-        "meaningfulEvents30d": 6,
+        "lastMeaningfulShipAt": "2026-10-31T20:51:02.000Z",
+        "meaningfulEvents30d": 14,
         "meaningfulEventsPrevious30d": null,
         "velocityState": "NEW",
         "releaseCadence": {
@@ -342,10 +342,10 @@
           "weeks": null,
           "windowWeeks": 12
         },
-        "buildMomentum": 52.3,
+        "buildMomentum": 81.4,
         "buildMomentumConsistency": {
-          "score": 83,
-          "activeWeeks": 5,
+          "score": 100,
+          "activeWeeks": 6,
           "windowWeeks": 6
         },
         "category": {
@@ -355,10 +355,10 @@
         "verifiedBuilder": true,
         "sources": {
           "verified": 2,
-          "total": 46
+          "total": 60
         },
         "peer": {
-          "rulesVersion": "peers-v1",
+          "rulesVersion": "peers-v2",
           "state": "COMPUTED",
           "cohort": "infrastructure:product",
           "reason": null
@@ -372,7 +372,7 @@
     "sameCohort": null,
     "order": "as_requested",
     "method": {
-      "text": "The figures each project page shows, side by side, with the same gates: builder metrics only. No winner, no ranking, no combined score. Projects in different peer cohorts are shown side by side and never placed against each other (peers-v1).",
+      "text": "The figures each project page shows, side by side, with the same gates: builder metrics only. No winner, no ranking, no combined score. Projects in different peer cohorts are shown side by side and never placed against each other (peers-v2).",
       "contentOrigin": "hey"
     },
     "excludedContext": [
@@ -410,7 +410,7 @@
     "rules": [
       {
         "id": "peers",
-        "version": "peers-v1"
+        "version": "peers-v2"
       },
       {
         "id": "agent_freshness",
@@ -434,7 +434,8 @@
     "capability": "compare_builders",
     "schemaVersion": "1",
     "url": "https://heyresearch.xyz/api/agent/compare_builders?projects=agentos%2Chey-research-lab",
-    "asOf": "2026-10-09T04:13:59.237Z"
+    "asOf": "2026-11-01T11:11:03.100Z",
+    "text": "Source: HEY Research Lab, builder research for Robinhood Chain — https://heyresearch.xyz/api/agent/compare_builders?projects=agentos%2Chey-research-lab, as of 2026-11-01, rules peers peers-v2"
   },
   "boundaries": {
     "notAdvice": true,
@@ -455,7 +456,7 @@
     ],
     "marketIsContextOnly": true,
     "disclaimer": {
-      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "text": "Public, source-backed activity HEY recorded. Still Building means counted ships during a market drawdown HEY itself tracked — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
       "contentOrigin": "hey"
     }
   },
@@ -471,5 +472,5 @@
       ]
     }
   ],
-  "asOf": "2026-10-09T04:13:59.237Z"
+  "asOf": "2026-11-01T11:11:03.100Z"
 }

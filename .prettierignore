@@ -2,8 +2,9 @@ node_modules
 dist
 coverage
 pnpm-lock.yaml
-# Byte-for-byte copies of HEY's production contract: never reformatted (see CONTRIBUTING.md).
+# Byte-for-byte copies of HEY's production contract and the modules it imports: never reformatted (see CONTRIBUTING.md).
 src/contract
+src/vendor
 # Recorded responses and generated schemas: kept exactly as recorded or generated.
 fixtures
 schema

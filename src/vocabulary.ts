@@ -1,3 +1,5 @@
+import { AGENT_CAPABILITIES, type AgentCapability } from './contract/capabilities';
+
 /**
  * The enums that `src/contract/schema.ts` writes inline, as `const` arrays so tooling can list
  * them without reaching into a Zod schema. Each array is held equal to the schema's own enum by
@@ -143,3 +145,11 @@ export const AGENT_KNOWN_ERROR_CODES = [
   'too_few_projects_found',
   'compare_disabled',
 ] as const;
+
+/**
+ * Whether a string is one of HEY's agent capabilities. Production's `capabilities.ts` exported
+ * this until 2026-10 and no longer does; the package keeps it, unchanged, so code written against
+ * 0.2.0 still compiles. `isSupportedCapability` takes any value.
+ */
+export const isAgentCapability = (value: string): value is AgentCapability =>
+  (AGENT_CAPABILITIES as readonly string[]).includes(value);

@@ -23,7 +23,7 @@ const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'fixtures', 'liv
 const PACE_MS = 1200;
 const MAX_BYTES = 256 * 1024;
 const USER_AGENT =
-  'hey-agent-contract-fixtures/0.2.0 (+https://github.com/hey-research-lab/hey-agent-contract)';
+  'hey-agent-contract-fixtures/0.3.0 (+https://github.com/hey-research-lab/hey-agent-contract)';
 
 // HEY's own token, a public fact (https://heyresearch.xyz/openapi.json, info.x-hey.token).
 const HEY_TOKEN = '0xb33eb16782776b4d738c0fd643577cb0284db610';
@@ -37,6 +37,7 @@ const REQUESTS = [
   ['verify_project.hey_own_token', `/api/agent/verify_project?address=${HEY_TOKEN}`],
   ['compare_builders', '/api/agent/compare_builders?projects=agentos,hey-research-lab'],
   ['unknowns', '/api/agent/unknowns?project=agentos'],
+  ['chain_brief', '/api/agent/chain_brief'],
   ['refusal.unsupported_chain', '/api/agent/research_project?project=agentos&chainId=1'],
   ['refusal.not_found', '/api/agent/research_project?project=zz-no-such-project-0'],
   ['refusal.unknown_capability', '/api/agent/price_prediction?project=agentos'],
@@ -61,7 +62,7 @@ for (const [i, [name, path]] of selected.entries()) {
   const response = await fetch(url, {
     headers: { 'user-agent': USER_AGENT, accept: 'application/json' },
     redirect: 'manual',
-    signal: AbortSignal.timeout(15_000),
+    signal: AbortSignal.timeout(60_000),
   });
   const text = await response.text();
   if (text.length > MAX_BYTES) throw new Error(`${name}: response larger than ${MAX_BYTES} bytes`);

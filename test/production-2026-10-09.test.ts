@@ -36,8 +36,9 @@ describe('production as of 2026-10-09', () => {
     expect(valuationWithheldClause('chain_evidence_contradicts')).toContain('not plausible');
   });
 
-  it('lists the fourteen evidence families production resolves, integrity only where public', () => {
-    expect([...HEY_EVIDENCE_FAMILIES]).toEqual([
+  it('lists the fourteen evidence families production resolved, integrity only where public', () => {
+    // Families added later (2026-11-01: v4pool, ponsgrad) follow these fourteen.
+    expect(HEY_EVIDENCE_FAMILIES.slice(0, 14)).toEqual([
       'ship',
       'signal',
       'abi',
@@ -54,7 +55,9 @@ describe('production as of 2026-10-09', () => {
       'v4hook',
     ]);
     expect(evidenceFamiliesFor({ marketIntegrityPublic: false })).not.toContain('integrity');
-    expect(evidenceFamiliesFor({ marketIntegrityPublic: true })).toHaveLength(14);
+    expect(evidenceFamiliesFor({ marketIntegrityPublic: true })).toEqual([
+      ...HEY_EVIDENCE_FAMILIES,
+    ]);
   });
 
   it('tells an evidence id from an event id by shape', () => {

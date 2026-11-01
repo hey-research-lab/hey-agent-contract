@@ -12,17 +12,19 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-
     "declaration": true,
     "noEmit": true,
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "@hey/scoring/verification-words": ["./src/vendor/scoring/verification-words.ts"],
+      "@hey/config/zod-messages": ["./src/vendor/config/zod-messages.ts"]
+    }
   },
   "include": ["src/**/*.ts", "test/**/*.ts", "*.config.ts", "vitest.setup.ts"]
 }

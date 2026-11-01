@@ -12,8 +12,8 @@ test vectors.
 ## Why it exists
 
 HEY answers seven research questions for AI agents — over REST (`/api/agent/{capability}`), its
-hosted MCP server and A2A — in one transport-neutral shape. This release covers six of them;
-`chain_brief`, added to HEY after the recorded commit, is not in it yet. Until now that shape lived only inside
+hosted MCP server and A2A — in one transport-neutral shape. This release covers all seven,
+`chain_brief` ("what is happening on Robinhood Chain this week?") included. Until now that shape lived only inside
 HEY's codebase. This package lets anyone validate a HEY answer, type it, and build or test tooling
 against it without reading HEY's code or calling HEY at test time.
 
@@ -36,7 +36,14 @@ npm i @hey-research-lab/agent-contract
 # or: pnpm add @hey-research-lab/agent-contract
 ```
 
-One runtime dependency: `zod` (^3.24). ESM and CommonJS, Node 18 or newer, no network access.
+One runtime dependency: `zod` 4 (^4.6.7), as HEY's production contract uses. ESM and CommonJS,
+Node 18 or newer, no network access.
+
+**Zod 4 is required since 0.3.0.** The exported schemas (`agentIntelligenceResponseSchema` and its
+parts, `agentRequestSchema`, `heyApiErrorSchema`) are zod 4 schemas. If your code composes them with
+its own schemas, or passes them to a zod 3 tool such as `zod-to-json-schema`, use zod 4 too (or its
+own `z.toJSONSchema`). The parse functions in this package need nothing from you: they keep the
+error messages 0.2.0 gave (`"Required"`, `"Expected string, received number"`).
 
 ## Smallest working example
 
@@ -84,7 +91,7 @@ else console.error(body.error.code, body.error.issues);
 | `refusalOf(response)`                                                | For `status` ≠ `ok`: `{ status, code, message, movedTo }`.                                                                               |
 | `checkAgentInvariants(response)`                                     | Rules production keeps that a shape cannot express (below). `[]` when none is broken.                                                    |
 | `validateAgentRequest(raw)`                                          | Production's request validator plus the Robinhood-Chain-only rule.                                                                       |
-| `isSupportedCapability(value)`                                       | One of the six capabilities.                                                                                                             |
+| `isSupportedCapability(value)`                                       | One of the seven capabilities.                                                                                                           |
 
 `AgentContractError.code` is one of: `invalid_json`, `response_too_large`, `forbidden_key`
 (`__proto__`, `constructor` or `prototype` anywhere), `not_an_agent_response`,
@@ -121,19 +128,19 @@ and build requests.
 
 **Vocabularies** (all `as const` arrays, values verbatim from production):
 
-| Constant                                                                                                                                      | Values                                                                                                                                                                                         |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AGENT_CAPABILITIES`                                                                                                                          | `research_project`, `what_changed`, `builder_status`, `verify_project`, `compare_builders`, `unknowns` (+ `AGENT_CAPABILITY_INFO`: question, params, canonical reads, what it never does)      |
-| `AGENT_UNKNOWN_CATEGORIES`                                                                                                                    | `UNKNOWN`, `NOT_MEASURED`, `NOT_VERIFIED`, `STALE`, `INSUFFICIENT_EVIDENCE` (+ `DO_NOT_CONCLUDE`, the exact sentence for each; `categoryOfCoverage`)                                           |
-| `AGENT_FRESHNESS_STATUSES`                                                                                                                    | `live`, `recent`, `daily`, `weekly`, `stale`, `unknown` (+ `AGENT_DATA_FAMILIES`, `FAMILY_SCHEDULES`)                                                                                          |
-| `AGENT_EVIDENCE_KINDS`                                                                                                                        | `evidence_record`, `rule_output`, `ledger_count`, `coverage_state`, `market_reading`, `usage_reading`, `registry_record`, `canonical_read`, `not_held` (+ meanings)                            |
-| `AGENT_CONTENT_ORIGINS`                                                                                                                       | `hey`, `derived`, `external_source`                                                                                                                                                            |
-| `STILL_BUILDING_STATES`                                                                                                                       | `HELD`, `NOT_HELD`, `NOT_MEASURED`                                                                                                                                                             |
-| `AGENT_RESPONSE_STATUSES`                                                                                                                     | `ok`, `not_found`, `moved`, `invalid_request`, `unavailable` (`restStatusOf` → 200/404/308/400/404)                                                                                            |
-| `AGENT_COVERAGE_STATES`                                                                                                                       | `MEASURED`, `NO_SOURCE`, `NOT_ENOUGH_YET`, `STALE`, `SOURCE_UNAVAILABLE`, `NOT_APPLICABLE`, `NOT_RESEARCHED`, `ERROR`, `WITHHELD`, `PARTIAL`, `MAPPING_BLOCKED` (an open code in the schema)   |
-| `HEY_EVIDENCE_FAMILIES`                                                                                                                       | `ship`, `signal`, `abi`, `impl`, `lock`, `source`, `claim`, `state`, `integrity`, `narrative`, `method`, `sourcechange`, `security`, `v4hook` (+ `evidenceFamiliesFor`, `looksLikeEvidenceId`) |
-| `VALUATION_NOT_PLAUSIBLE_CODES`                                                                                                               | `valuation_over_liquidity`, `unlisted_over_ceiling`, `chain_evidence_contradicts`, `sources_disagree` (+ `isValuationNotPlausible`, `valuationWithheldClause`)                                 |
-| `AGENT_CLAIM_STATUSES`, `AGENT_PRECISIONS`, `AGENT_SOURCE_TYPES`, `AGENT_VERIFY_VERDICTS`, `AGENT_NOT_PROVIDED`, `AGENT_KNOWN_ERROR_CODES`, … | see `src/vocabulary.ts`                                                                                                                                                                        |
+| Constant                                                                                                                                      | Values                                                                                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AGENT_CAPABILITIES`                                                                                                                          | `research_project`, `what_changed`, `builder_status`, `verify_project`, `compare_builders`, `unknowns`, `chain_brief` (+ `AGENT_CAPABILITY_INFO`: question, params, canonical reads, what it never does)             |
+| `AGENT_UNKNOWN_CATEGORIES`                                                                                                                    | `UNKNOWN`, `NOT_MEASURED`, `NOT_VERIFIED`, `STALE`, `INSUFFICIENT_EVIDENCE` (+ `DO_NOT_CONCLUDE`, the exact sentence for each; `categoryOfCoverage`)                                                                 |
+| `AGENT_FRESHNESS_STATUSES`                                                                                                                    | `live`, `recent`, `daily`, `weekly`, `stale`, `unknown` (+ `AGENT_DATA_FAMILIES`, `FAMILY_SCHEDULES`)                                                                                                                |
+| `AGENT_EVIDENCE_KINDS`                                                                                                                        | `evidence_record`, `rule_output`, `ledger_count`, `coverage_state`, `market_reading`, `usage_reading`, `registry_record`, `canonical_read`, `not_held` (+ meanings)                                                  |
+| `AGENT_CONTENT_ORIGINS`                                                                                                                       | `hey`, `derived`, `external_source`                                                                                                                                                                                  |
+| `STILL_BUILDING_STATES`                                                                                                                       | `HELD`, `NOT_HELD`, `NOT_MEASURED`                                                                                                                                                                                   |
+| `AGENT_RESPONSE_STATUSES`                                                                                                                     | `ok`, `not_found`, `moved`, `invalid_request`, `unavailable` (`restStatusOf` → 200/404/308/400/404)                                                                                                                  |
+| `AGENT_COVERAGE_STATES`                                                                                                                       | `MEASURED`, `NO_SOURCE`, `NOT_ENOUGH_YET`, `STALE`, `SOURCE_UNAVAILABLE`, `NOT_APPLICABLE`, `NOT_RESEARCHED`, `ERROR`, `WITHHELD`, `PARTIAL`, `MAPPING_BLOCKED` (an open code in the schema)                         |
+| `HEY_EVIDENCE_FAMILIES`                                                                                                                       | `ship`, `signal`, `abi`, `impl`, `lock`, `source`, `claim`, `state`, `integrity`, `narrative`, `method`, `sourcechange`, `security`, `v4hook`, `v4pool`, `ponsgrad` (+ `evidenceFamiliesFor`, `looksLikeEvidenceId`) |
+| `VALUATION_NOT_PLAUSIBLE_CODES`                                                                                                               | `valuation_over_liquidity`, `unlisted_over_ceiling`, `chain_evidence_contradicts`, `sources_disagree` (+ `isValuationNotPlausible`, `valuationWithheldClause`)                                                       |
+| `AGENT_CLAIM_STATUSES`, `AGENT_PRECISIONS`, `AGENT_SOURCE_TYPES`, `AGENT_VERIFY_VERDICTS`, `AGENT_NOT_PROVIDED`, `AGENT_KNOWN_ERROR_CODES`, … | see `src/vocabulary.ts`                                                                                                                                                                                              |
 
 **HEY's own token.** Wherever `$HEY`'s project appears in an agent answer, `disclosures[]` carries
 `{ code: 'hey_own_token', statement: HEY_OWN_TOKEN_DISCLOSURE }` ("HEY’s own token — researched by
@@ -146,7 +153,7 @@ source's words as data in a terminal, chat or prompt.
 
 **JSON Schema.** `schema/agent-intelligence-response.v1.json` (strict, as the Zod schema) and
 `schema/agent-intelligence-response.v1.tolerant.json` (accepts fields added later), draft-07,
-generated from the Zod schemas by `pnpm build` and committed. They describe the shape only: the
+generated from the Zod schemas by `pnpm build` (zod 4's `z.toJSONSchema`) and committed. They describe the shape only: the
 Robinhood-Chain-only rule and the invariants are in the TypeScript functions above.
 
 ```ts
@@ -198,9 +205,9 @@ HEY Research Lab serves this contract at `https://heyresearch.xyz/api/agent/{cap
 ([docs](https://heyresearch.xyz/developers/agents), [OpenAPI](https://heyresearch.xyz/openapi.json),
 catalogue at `https://heyresearch.xyz/api/agent`), through its hosted MCP server
 (`https://heyresearch.xyz/mcp`, tool `research_answer`) and A2A. This package was extracted from
-HEY Research Lab's production contract as of 2026-10-09, copied from its public mirror
+HEY Research Lab's production contract as of 2026-11-01, copied from its public mirror
 [hey-research-open](https://github.com/hey-research-lab/hey-research-open) at commit
-`23d0813d81edb1cba0f489977df44fb9a96274c8` (`PARITY.json`), and contains no part of how HEY composes its answers: no database read, no provider call, no ranking,
+`90823dc5fd50b4c31d55ce5d4e29b0939b9451c3` (`PARITY.json`), and contains no part of how HEY composes its answers: no database read, no provider call, no ranking,
 no entitlement logic. HEY's own research and quality rules stay authoritative; a valid answer
 here is only well-formed.
 

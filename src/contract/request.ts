@@ -1,35 +1,50 @@
 import { z } from 'zod';
 
+import { ZOD_MESSAGES } from '@hey/config/zod-messages';
+
 import { AGENT_CAPABILITIES, type AgentCapability } from './capabilities';
 import { AGENT_LIMITS } from './schema';
+import { foldText } from './text';
 
 /**
  * One request validator for every transport (2026-09-30): the REST route's
  * query string, an A2A data part and the MCP tool's arguments all become an
  * `AgentCapabilityRequest` here, so a malformed request is refused with the
  * same words wherever it arrives. Tight on purpose: slugs, 0x addresses,
- * bounded numbers and lists — no free text reaches a read.
+ * bounded numbers and lists. The one free-text field, `q` (2026-10-14,
+ * AG-01), is bounded to the search matcher's own limits (2–64 characters,
+ * folded onto one line) and reaches nothing but that matcher — the same read
+ * `GET /api/search/suggest` takes free text on.
  */
 const slug = z.string().trim().toLowerCase().regex(/^[a-z0-9][a-z0-9-]{0,79}$/, 'a project slug (lower-case letters, digits and hyphens)');
 const address = z.string().trim().regex(/^0[xX][0-9a-fA-F]{40}$/, 'a 0x contract address (40 hex characters)').transform((value) => value.toLowerCase());
 const changeType = z.string().regex(/^[a-z_]+\.[a-z_]+$/, 'a change type such as build.release');
 const chainId = z.number().int().positive().optional();
 
+/** A name or $TICKER for the search matcher: the matcher's own bounds (`MIN_SEARCH_CHARACTERS`, the suggest route's 64). */
+export const AGENT_Q_MIN = 2;
+export const AGENT_Q_MAX = 64;
+const q = z
+  .string()
+  .transform((value) => foldText(value))
+  .pipe(z.string().min(AGENT_Q_MIN, `a project name or $TICKER (${AGENT_Q_MIN}–${AGENT_Q_MAX} characters)`).max(AGENT_Q_MAX, `a project name or $TICKER (${AGENT_Q_MIN}–${AGENT_Q_MAX} characters)`));
+
 export const agentRequestSchema = z.discriminatedUnion('capability', [
-  z.object({ capability: z.literal('research_project'), project: slug, chainId }).strict(),
+  // Exactly one of project, q or address: checked in `parseAgentRequest`, since a discriminated union takes plain objects only.
+  z.object({ capability: z.literal('research_project'), project: slug.optional(), q: q.optional(), address: address.optional(), chainId }).strict(),
   z
     .object({
       capability: z.literal('what_changed'),
       project: slug.optional(),
-      days: z.number().int().min(1).max(30).default(7),
+      days: z.number().int().min(1).max(30).prefault(7),
       types: z.array(changeType).min(1).max(20).optional(),
-      limit: z.number().int().min(1).max(AGENT_LIMITS.changes).default(AGENT_LIMITS.changesDefault),
+      limit: z.number().int().min(1).max(AGENT_LIMITS.changes).prefault(AGENT_LIMITS.changesDefault),
       /** `only` (2026-09-30, additive): events that count toward activity status, by the ledger's own `countsAsBuilding` flag. */
       building: z.literal('only').optional(),
       chainId,
     })
     .strict(),
-  z.object({ capability: z.literal('builder_status'), project: slug, chainId }).strict(),
+  z.object({ capability: z.literal('builder_status'), project: slug.optional(), q: q.optional(), address: address.optional(), chainId }).strict(),
   z.object({ capability: z.literal('verify_project'), address, project: slug.optional(), chainId }).strict(),
   z
     .object({
@@ -42,12 +57,18 @@ export const agentRequestSchema = z.discriminatedUnion('capability', [
       chainId,
     })
     .strict(),
-  // Exactly one of project or address: checked in `parseAgentRequest`, since a discriminated union takes plain objects only.
-  z.object({ capability: z.literal('unknowns'), project: slug.optional(), address: address.optional(), chainId }).strict(),
+  z.object({ capability: z.literal('unknowns'), project: slug.optional(), q: q.optional(), address: address.optional(), chainId }).strict(),
+  // chain_brief (2026-10-18, PB-26): the rolling week, so nothing but the chain.
+  z.object({ capability: z.literal('chain_brief'), chainId }).strict(),
 ]);
 
 export type AgentCapabilityRequest = z.infer<typeof agentRequestSchema>;
 export type AgentCapabilityRequestOf<C extends AgentCapability> = Extract<AgentCapabilityRequest, { capability: C }>;
+
+/** The capabilities that take one subject identifier: a slug, a name or ticker, or a contract (AG-01). */
+export const SUBJECT_CAPABILITIES = ['research_project', 'builder_status', 'unknowns'] as const;
+export type SubjectCapability = (typeof SUBJECT_CAPABILITIES)[number];
+export type AgentSubjectRequest = AgentCapabilityRequestOf<SubjectCapability>;
 
 export type ParsedAgentRequest = { ok: true; request: AgentCapabilityRequest } | { ok: false; code: 'unknown_capability' | 'invalid_request'; message: string };
 
@@ -56,10 +77,15 @@ export function parseAgentRequest(raw: unknown): ParsedAgentRequest {
   if (typeof capability !== 'string' || !(AGENT_CAPABILITIES as readonly string[]).includes(capability)) {
     return { ok: false, code: 'unknown_capability', message: `capability must be one of: ${AGENT_CAPABILITIES.join(', ')}.` };
   }
-  const parsed = agentRequestSchema.safeParse(raw);
+  const parsed = agentRequestSchema.safeParse(raw, ZOD_MESSAGES);
   if (parsed.success) {
-    if (parsed.data.capability === 'unknowns' && Boolean(parsed.data.project) === Boolean(parsed.data.address)) return { ok: false, code: 'invalid_request', message: 'unknowns: name either project or address.' };
-    return { ok: true, request: parsed.data };
+    const request = parsed.data;
+    if ((SUBJECT_CAPABILITIES as readonly string[]).includes(request.capability)) {
+      const subject = request as AgentSubjectRequest;
+      const given = [subject.project, subject.q, subject.address].filter((value) => value !== undefined).length;
+      if (given !== 1) return { ok: false, code: 'invalid_request', message: `${request.capability}: name exactly one of project, q (a name or $TICKER) or address.` };
+    }
+    return { ok: true, request };
   }
   const issue = parsed.error.issues[0];
   /*
@@ -68,24 +94,34 @@ export function parseAgentRequest(raw: unknown): ParsedAgentRequest {
    * — which a crafted URL can make any sentence — is not repeated. The
    * message names what the capability does take; the other issues name only
    * HEY's own field names.
+   *
+   * A name that is an identifier is said back (2026-10-18, persona audit PB-27): "an unknown parameter" left the
+   * caller to guess which of its parameters was wrong. A short identifier carries no sentence; anything else is
+   * still "an unknown parameter", as MCP's argument guard says it.
    */
   if (!issue || issue.code === 'unrecognized_keys') {
-    return { ok: false, code: 'invalid_request', message: `${capability}: an unknown parameter. It takes ${takes(capability as AgentCapability)}.` };
+    const keys = issue?.code === 'unrecognized_keys' ? issue.keys : [];
+    const sayable = keys.length > 0 && keys.every((key) => SAYABLE_PARAMETER.test(key));
+    return { ok: false, code: 'invalid_request', message: `${capability}: ${sayable ? `does not take ${keys.join(', ')}` : 'an unknown parameter'}. It takes ${takes(capability as AgentCapability)}.` };
   }
   const field = issue.path.filter((part): part is string | number => typeof part === 'string' || typeof part === 'number').map(String);
   const known = field.length > 0 && KNOWN_PARAMS.has(field[0]!) ? field.join('.') : capability;
   return { ok: false, code: 'invalid_request', message: `${known}: ${issue.message}.` };
 }
 
-const KNOWN_PARAMS: ReadonlySet<string> = new Set(['capability', 'project', 'projects', 'address', 'days', 'types', 'limit', 'building', 'chainId']);
+/** A parameter name safe to say back: an identifier, short (the MCP argument guard's rule). */
+const SAYABLE_PARAMETER = /^[A-Za-z_][A-Za-z0-9_]{0,39}$/;
+
+const KNOWN_PARAMS: ReadonlySet<string> = new Set(['capability', 'project', 'projects', 'address', 'q', 'days', 'types', 'limit', 'building', 'chainId']);
 
 const TAKES: Readonly<Record<AgentCapability, string>> = {
-  research_project: 'project and chainId',
+  research_project: 'project, q or address (one of them), and chainId',
   what_changed: 'project, days, types, limit, building and chainId',
-  builder_status: 'project and chainId',
+  builder_status: 'project, q or address (one of them), and chainId',
   verify_project: 'address, project and chainId',
   compare_builders: 'projects and chainId',
-  unknowns: 'project or address, and chainId',
+  unknowns: 'project, q or address (one of them), and chainId',
+  chain_brief: 'chainId only',
 };
 const takes = (capability: AgentCapability): string => TAKES[capability];
 
@@ -115,6 +151,7 @@ export function queryEcho(request: AgentCapabilityRequest, chainId: number) {
     ...('project' in request && request.project ? { project: request.project } : {}),
     ...('projects' in request ? { projects: request.projects } : {}),
     ...('address' in request && request.address ? { address: request.address } : {}),
+    ...('q' in request && request.q ? { q: request.q } : {}),
     ...('days' in request ? { days: request.days } : {}),
     ...('types' in request && request.types ? { types: request.types } : {}),
     ...('limit' in request ? { limit: request.limit } : {}),
@@ -128,10 +165,22 @@ export function agentRequestUrl(baseUrl: string, request: AgentCapabilityRequest
   if ('project' in request && request.project) params.set('project', request.project);
   if ('projects' in request) params.set('projects', request.projects.join(','));
   if ('address' in request && request.address) params.set('address', request.address);
+  if ('q' in request && request.q) params.set('q', request.q);
   if ('days' in request) params.set('days', String(request.days));
   if ('types' in request && request.types) params.set('types', request.types.join(','));
   if ('limit' in request) params.set('limit', String(request.limit));
   if ('building' in request && request.building) params.set('building', request.building);
   const query = params.toString();
   return `${baseUrl}/api/agent/${request.capability}${query ? `?${query}` : ''}`;
+}
+
+/**
+ * The same request by the slug a name, ticker or contract resolved to
+ * (AG-01): what the answer's `links.self` and citation carry, so a citation
+ * is the one canonical URL of the project's answer whatever identifier the
+ * caller sent. `query` keeps echoing what was asked.
+ */
+export function resolvedSubjectRequest<R extends AgentSubjectRequest>(request: R, slug: string): R {
+  const { q: _q, address: _address, ...rest } = request;
+  return { ...rest, project: slug } as R;
 }

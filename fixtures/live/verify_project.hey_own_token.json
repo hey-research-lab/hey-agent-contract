@@ -82,9 +82,9 @@
   "freshness": [
     {
       "family": "contracts",
-      "observedAt": "2026-10-08T11:03:33.508Z",
-      "dataAsOf": "2026-10-08T11:03:33.508Z",
-      "freshnessStatus": "daily",
+      "observedAt": "2026-10-29T13:04:34.256Z",
+      "dataAsOf": "2026-10-29T13:04:34.256Z",
+      "freshnessStatus": "weekly",
       "staleAfterHours": 252,
       "refresh": {
         "job": "CONTRACT_ABI_WATCH",
@@ -155,8 +155,9 @@
     "capability": "verify_project",
     "schemaVersion": "1",
     "url": "https://heyresearch.xyz/api/agent/verify_project?address=0xb33eb16782776b4d738c0fd643577cb0284db610",
-    "asOf": "2026-10-09T04:13:57.803Z",
-    "project": "hey-research-lab"
+    "asOf": "2026-11-01T11:11:00.967Z",
+    "project": "hey-research-lab",
+    "text": "Source: HEY Research Lab, builder research for Robinhood Chain — https://heyresearch.xyz/project/hey-research-lab, as of 2026-11-01"
   },
   "boundaries": {
     "notAdvice": true,
@@ -177,7 +178,7 @@
     ],
     "marketIsContextOnly": true,
     "disclaimer": {
-      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "text": "Public, source-backed activity HEY recorded. Still Building means counted ships during a market drawdown HEY itself tracked — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
       "contentOrigin": "hey"
     }
   },
@@ -193,5 +194,5 @@
       ]
     }
   ],
-  "asOf": "2026-10-09T04:13:57.803Z"
+  "asOf": "2026-11-01T11:11:00.967Z"
 }

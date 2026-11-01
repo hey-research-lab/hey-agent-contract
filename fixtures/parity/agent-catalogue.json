@@ -18,8 +18,18 @@
       "params": [
         {
           "name": "project",
-          "required": true,
-          "description": "A published project slug, e.g. \"agentos\"."
+          "required": false,
+          "description": "A published project slug, e.g. \"agentos\" (this, q or address — exactly one)."
+        },
+        {
+          "name": "q",
+          "required": false,
+          "description": "A project name or $TICKER (2–64 characters), resolved through HEY’s project search: one exact match answers, several are listed as candidates (invalid_request, ambiguous), none is not_found. Never a guess."
+        },
+        {
+          "name": "address",
+          "required": false,
+          "description": "A 0x contract address on Robinhood Chain: the published project HEY records it under."
         },
         {
           "name": "chainId",
@@ -51,7 +61,7 @@
     {
       "id": "what_changed",
       "question": "What changed with this project, or on Robinhood Chain, in the last N days?",
-      "returns": "Canonical change-ledger events in the window, newest first, with the true total by type and how many count as building (led by those), each event with its own time, precision, when HEY knew and its evidence.",
+      "returns": "Canonical change-ledger events in the window, with the true total by type and how many count as building; the events shown lead with those that count as building, each group newest first, each event with its own time, precision, when HEY knew and its evidence.",
       "params": [
         {
           "name": "project",
@@ -112,8 +122,18 @@
       "params": [
         {
           "name": "project",
-          "required": true,
-          "description": "A published project slug, e.g. \"agentos\"."
+          "required": false,
+          "description": "A published project slug, e.g. \"agentos\" (this, q or address — exactly one)."
+        },
+        {
+          "name": "q",
+          "required": false,
+          "description": "A project name or $TICKER (2–64 characters), resolved through HEY’s project search: one exact match answers, several are listed as candidates (invalid_request, ambiguous), none is not_found. Never a guess."
+        },
+        {
+          "name": "address",
+          "required": false,
+          "description": "A 0x contract address on Robinhood Chain: the published project HEY records it under."
         },
         {
           "name": "chainId",
@@ -190,7 +210,7 @@
     {
       "id": "compare_builders",
       "question": "How do these projects' building records compare over 30 days?",
-      "returns": "Two to four projects side by side on factual builder metrics (status, last meaningful ship, meaningful events this 30 days and the 30 before, release cadence, active weeks, Build Momentum, verification) with each one’s peer cohort; no winner, no order but the one asked. Fewer than two found is not_found (too_few_projects_found); a comparison with one missing says partial.",
+      "returns": "Two to four projects side by side on factual builder metrics (status, last meaningful ship, counted ships this 30 days and the 30 before, release cadence, active weeks, Build Momentum, verification) with each one’s peer cohort; no winner, no order but the one asked. Fewer than two found is not_found (too_few_projects_found); a comparison with one missing says partial.",
       "params": [
         {
           "name": "projects",
@@ -233,7 +253,12 @@
         {
           "name": "project",
           "required": false,
-          "description": "A project slug (this or address)."
+          "description": "A project slug (this, q or address — exactly one)."
+        },
+        {
+          "name": "q",
+          "required": false,
+          "description": "A project name or $TICKER (2–64 characters), resolved through HEY’s project search: one exact match answers, several are listed as candidates (invalid_request, ambiguous), none is not_found. Never a guess."
         },
         {
           "name": "address",
@@ -267,12 +292,46 @@
         "/api/projects/{slug}/snapshot"
       ],
       "never": "Negative evidence: a gap is what HEY does not hold, never a finding about the project."
+    },
+    {
+      "id": "chain_brief",
+      "question": "What is happening on Robinhood Chain this week?",
+      "returns": "The rolling week as /api/this-week counts it — ships and the projects behind them, new Verified Builders, status recoveries, Still Building and Under the Radar held today, each with its method — and the newest changes that count as building in the same window (what each code week shipped), with the true total and where to read on.",
+      "params": [
+        {
+          "name": "chainId",
+          "required": false,
+          "description": "Default and only accepted value: 4663, Robinhood Chain."
+        }
+      ],
+      "rest": "https://heyresearch.xyz/api/agent/chain_brief",
+      "mcp": {
+        "endpoint": "https://heyresearch.xyz/mcp",
+        "researchEndpoint": "https://heyresearch.xyz/mcp/research",
+        "tool": "research_answer",
+        "arguments": {
+          "capability": "chain_brief"
+        }
+      },
+      "a2a": {
+        "endpoint": "https://heyresearch.xyz/api/a2a",
+        "skill": "what_changed",
+        "option": {
+          "contract": "agent-intelligence-v1"
+        }
+      },
+      "canonicalReads": [
+        "/api/this-week",
+        "/api/changes"
+      ],
+      "never": "A market reading, a ranking or a pick: a count of what HEY recorded, never a view on any token."
     }
   ],
   "changeTypes": [
     "build.release",
     "build.code_activity",
     "build.ship",
+    "build.owner_update",
     "build.status_changed",
     "build.dormant",
     "build.resumed",
@@ -287,6 +346,7 @@
     "contract.usage_changed",
     "contract.method_first_observed",
     "contract.method_resumed",
+    "contract.v4_pool_initialized",
     "market.status_changed",
     "market.liquidity_moved",
     "market.volume_spike",
@@ -382,6 +442,7 @@
       "inputs": 24,
       "excludedContext": 12,
       "reasons": 8,
+      "codeHighlights": 2,
       "maxResponseBytes": 65536
     },
     "unknownCategories": [
@@ -395,7 +456,7 @@
       },
       {
         "category": "NOT_VERIFIED",
-        "doNotConclude": "HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either."
+        "doNotConclude": "HEY holds nothing yet that ties this link to the project. Do not treat it as the project’s own, and do not treat it as false either."
       },
       {
         "category": "STALE",
@@ -534,7 +595,7 @@
     ],
     "marketIsContextOnly": true,
     "userDataRequired": [],
-    "disclaimer": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts."
+    "disclaimer": "Public, source-backed activity HEY recorded. Still Building means counted ships during a market drawdown HEY itself tracked — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts."
   },
   "adapters": {
     "live": [

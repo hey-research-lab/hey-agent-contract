@@ -1,0 +1,885 @@
+{
+  "schema": "hey.agent-intelligence-response",
+  "schemaVersion": "1",
+  "capability": "chain_brief",
+  "status": "ok",
+  "query": {
+    "chainId": 4663
+  },
+  "chain": {
+    "chainId": 4663,
+    "name": "Robinhood Chain"
+  },
+  "subject": {
+    "kind": "chain"
+  },
+  "answer": {
+    "text": "On Robinhood Chain in the 7 days to 1 Nov 2026: 293 ships from 154 projects, 84 new Verified Builders, 3 status recoveries. HEY holds 7 Still Building and 0 Under the Radar today (strict by design). 293 changes that count as building; the newest 10 are listed.",
+    "contentOrigin": "derived"
+  },
+  "answerStatus": "FACT",
+  "claims": [
+    {
+      "id": "week.ships",
+      "dimension": "build",
+      "statement": {
+        "text": "293 ships from 154 projects in the 7 days to 1 Nov 2026 (Building evidence a public source corroborates, on projects built on Robinhood Chain; a week of code activity or prereleases counts once per project, a code week HEY read as documentation, maintenance, dependency or version updates, CI-only, data or automation only does not count, a week of 25 or more human commits counts only when 3 of a 10-commit sample change code, a release cut from a rolling or date-stamped automated tag is not a ship, one repository’s releases of one UTC day count once, a project’s contracts deployed each within 6…",
+        "contentOrigin": "derived",
+        "truncated": true
+      },
+      "status": "FACT",
+      "value": 293,
+      "source": {
+        "name": "HEY record",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-11-01T11:10:15.518Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "week.newly_verified_builders",
+      "dimension": "build",
+      "statement": {
+        "text": "84 new Verified Builders. Projects HEY recorded as Verified Builders in the window.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 84,
+      "source": {
+        "name": "HEY record",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-11-01T11:10:15.518Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "ledger_count"
+    },
+    {
+      "id": "week.status_recoveries",
+      "dimension": "build",
+      "statement": {
+        "text": "3 status recoveries of 698 projects HEY read more than once in the window. Projects whose activity status HEY read moving from Quiet or Dormant to Shipping, Active or Resumed in the window, on HEY’s own readings; not the narrower Back from dormancy listing (RESUMED after 60+ days without activity).",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": 3,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-11-01T11:10:15.518Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "week.still_building",
+      "dimension": "build",
+      "statement": {
+        "text": "7 projects Still Building. Projects HEY holds Still Building today: counted ships during a market drawdown HEY itself tracked, measured only on an active market; a record, not a buy signal.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": 7,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-11-01T11:10:15.518Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "week.under_the_radar",
+      "dimension": "build",
+      "statement": {
+        "text": "0 projects Under the Radar. Projects HEY holds Under the Radar today: building ahead of market attention by HEY’s rule (a positive Discovery Gap on an active market, attention at most typical). Strict by design, so a small count is the rule’s, not the chain’s.",
+        "contentOrigin": "derived"
+      },
+      "status": "DERIVED",
+      "value": 0,
+      "source": {
+        "name": "hey",
+        "type": "hey_rule"
+      },
+      "observedAt": "2026-11-01T11:10:15.518Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [],
+      "evidenceKind": "rule_output"
+    },
+    {
+      "id": "week.building_changes",
+      "dimension": "build",
+      "statement": {
+        "text": "293 changes that count as building in the change ledger over the same window.",
+        "contentOrigin": "derived"
+      },
+      "status": "FACT",
+      "value": 293,
+      "source": {
+        "name": "HEY record",
+        "type": "hey_record"
+      },
+      "observedAt": "2026-11-01T11:10:15.518Z",
+      "occurredAt": null,
+      "precision": "WINDOW",
+      "freshness": "live",
+      "evidence": [
+        {
+          "id": "ship:d2625427-d83b-4b36-827b-775f613ca43c",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ad2625427-d83b-4b36-827b-775f613ca43c",
+          "sourceUrl": "https://github.com/own-protocol/own-v2"
+        },
+        {
+          "id": "ship:b52a1198-b256-4179-854d-66f6e4ff9c9a",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ab52a1198-b256-4179-854d-66f6e4ff9c9a",
+          "sourceUrl": "https://github.com/0xtenang/pepesfamily"
+        },
+        {
+          "id": "ship:656db7d4-9b10-4d91-acc7-7fe97f203a6c",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A656db7d4-9b10-4d91-acc7-7fe97f203a6c",
+          "sourceUrl": "https://github.com/usebrainchain/brainchain-worker"
+        },
+        {
+          "id": "ship:0e23c072-ccbd-4f38-b79d-9a338414bf3e",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0e23c072-ccbd-4f38-b79d-9a338414bf3e",
+          "sourceUrl": "https://github.com/usebrainchain/brainchain-worker/releases/tag/v0.4.2"
+        },
+        {
+          "id": "ship:0d13c6f8-5acc-4907-8afe-fdb68b38f84c",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0d13c6f8-5acc-4907-8afe-fdb68b38f84c",
+          "sourceUrl": "https://github.com/millw14/merrymen"
+        },
+        {
+          "id": "ship:e2bc96c8-6b43-42ee-83d7-7f9df856d33d",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae2bc96c8-6b43-42ee-83d7-7f9df856d33d",
+          "sourceUrl": "https://github.com/cryptoduke01/gloam"
+        },
+        {
+          "id": "ship:29fd339d-b95a-4635-9de9-b34f628d6237",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A29fd339d-b95a-4635-9de9-b34f628d6237",
+          "sourceUrl": "https://github.com/programmablehq/programmable"
+        },
+        {
+          "id": "ship:6a6b783c-82b6-4734-b1e0-75abd9014042",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A6a6b783c-82b6-4734-b1e0-75abd9014042",
+          "sourceUrl": "https://github.com/nicolostancato-web/whale-radar"
+        },
+        {
+          "id": "ship:e44c8f3b-d68a-4691-b48c-aef547e58383",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae44c8f3b-d68a-4691-b48c-aef547e58383",
+          "sourceUrl": "https://github.com/robert-schmidt/rhnode"
+        },
+        {
+          "id": "ship:ea6472c7-e817-451a-80d1-c3c5387842cf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aea6472c7-e817-451a-80d1-c3c5387842cf",
+          "sourceUrl": "https://github.com/sentinelhood/robinhood-sentinel"
+        }
+      ],
+      "evidenceKind": "ledger_count"
+    }
+  ],
+  "unknowns": [],
+  "freshness": [
+    {
+      "family": "change_ledger",
+      "observedAt": "2026-11-01T11:10:02.616Z",
+      "dataAsOf": "2026-11-01T11:10:02.616Z",
+      "freshnessStatus": "live",
+      "staleAfterHours": 1,
+      "refresh": {
+        "job": "PROJECT_CHANGE_EVENTS",
+        "everyMinutes": 5,
+        "slowestMinutes": 5,
+        "basis": {
+          "text": "The ledger projector runs every 5 minutes and indexes what HEY recorded since its last run.",
+          "contentOrigin": "hey"
+        }
+      },
+      "nextExpectedRefresh": "2026-11-01T11:15:02.616Z"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ship:d2625427-d83b-4b36-827b-775f613ca43c",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ad2625427-d83b-4b36-827b-775f613ca43c",
+      "sourceUrl": "https://github.com/own-protocol/own-v2"
+    },
+    {
+      "id": "ship:b52a1198-b256-4179-854d-66f6e4ff9c9a",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ab52a1198-b256-4179-854d-66f6e4ff9c9a",
+      "sourceUrl": "https://github.com/0xtenang/pepesfamily"
+    },
+    {
+      "id": "ship:656db7d4-9b10-4d91-acc7-7fe97f203a6c",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A656db7d4-9b10-4d91-acc7-7fe97f203a6c",
+      "sourceUrl": "https://github.com/usebrainchain/brainchain-worker"
+    },
+    {
+      "id": "ship:0e23c072-ccbd-4f38-b79d-9a338414bf3e",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0e23c072-ccbd-4f38-b79d-9a338414bf3e",
+      "sourceUrl": "https://github.com/usebrainchain/brainchain-worker/releases/tag/v0.4.2"
+    },
+    {
+      "id": "ship:0d13c6f8-5acc-4907-8afe-fdb68b38f84c",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0d13c6f8-5acc-4907-8afe-fdb68b38f84c",
+      "sourceUrl": "https://github.com/millw14/merrymen"
+    },
+    {
+      "id": "ship:e2bc96c8-6b43-42ee-83d7-7f9df856d33d",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae2bc96c8-6b43-42ee-83d7-7f9df856d33d",
+      "sourceUrl": "https://github.com/cryptoduke01/gloam"
+    },
+    {
+      "id": "ship:29fd339d-b95a-4635-9de9-b34f628d6237",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A29fd339d-b95a-4635-9de9-b34f628d6237",
+      "sourceUrl": "https://github.com/programmablehq/programmable"
+    },
+    {
+      "id": "ship:6a6b783c-82b6-4734-b1e0-75abd9014042",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A6a6b783c-82b6-4734-b1e0-75abd9014042",
+      "sourceUrl": "https://github.com/nicolostancato-web/whale-radar"
+    },
+    {
+      "id": "ship:e44c8f3b-d68a-4691-b48c-aef547e58383",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae44c8f3b-d68a-4691-b48c-aef547e58383",
+      "sourceUrl": "https://github.com/robert-schmidt/rhnode"
+    },
+    {
+      "id": "ship:ea6472c7-e817-451a-80d1-c3c5387842cf",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aea6472c7-e817-451a-80d1-c3c5387842cf",
+      "sourceUrl": "https://github.com/sentinelhood/robinhood-sentinel"
+    }
+  ],
+  "data": {
+    "window": {
+      "days": 7,
+      "from": "2026-10-25T11:10:15.518Z",
+      "to": "2026-11-01T11:10:15.518Z",
+      "label": "7 days to 1 Nov 2026"
+    },
+    "shipped": {
+      "ships": 293,
+      "projects": 154,
+      "rule": {
+        "id": "weekly-ships-v10",
+        "counts": "Building evidence a public source corroborates, on projects built on Robinhood Chain; a week of code activity or prereleases counts once per project, a code week HEY read as documentation, maintenance, dependency or version updates, CI-only, data or automation only does not count, a week of 25 or more human commits counts only when 3 of a 10-commit sample change code, a release cut from a rolling "
+      }
+    },
+    "newlyVerifiedBuilders": {
+      "total": 84,
+      "method": {
+        "text": "Projects HEY recorded as Verified Builders in the window.",
+        "contentOrigin": "hey"
+      }
+    },
+    "statusRecoveries": {
+      "total": 3,
+      "comparable": 698,
+      "method": {
+        "text": "Projects whose activity status HEY read moving from Quiet or Dormant to Shipping, Active or Resumed in the window, on HEY’s own readings; not the narrower Back from dormancy listing (RESUMED after 60+ days without activity).",
+        "contentOrigin": "hey"
+      }
+    },
+    "stillBuilding": {
+      "total": 7,
+      "method": {
+        "text": "Projects HEY holds Still Building today: counted ships during a market drawdown HEY itself tracked, measured only on an active market; a record, not a buy signal.",
+        "contentOrigin": "hey"
+      }
+    },
+    "underTheRadar": {
+      "total": 0,
+      "method": {
+        "text": "Projects HEY holds Under the Radar today: building ahead of market attention by HEY’s rule (a positive Discovery Gap on an active market, attention at most typical). Strict by design, so a small count is the rule’s, not the chain’s.",
+        "contentOrigin": "hey"
+      }
+    },
+    "building": {
+      "total": 293,
+      "shown": 10,
+      "items": [
+        {
+          "id": "ship:d2625427-d83b-4b36-827b-775f613ca43c",
+          "revision": 2,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T10:34:38.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-31T17:16:20.271Z",
+          "recordedAt": "2026-11-01T10:50:01.613Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "own-money",
+            "url": "https://heyresearch.xyz/project/own-money"
+          },
+          "evidence": [
+            {
+              "id": "ship:d2625427-d83b-4b36-827b-775f613ca43c",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ad2625427-d83b-4b36-827b-775f613ca43c",
+              "sourceUrl": "https://github.com/own-protocol/own-v2"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 4,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "Fixed-APR staking vaults, MONEY buy-back, slim registry and oracle (#24)",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/own-protocol/own-v2/commit/c5d94b1c1ba02454382556f184adde4c6090a6ba"
+                },
+                "url": "https://github.com/own-protocol/own-v2/commit/c5d94b1c1ba02454382556f184adde4c6090a6ba"
+              },
+              {
+                "subject": {
+                  "text": "Pre-deploy eUSD audit fixes, deploy script guards, audit reports and deployment record (#25)",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/own-protocol/own-v2/commit/2af2e388f0781c6a3fcad65a689424a4681e7270"
+                },
+                "url": "https://github.com/own-protocol/own-v2/commit/2af2e388f0781c6a3fcad65a689424a4681e7270"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ship:b52a1198-b256-4179-854d-66f6e4ff9c9a",
+          "revision": 25,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:56:35.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-27T00:50:47.090Z",
+          "recordedAt": "2026-11-01T10:30:01.277Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "pepes",
+            "url": "https://heyresearch.xyz/project/pepes"
+          },
+          "evidence": [
+            {
+              "id": "ship:b52a1198-b256-4179-854d-66f6e4ff9c9a",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ab52a1198-b256-4179-854d-66f6e4ff9c9a",
+              "sourceUrl": "https://github.com/0xtenang/pepesfamily"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 52,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "Turn on email, Google and Apple sign-in (Privy App ID)",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/0xtenang/pepesfamily/commit/11103e73b0b017e0ec1867f07a0e8d7f4c4ee69a"
+                },
+                "url": "https://github.com/0xtenang/pepesfamily/commit/11103e73b0b017e0ec1867f07a0e8d7f4c4ee69a"
+              },
+              {
+                "subject": {
+                  "text": "Allow the pepesimd.fun domain: Hall server, image upload, Relay proxy",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/0xtenang/pepesfamily/commit/1801afcb6681fd60da02812ba359c993ef6ab6d0"
+                },
+                "url": "https://github.com/0xtenang/pepesfamily/commit/1801afcb6681fd60da02812ba359c993ef6ab6d0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ship:656db7d4-9b10-4d91-acc7-7fe97f203a6c",
+          "revision": 7,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:54:38.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-31T00:25:02.706Z",
+          "recordedAt": "2026-11-01T10:15:01.007Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "usebrainchain-brainchain",
+            "url": "https://heyresearch.xyz/project/usebrainchain-brainchain"
+          },
+          "evidence": [
+            {
+              "id": "ship:656db7d4-9b10-4d91-acc7-7fe97f203a6c",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A656db7d4-9b10-4d91-acc7-7fe97f203a6c",
+              "sourceUrl": "https://github.com/usebrainchain/brainchain-worker"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 15,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "fix the test for a trimmed rpc answer",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/usebrainchain/brainchain-worker/commit/1d65e4c3470be87e0c2fb22290bf1eaf6e2acce0"
+                },
+                "url": "https://github.com/usebrainchain/brainchain-worker/commit/1d65e4c3470be87e0c2fb22290bf1eaf6e2acce0"
+              },
+              {
+                "subject": {
+                  "text": "add propose and proposal: bond brain and put a change to jev, checked against the executor first, 0.5.0",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/usebrainchain/brainchain-worker/commit/a6dc2f49d49a984ef1fb2c29652e4dc7e6c06652"
+                },
+                "url": "https://github.com/usebrainchain/brainchain-worker/commit/a6dc2f49d49a984ef1fb2c29652e4dc7e6c06652"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ship:0e23c072-ccbd-4f38-b79d-9a338414bf3e",
+          "revision": 2,
+          "type": "build.release",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:51:43.000Z",
+          "precision": "EXACT",
+          "detectedAt": "2026-11-01T10:12:16.714Z",
+          "recordedAt": "2026-11-01T11:10:02.616Z",
+          "summary": {
+            "text": "0.4.2",
+            "contentOrigin": "external_source",
+            "source": "source_title",
+            "sourceUrl": "https://github.com/usebrainchain/brainchain-worker/releases/tag/v0.4.2"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "PUBLICLY_VERIFIED",
+          "project": {
+            "slug": "usebrainchain-brainchain",
+            "url": "https://heyresearch.xyz/project/usebrainchain-brainchain"
+          },
+          "evidence": [
+            {
+              "id": "ship:0e23c072-ccbd-4f38-b79d-9a338414bf3e",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0e23c072-ccbd-4f38-b79d-9a338414bf3e",
+              "sourceUrl": "https://github.com/usebrainchain/brainchain-worker/releases/tag/v0.4.2"
+            }
+          ],
+          "source": "github"
+        },
+        {
+          "id": "ship:0d13c6f8-5acc-4907-8afe-fdb68b38f84c",
+          "revision": 9,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:48:17.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-26T02:45:40.465Z",
+          "recordedAt": "2026-11-01T10:55:01.644Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "merrymen",
+            "url": "https://heyresearch.xyz/project/merrymen"
+          },
+          "evidence": [
+            {
+              "id": "ship:0d13c6f8-5acc-4907-8afe-fdb68b38f84c",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0d13c6f8-5acc-4907-8afe-fdb68b38f84c",
+              "sourceUrl": "https://github.com/millw14/merrymen"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 33,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "Require admin approval for Perps invite requests",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/millw14/merrymen/commit/02f4230e8b7f47a77a95436bb812b84fb51fca06"
+                },
+                "url": "https://github.com/millw14/merrymen/commit/02f4230e8b7f47a77a95436bb812b84fb51fca06"
+              },
+              {
+                "subject": {
+                  "text": "Fail closed on ambiguous Perps selectors, grant status, and kill errors",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/millw14/merrymen/commit/008e6ba70c6f9f949049e0aa48f5bcb5202874cc"
+                },
+                "url": "https://github.com/millw14/merrymen/commit/008e6ba70c6f9f949049e0aa48f5bcb5202874cc"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ship:e2bc96c8-6b43-42ee-83d7-7f9df856d33d",
+          "revision": 30,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:44:44.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-26T01:19:14.441Z",
+          "recordedAt": "2026-11-01T10:20:01.212Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "gloam",
+            "url": "https://heyresearch.xyz/project/gloam"
+          },
+          "evidence": [
+            {
+              "id": "ship:e2bc96c8-6b43-42ee-83d7-7f9df856d33d",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae2bc96c8-6b43-42ee-83d7-7f9df856d33d",
+              "sourceUrl": "https://github.com/cryptoduke01/gloam"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 141,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "App labels: the public send review's kind, the Sent links toggle and the Vault overview's section heads (What you can do, Also on …) are…",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/cryptoduke01/gloam/commit/e9a9ca5ef50d0bbbc11fda0d7d7b36581e5b306d"
+                },
+                "url": "https://github.com/cryptoduke01/gloam/commit/e9a9ca5ef50d0bbbc11fda0d7d7b36581e5b306d"
+              },
+              {
+                "subject": {
+                  "text": "Glim: self-tests for silent moderation (the promoter pitch and the other real examples banned with no reply, the strict-JSON check, the…",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/cryptoduke01/gloam/commit/01b875165eb08cfc2aea10f3bb7cc7cb27ad00ab"
+                },
+                "url": "https://github.com/cryptoduke01/gloam/commit/01b875165eb08cfc2aea10f3bb7cc7cb27ad00ab"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ship:29fd339d-b95a-4635-9de9-b34f628d6237",
+          "revision": 50,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:13:56.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-26T01:36:56.309Z",
+          "recordedAt": "2026-11-01T10:00:01.169Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "programmablehq-programmable",
+            "url": "https://heyresearch.xyz/project/programmablehq-programmable"
+          },
+          "evidence": [
+            {
+              "id": "ship:29fd339d-b95a-4635-9de9-b34f628d6237",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A29fd339d-b95a-4635-9de9-b34f628d6237",
+              "sourceUrl": "https://github.com/programmablehq/programmable"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 72,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "Skip RPC pacing delays for cached Ethereum history (#1164)",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/programmablehq/programmable/commit/175ff8781050878ad70150f5415551a8bed2499a"
+                },
+                "url": "https://github.com/programmablehq/programmable/commit/175ff8781050878ad70150f5415551a8bed2499a"
+              },
+              {
+                "subject": {
+                  "text": "Align index health smoke with current provider roles",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/programmablehq/programmable/commit/07222a4132588ab44f7c45abd102f3e6081a91c3"
+                },
+                "url": "https://github.com/programmablehq/programmable/commit/07222a4132588ab44f7c45abd102f3e6081a91c3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ship:6a6b783c-82b6-4734-b1e0-75abd9014042",
+          "revision": 75,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:06:46.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-26T06:53:43.536Z",
+          "recordedAt": "2026-11-01T09:40:00.841Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "nicolostancato-web-whale-radar",
+            "url": "https://heyresearch.xyz/project/nicolostancato-web-whale-radar"
+          },
+          "evidence": [
+            {
+              "id": "ship:6a6b783c-82b6-4734-b1e0-75abd9014042",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A6a6b783c-82b6-4734-b1e0-75abd9014042",
+              "sourceUrl": "https://github.com/nicolostancato-web/whale-radar"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 372,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "mercati tradizionali chiusi a livello di classe, un verso solo: differenza dal caso +0,089 su 762 prove",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/nicolostancato-web/whale-radar/commit/07e60b76bb911f62d2cfb94dffb7717343a5e7ee"
+                },
+                "url": "https://github.com/nicolostancato-web/whale-radar/commit/07e60b76bb911f62d2cfb94dffb7717343a5e7ee"
+              },
+              {
+                "subject": {
+                  "text": "incassare il finanziamento: il lato accessibile perde, quello che paga richiede un prestito che non abbiamo",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/nicolostancato-web/whale-radar/commit/59307adc20f231dd5eed1176d07b0344bc4cfc9f"
+                },
+                "url": "https://github.com/nicolostancato-web/whale-radar/commit/59307adc20f231dd5eed1176d07b0344bc4cfc9f"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ship:e44c8f3b-d68a-4691-b48c-aef547e58383",
+          "revision": 29,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:01:21.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-30T00:24:52.106Z",
+          "recordedAt": "2026-11-01T09:50:00.735Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "robert-schmidt-rhnode",
+            "url": "https://heyresearch.xyz/project/robert-schmidt-rhnode"
+          },
+          "evidence": [
+            {
+              "id": "ship:e44c8f3b-d68a-4691-b48c-aef547e58383",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ae44c8f3b-d68a-4691-b48c-aef547e58383",
+              "sourceUrl": "https://github.com/robert-schmidt/rhnode"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 136,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "snapshot.sh: hand the volume root to uid 1000 too (Nitro writes jwtsecret there)",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/robert-schmidt/rhnode/commit/1b8888cc620a027d50466c587be983ee7f1d51e8"
+                },
+                "url": "https://github.com/robert-schmidt/rhnode/commit/1b8888cc620a027d50466c587be983ee7f1d51e8"
+              },
+              {
+                "subject": {
+                  "text": "snapshot.sh: resume from the file's real size (curl --retry restarted a part from 0); HTTP/1.1, stall timeout; drop a leftover app name…",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/robert-schmidt/rhnode/commit/07097eae6547556a1b4b7af7c935d235b1ff2a52"
+                },
+                "url": "https://github.com/robert-schmidt/rhnode/commit/07097eae6547556a1b4b7af7c935d235b1ff2a52"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ship:ea6472c7-e817-451a-80d1-c3c5387842cf",
+          "revision": 32,
+          "type": "build.code_activity",
+          "domain": "build",
+          "occurredAt": "2026-11-01T09:00:58.000Z",
+          "precision": "WEEK",
+          "detectedAt": "2026-10-26T11:10:52.216Z",
+          "recordedAt": "2026-11-01T10:00:01.169Z",
+          "summary": {
+            "text": "Code changes, week starting 2026-10-26 (to 2026-11-01)",
+            "contentOrigin": "derived"
+          },
+          "status": "FACT",
+          "countsAsBuilding": true,
+          "verification": "SOURCE_LINKED",
+          "project": {
+            "slug": "sentinelhood-robinhood-sentinel",
+            "url": "https://heyresearch.xyz/project/sentinelhood-robinhood-sentinel"
+          },
+          "evidence": [
+            {
+              "id": "ship:ea6472c7-e817-451a-80d1-c3c5387842cf",
+              "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aea6472c7-e817-451a-80d1-c3c5387842cf",
+              "sourceUrl": "https://github.com/sentinelhood/robinhood-sentinel"
+            }
+          ],
+          "source": "github",
+          "code": {
+            "commits": 22,
+            "commitsAtLeast": false,
+            "highlights": [
+              {
+                "subject": {
+                  "text": "fix: retry RPC reads when the connection drops (RemoteDisconnected was not caught)",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/sentinelhood/robinhood-sentinel/commit/0bf388b860ad9c71d80712e66d84604b01de7b15"
+                },
+                "url": "https://github.com/sentinelhood/robinhood-sentinel/commit/0bf388b860ad9c71d80712e66d84604b01de7b15"
+              },
+              {
+                "subject": {
+                  "text": "fix(curve-movers): round the busiest-wallet share half up so the site never rejects the snapshot",
+                  "contentOrigin": "external_source",
+                  "source": "commit_subject",
+                  "sourceUrl": "https://github.com/sentinelhood/robinhood-sentinel/commit/094091ab9da1a49cd046d1e4748939a930f5cd43"
+                },
+                "url": "https://github.com/sentinelhood/robinhood-sentinel/commit/094091ab9da1a49cd046d1e4748939a930f5cd43"
+              }
+            ]
+          }
+        }
+      ],
+      "more": "https://heyresearch.xyz/api/agent/what_changed?days=7&building=only"
+    },
+    "weekUrl": "https://heyresearch.xyz/this-week"
+  },
+  "methodology": {
+    "rules": [
+      {
+        "id": "weekly_ships",
+        "version": "weekly-ships-v10"
+      },
+      {
+        "id": "agent_freshness",
+        "version": "agent-freshness-v2"
+      },
+      {
+        "id": "machine_text",
+        "version": "machine-text-v1"
+      }
+    ],
+    "url": "https://heyresearch.xyz/methodology"
+  },
+  "links": {
+    "self": "https://heyresearch.xyz/api/agent/chain_brief",
+    "page": "https://heyresearch.xyz/this-week",
+    "canonical": [
+      "https://heyresearch.xyz/api/this-week",
+      "https://heyresearch.xyz/api/agent/what_changed?days=7&building=only"
+    ]
+  },
+  "citation": {
+    "kind": "hey_agent_answer",
+    "capability": "chain_brief",
+    "schemaVersion": "1",
+    "url": "https://heyresearch.xyz/api/agent/chain_brief",
+    "asOf": "2026-11-01T11:11:06.673Z",
+    "text": "Source: HEY Research Lab, builder research for Robinhood Chain — https://heyresearch.xyz/this-week, as of 2026-11-01, rules weekly_ships weekly-ships-v10"
+  },
+  "boundaries": {
+    "notAdvice": true,
+    "notProvided": [
+      "investment_recommendation",
+      "buy_or_sell_signal",
+      "price_prediction",
+      "price_target",
+      "position_size",
+      "leverage",
+      "stop_loss",
+      "ranking_by_expected_return",
+      "risk_score",
+      "safety_verdict",
+      "smart_money_label",
+      "wallet_pnl",
+      "wallet_profile"
+    ],
+    "marketIsContextOnly": true,
+    "disclaimer": {
+      "text": "Public, source-backed activity HEY recorded. Still Building means counted ships during a market drawdown HEY itself tracked — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "contentOrigin": "hey"
+    }
+  },
+  "asOf": "2026-11-01T11:11:06.673Z"
+}

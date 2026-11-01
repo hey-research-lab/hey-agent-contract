@@ -28,7 +28,7 @@
     }
   },
   "answer": {
-    "text": "agentos: SHIPPING under HEY's activity rule (hbm-v26). SHIPPING by the activity rule: 25 meaningful events in the last 30 days, the newest 2026-10-09. This is a record of development, not a view on the token.",
+    "text": "agentos: SHIPPING under HEY's activity rule (hbm-v32). SHIPPING by the activity rule: 17 counted ships in the last 30 days, the newest 2026-10-30. This is a record of development, not a view on the token.",
     "contentOrigin": "derived"
   },
   "answerStatus": "DERIVED",
@@ -37,7 +37,7 @@
       "id": "status.activity",
       "dimension": "build",
       "statement": {
-        "text": "SHIPPING by the activity rule: 25 meaningful events in the last 30 days, the newest 2026-10-09.",
+        "text": "SHIPPING by the activity rule: 17 counted ships in the last 30 days, the newest 2026-10-30.",
         "contentOrigin": "derived"
       },
       "status": "DERIVED",
@@ -46,30 +46,30 @@
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-09T04:13:10.037Z",
+      "observedAt": "2026-11-01T04:37:39.355Z",
       "occurredAt": null,
       "precision": null,
-      "freshness": "live",
+      "freshness": "daily",
       "evidence": [
         {
-          "id": "ship:74c59f0e-6b30-446f-9058-757632b3c056",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A74c59f0e-6b30-446f-9058-757632b3c056"
+          "id": "ship:4cd7cdc8-49fc-4112-98fe-c9913e38e420",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4cd7cdc8-49fc-4112-98fe-c9913e38e420"
         },
         {
-          "id": "ship:31ecea7f-01b7-4d7d-ae89-a41b20dc7b92",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A31ecea7f-01b7-4d7d-ae89-a41b20dc7b92"
+          "id": "ship:0bc202cb-765d-4867-b09c-46abe9a2bb5d",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0bc202cb-765d-4867-b09c-46abe9a2bb5d"
         },
         {
-          "id": "ship:a5979090-b594-43d2-a2ba-f46870f1fe72",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa5979090-b594-43d2-a2ba-f46870f1fe72"
+          "id": "ship:22b38879-891e-4612-91ee-c784c8613e1d",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A22b38879-891e-4612-91ee-c784c8613e1d"
         },
         {
-          "id": "ship:3393733e-1008-44d8-b8f5-413dda563f46",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A3393733e-1008-44d8-b8f5-413dda563f46"
+          "id": "ship:c67b0f1c-6e1c-4bcc-bdbf-911856df3ddf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ac67b0f1c-6e1c-4bcc-bdbf-911856df3ddf"
         },
         {
-          "id": "ship:a723cd1b-e5f6-4294-a734-19b025d6a1a6",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa723cd1b-e5f6-4294-a734-19b025d6a1a6"
+          "id": "ship:1b2beea1-b685-49cc-95fb-35a3771a3aaa",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1b2beea1-b685-49cc-95fb-35a3771a3aaa"
         }
       ],
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=activity.status",
@@ -79,39 +79,39 @@
       "id": "status.build_momentum",
       "dimension": "build",
       "statement": {
-        "text": "Build Momentum 81.7 from the scorer's components under hbm-v26.",
+        "text": "Build Momentum 81.4 from the scorer's components under hbm-v32.",
         "contentOrigin": "derived"
       },
       "status": "DERIVED",
-      "value": 81.7,
+      "value": 81.4,
       "source": {
         "name": "hey",
         "type": "hey_rule"
       },
-      "observedAt": "2026-10-09T04:13:10.037Z",
+      "observedAt": "2026-11-01T04:37:39.355Z",
       "occurredAt": null,
       "precision": null,
-      "freshness": "live",
+      "freshness": "daily",
       "evidence": [
         {
-          "id": "ship:74c59f0e-6b30-446f-9058-757632b3c056",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A74c59f0e-6b30-446f-9058-757632b3c056"
+          "id": "ship:4cd7cdc8-49fc-4112-98fe-c9913e38e420",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4cd7cdc8-49fc-4112-98fe-c9913e38e420"
         },
         {
-          "id": "ship:31ecea7f-01b7-4d7d-ae89-a41b20dc7b92",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A31ecea7f-01b7-4d7d-ae89-a41b20dc7b92"
+          "id": "ship:0bc202cb-765d-4867-b09c-46abe9a2bb5d",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0bc202cb-765d-4867-b09c-46abe9a2bb5d"
         },
         {
-          "id": "ship:a5979090-b594-43d2-a2ba-f46870f1fe72",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa5979090-b594-43d2-a2ba-f46870f1fe72"
+          "id": "ship:22b38879-891e-4612-91ee-c784c8613e1d",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A22b38879-891e-4612-91ee-c784c8613e1d"
         },
         {
-          "id": "ship:3393733e-1008-44d8-b8f5-413dda563f46",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A3393733e-1008-44d8-b8f5-413dda563f46"
+          "id": "ship:c67b0f1c-6e1c-4bcc-bdbf-911856df3ddf",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ac67b0f1c-6e1c-4bcc-bdbf-911856df3ddf"
         },
         {
-          "id": "ship:a723cd1b-e5f6-4294-a734-19b025d6a1a6",
-          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa723cd1b-e5f6-4294-a734-19b025d6a1a6"
+          "id": "ship:1b2beea1-b685-49cc-95fb-35a3771a3aaa",
+          "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1b2beea1-b685-49cc-95fb-35a3771a3aaa"
         }
       ],
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=build.momentum",
@@ -121,13 +121,13 @@
       "id": "status.still_building",
       "dimension": "build",
       "statement": {
-        "text": "Not measured — market too thin: the tracked token's market is active market. Still Building's drawdown is measured only on an active market that is more than a launch curve: on a thin market a \"decline\" measures the thinness, not a market that fell while the team kept building.",
+        "text": "Not measured — market too thin: the tracked token's market reads “Launch pool only”. Still Building's drawdown is measured only on an active market that is more than a launch curve and trades at least $1,000 a day: on a thin market a \"decline\" measures the thinness, not a market that fell while the team kept building.",
         "contentOrigin": "derived"
       },
       "status": "UNKNOWN",
       "value": null,
       "source": null,
-      "observedAt": "2026-10-09T04:13:10.037Z",
+      "observedAt": "2026-11-01T11:08:41.829Z",
       "occurredAt": null,
       "precision": null,
       "freshness": "live",
@@ -141,9 +141,9 @@
   "freshness": [
     {
       "family": "activity_score",
-      "observedAt": "2026-10-09T04:13:10.037Z",
-      "dataAsOf": "2026-10-09T04:13:10.037Z",
-      "freshnessStatus": "live",
+      "observedAt": "2026-11-01T04:37:39.355Z",
+      "dataAsOf": "2026-11-01T04:37:39.355Z",
+      "freshnessStatus": "daily",
       "staleAfterHours": 24,
       "refresh": {
         "job": "RECALCULATE_SCORES",
@@ -154,12 +154,12 @@
           "contentOrigin": "hey"
         }
       },
-      "nextExpectedRefresh": "2026-10-09T16:13:10.037Z"
+      "nextExpectedRefresh": "2026-11-01T16:37:39.355Z"
     },
     {
       "family": "builder_sources",
-      "observedAt": "2026-10-09T03:49:39.662Z",
-      "dataAsOf": "2026-10-09T03:49:39.662Z",
+      "observedAt": "2026-11-01T10:27:26.178Z",
+      "dataAsOf": "2026-11-01T10:27:26.178Z",
       "freshnessStatus": "recent",
       "staleAfterHours": 72,
       "refresh": {
@@ -171,29 +171,29 @@
           "contentOrigin": "hey"
         }
       },
-      "nextExpectedRefresh": "2026-10-09T04:49:39.662Z"
+      "nextExpectedRefresh": "2026-11-01T11:27:26.178Z"
     }
   ],
   "evidence": [
     {
-      "id": "ship:74c59f0e-6b30-446f-9058-757632b3c056",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A74c59f0e-6b30-446f-9058-757632b3c056"
+      "id": "ship:4cd7cdc8-49fc-4112-98fe-c9913e38e420",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4cd7cdc8-49fc-4112-98fe-c9913e38e420"
     },
     {
-      "id": "ship:31ecea7f-01b7-4d7d-ae89-a41b20dc7b92",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A31ecea7f-01b7-4d7d-ae89-a41b20dc7b92"
+      "id": "ship:0bc202cb-765d-4867-b09c-46abe9a2bb5d",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0bc202cb-765d-4867-b09c-46abe9a2bb5d"
     },
     {
-      "id": "ship:a5979090-b594-43d2-a2ba-f46870f1fe72",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa5979090-b594-43d2-a2ba-f46870f1fe72"
+      "id": "ship:22b38879-891e-4612-91ee-c784c8613e1d",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A22b38879-891e-4612-91ee-c784c8613e1d"
     },
     {
-      "id": "ship:3393733e-1008-44d8-b8f5-413dda563f46",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A3393733e-1008-44d8-b8f5-413dda563f46"
+      "id": "ship:c67b0f1c-6e1c-4bcc-bdbf-911856df3ddf",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ac67b0f1c-6e1c-4bcc-bdbf-911856df3ddf"
     },
     {
-      "id": "ship:a723cd1b-e5f6-4294-a734-19b025d6a1a6",
-      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa723cd1b-e5f6-4294-a734-19b025d6a1a6"
+      "id": "ship:1b2beea1-b685-49cc-95fb-35a3771a3aaa",
+      "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1b2beea1-b685-49cc-95fb-35a3771a3aaa"
     }
   ],
   "data": {
@@ -205,7 +205,7 @@
     "state": "DERIVED",
     "methodology": {
       "ruleId": "activity.status",
-      "version": "hbm-v26",
+      "version": "hbm-v32",
       "rule": {
         "text": "From meaningful, corroborated building events only — never price. SHIPPING: one within 7 days. ACTIVE: one within 30 days, or 2 within 45. QUIET: the newest within 60 days. DORMANT: nothing for longer, on a source HEY can read. RESUMED: activity within 14 days after a gap of 60+ that HEY watched — every comeback ship read from a source HEY was already reading when the gap began; otherwise the newest ship's own status. UNKNOWN: HEY holds no repository, changelog or feed it can read, or the activity it reads is recorded under another page.",
         "contentOrigin": "hey"
@@ -220,19 +220,19 @@
       },
       {
         "name": "meaningfulEvents30d",
-        "value": 25,
+        "value": 17,
         "source": null,
         "observedAt": null
       },
       {
         "name": "meaningfulEvents45d",
-        "value": 36,
+        "value": 30,
         "source": null,
         "observedAt": null
       },
       {
         "name": "lastMeaningfulShipAt",
-        "value": "2026-10-09T03:43:12.000Z",
+        "value": "2026-10-30T03:25:48.000Z",
         "source": null,
         "observedAt": null
       },
@@ -250,7 +250,7 @@
       },
       {
         "name": "scorerReason",
-        "value": "Shipped today.",
+        "value": "Shipped 2 days ago.",
         "source": null,
         "observedAt": null
       }
@@ -273,45 +273,45 @@
       {
         "step": "selection",
         "text": {
-          "text": "25 meaningful events in 30 days, 5 in 7.",
+          "text": "17 counted ships in 30 days, 5 in 7.",
           "contentOrigin": "derived"
         }
       },
       {
         "step": "derivation",
         "text": {
-          "text": "The activity rule under hbm-v26 gives SHIPPING.",
+          "text": "The activity rule under hbm-v32 gives SHIPPING.",
           "contentOrigin": "derived"
         }
       },
       {
         "step": "public",
         "text": {
-          "text": "Published as SHIPPING, scored 2026-10-09T04:13:10.037Z.",
+          "text": "Published as SHIPPING, scored 2026-11-01T04:37:39.355Z.",
           "contentOrigin": "derived"
         }
       }
     ],
     "supportingEvidence": [
       {
-        "id": "ship:74c59f0e-6b30-446f-9058-757632b3c056",
-        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A74c59f0e-6b30-446f-9058-757632b3c056"
+        "id": "ship:4cd7cdc8-49fc-4112-98fe-c9913e38e420",
+        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A4cd7cdc8-49fc-4112-98fe-c9913e38e420"
       },
       {
-        "id": "ship:31ecea7f-01b7-4d7d-ae89-a41b20dc7b92",
-        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A31ecea7f-01b7-4d7d-ae89-a41b20dc7b92"
+        "id": "ship:0bc202cb-765d-4867-b09c-46abe9a2bb5d",
+        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A0bc202cb-765d-4867-b09c-46abe9a2bb5d"
       },
       {
-        "id": "ship:a5979090-b594-43d2-a2ba-f46870f1fe72",
-        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa5979090-b594-43d2-a2ba-f46870f1fe72"
+        "id": "ship:22b38879-891e-4612-91ee-c784c8613e1d",
+        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A22b38879-891e-4612-91ee-c784c8613e1d"
       },
       {
-        "id": "ship:3393733e-1008-44d8-b8f5-413dda563f46",
-        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A3393733e-1008-44d8-b8f5-413dda563f46"
+        "id": "ship:c67b0f1c-6e1c-4bcc-bdbf-911856df3ddf",
+        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Ac67b0f1c-6e1c-4bcc-bdbf-911856df3ddf"
       },
       {
-        "id": "ship:a723cd1b-e5f6-4294-a734-19b025d6a1a6",
-        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3Aa723cd1b-e5f6-4294-a734-19b025d6a1a6"
+        "id": "ship:1b2beea1-b685-49cc-95fb-35a3771a3aaa",
+        "receiptUrl": "https://heyresearch.xyz/api/evidence/ship%3A1b2beea1-b685-49cc-95fb-35a3771a3aaa"
       }
     ],
     "excludedContext": [
@@ -389,7 +389,7 @@
     "unknownInputs": [],
     "statusRestsOnCurrentEvidence": true,
     "buildMomentum": {
-      "value": 81.7,
+      "value": 81.4,
       "state": "DERIVED",
       "classification": "MEASURED",
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=build.momentum"
@@ -400,13 +400,13 @@
       "classification": "NOT_MEASURED",
       "stillBuildingState": "NOT_MEASURED",
       "meaning": {
-        "text": "Still Building: verified activity continuing through a market drawdown HEY tracked; a record of what happened, not a prediction and not a buy signal.",
+        "text": "Still Building: counted ships during a market drawdown HEY itself tracked; a record of what happened, not a prediction and not a buy signal.",
         "contentOrigin": "hey"
       },
       "explainUrl": "https://heyresearch.xyz/api/projects/agentos/explain?fact=still_building"
     },
     "reason": {
-      "text": "SHIPPING by the activity rule: 25 meaningful events in the last 30 days, the newest 2026-10-09.",
+      "text": "SHIPPING by the activity rule: 17 counted ships in the last 30 days, the newest 2026-10-30.",
       "contentOrigin": "derived"
     }
   },
@@ -414,7 +414,7 @@
     "rules": [
       {
         "id": "activity.status",
-        "version": "hbm-v26"
+        "version": "hbm-v32"
       },
       {
         "id": "agent_freshness",
@@ -441,9 +441,10 @@
     "capability": "builder_status",
     "schemaVersion": "1",
     "url": "https://heyresearch.xyz/api/agent/builder_status?project=agentos",
-    "asOf": "2026-10-09T04:13:56.458Z",
+    "asOf": "2026-11-01T11:10:59.337Z",
     "project": "agentos",
-    "scoringVersion": "hbm-v26"
+    "scoringVersion": "hbm-v32",
+    "text": "Source: HEY Research Lab, builder research for Robinhood Chain — https://heyresearch.xyz/project/agentos, as of 2026-11-01, rules hbm-v32"
   },
   "boundaries": {
     "notAdvice": true,
@@ -464,9 +465,9 @@
     ],
     "marketIsContextOnly": true,
     "disclaimer": {
-      "text": "Public, source-backed activity HEY recorded. Still Building means verified activity through a tracked market drawdown — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
+      "text": "Public, source-backed activity HEY recorded. Still Building means counted ships during a market drawdown HEY itself tracked — it is not a prediction, not a ranking by price, and not investment advice. Few projects meet Still Building or Under the Radar at any time; both are strict by design, and list responses carry the counts.",
       "contentOrigin": "hey"
     }
   },
-  "asOf": "2026-10-09T04:13:56.458Z"
+  "asOf": "2026-11-01T11:10:59.337Z"
 }

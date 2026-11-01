@@ -187,9 +187,10 @@ describe('market data never satisfies a builder-proof field', () => {
     const response = parseAgentResponse(
       live('what_changed.chain'),
     ) as AgentResponseOf<'what_changed'>;
+    // A recorded window may hold no context change (2026-11-01's held none); every one it holds is not building.
     const context = response.data?.items.filter((item) => isContextOnlyChange(item)) ?? [];
-    expect(context.length).toBeGreaterThan(0);
     for (const item of context) expect(item.countsAsBuilding).toBe(false);
+    expect(isContextOnlyChange({ domain: 'market', type: 'market.status_changed' })).toBe(true);
     expect(isContextOnlyChange({ domain: 'contract', type: 'contract.usage_changed' })).toBe(true);
     expect(isContextOnlyChange({ domain: 'build', type: 'build.release' })).toBe(false);
     const broken = parseAgentResponse(edge('invariant.context_change_counts_as_building.json'));

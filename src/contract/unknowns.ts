@@ -68,7 +68,8 @@ export const DO_NOT_CONCLUDE: Readonly<Record<AgentUnknownCategory, string>> = {
   NOT_MEASURED: 'HEY has not measured this. Do not read it as zero, as absent or as negative evidence about the project.',
   INSUFFICIENT_EVIDENCE: 'HEY has read too little of this to say. Do not treat a partial figure as the whole, or the gap as a finding.',
   STALE: 'HEY’s newest reading is older than its freshness limit. Do not treat it as current.',
-  NOT_VERIFIED: 'HEY has not verified this link. Do not treat it as the project’s own, and do not treat it as false either.',
+  // The category stays NOT_VERIFIED (machine rule 10); its sentence says "tied", never "verified" (R2, 2026-10-31 audit L7-3).
+  NOT_VERIFIED: 'HEY holds nothing yet that ties this link to the project. Do not treat it as the project’s own, and do not treat it as false either.',
   UNKNOWN: 'HEY cannot say. A missing value is not negative evidence.',
 };
 
@@ -99,7 +100,19 @@ export type AgentUnknownInput = {
   coverageState?: CoverageStateCode;
   asOf?: string;
   detailUrl?: string;
+  /**
+   * The gap's own "do not conclude" when the category's generic one would say too little (2026-10-24 full audit
+   * INV-7): a token the project's own site disowns or contradicts is not "HEY has not verified this link … do not
+   * treat it as false either" — the project said it is not its own.
+   */
+  doNotConclude?: string;
 };
+
+/** The project's own site says the token is not its own (disowned, or another contract named): one sentence each. */
+export const TOKEN_NOT_THE_PROJECTS_DO_NOT_CONCLUDE = {
+  site_names_another_contract: 'The project’s own site names another contract; do not treat this token as the project’s.',
+  site_disclaims_contract: 'The project’s own site says this is not its token; do not treat it as the project’s.',
+} as const;
 
 export function agentUnknown(input: AgentUnknownInput) {
   return {
@@ -107,7 +120,7 @@ export function agentUnknown(input: AgentUnknownInput) {
     dimension: input.dimension,
     // Canonical gap sentences are HEY's fixed words; a sentence that carries a record value is derived.
     statement: /\d|"/.test(input.statement) ? derivedText(input.statement) : heyText(input.statement),
-    doNotConclude: doNotConclude(input.category),
+    doNotConclude: input.doNotConclude ? heyText(input.doNotConclude) : doNotConclude(input.category),
     ...(input.coverageState ? { coverageState: input.coverageState } : {}),
     reason: input.reason,
     ...(input.asOf ? { asOf: input.asOf } : {}),

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { ZodEnum, ZodNullable, ZodObject, ZodOptional, ZodRawShape, ZodTypeAny } from 'zod';
+import type { ZodEnum, ZodObject, ZodRawShape, ZodType } from 'zod';
 
 import {
   AGENT_CLAIM_STATUSES,
@@ -31,27 +31,28 @@ import {
 import { variantOf } from './helpers';
 
 /** Walks into a schema through objects, optionals, nullables and arrays. */
-function at(schema: ZodTypeAny, ...path: string[]): ZodTypeAny {
+type Def = { type: string; innerType?: ZodType; element?: ZodType };
+const defOf = (node: ZodType): Def => node.def as unknown as Def;
+
+/** Steps through optionals and nullables (and, with `arrays`, arrays) to the schema inside. */
+function unwrap(schema: ZodType, arrays: boolean): ZodType {
+  let node = schema;
+  for (;;) {
+    const def = defOf(node);
+    if ((def.type === 'optional' || def.type === 'nullable') && def.innerType) node = def.innerType;
+    else if (arrays && def.type === 'array' && def.element) node = def.element;
+    else return node;
+  }
+}
+function at(schema: ZodType, ...path: string[]): ZodType {
   let node = schema;
   for (const key of path) {
-    for (;;) {
-      const def = node._def as { typeName: string; innerType?: ZodTypeAny; type?: ZodTypeAny };
-      if ((def.typeName === 'ZodOptional' || def.typeName === 'ZodNullable') && def.innerType)
-        node = def.innerType;
-      else if (def.typeName === 'ZodArray' && def.type) node = def.type;
-      else break;
-    }
-    node = (node as ZodObject<ZodRawShape>).shape[key]!;
+    node = (unwrap(node, true) as ZodObject<ZodRawShape>).shape[key] as ZodType;
   }
   return node;
 }
-const options = (schema: ZodTypeAny): readonly string[] => {
-  let node = schema;
-  while (node._def.typeName === 'ZodOptional' || node._def.typeName === 'ZodNullable') {
-    node = (node as ZodOptional<ZodTypeAny> | ZodNullable<ZodTypeAny>).unwrap();
-  }
-  return (node as ZodEnum<[string, ...string[]]>).options;
-};
+const options = (schema: ZodType): readonly string[] =>
+  (unwrap(schema, false) as ZodEnum<Record<string, string>>).options;
 
 describe('the vocabulary arrays equal the schema’s own enums', () => {
   it('envelope', () => {

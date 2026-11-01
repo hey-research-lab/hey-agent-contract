@@ -17,7 +17,7 @@ import { edgeIndex, live, liveFiles, liveIndex, readJson, readText } from './hel
 describe('recorded live answers (GET /api/agent/{capability})', () => {
   const answers = liveIndex().filter((entry) => entry.name !== 'refusal.unknown_capability');
 
-  it('records one answer for each of the six capabilities', () => {
+  it('records one answer for each of the seven capabilities', () => {
     const capabilities = new Set(answers.map((entry) => live(entry.name).capability));
     expect([...capabilities].sort()).toEqual([...AGENT_CAPABILITIES].sort());
   });

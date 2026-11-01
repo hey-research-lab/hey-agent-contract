@@ -1,0 +1,11 @@
+# Two lines of byte-for-byte copies of HEY's public mirror (PARITY.json), which this repository may
+# not edit. Each entry names one file and line, so any other hit in the same file still fails.
+# words.ts line 90 names HEY's domain package in a comment (a package name, no code from it).
+private: src/contract/words.ts:90 (
+# verification-words.ts line 46 cites HEY's own agent-instructions file by name ("<NAME>.md
+# product rule 10"), not an authorship credit.
+attribution: src/vendor/scoring/verification-words.ts:46 (
+# The same words.ts comment as it lands in the built type declarations (dist/ is not committed;
+# CI scans before it builds). Rebuilt from other sources, the line moves and the scan fails closed.
+private: dist/index.d.ts:5403 (
+private: dist/index.d.cts:5403 (

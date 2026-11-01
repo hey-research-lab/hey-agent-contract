@@ -6,11 +6,11 @@
   "x-hey-contract": {
     "schema": "hey.agent-intelligence-response",
     "schemaVersion": "1",
-    "productionCommit": "23d0813d81edb1cba0f489977df44fb9a96274c8",
-    "productionAsOf": "2026-10-09",
-    "generatedFrom": "@hey-research-lab/agent-contract (Zod), by zod-to-json-schema"
+    "productionCommit": "90823dc5fd50b4c31d55ce5d4e29b0939b9451c3",
+    "productionAsOf": "2026-11-01",
+    "generatedFrom": "@hey-research-lab/agent-contract (Zod), by z.toJSONSchema (zod 4)"
   },
-  "anyOf": [
+  "oneOf": [
     {
       "type": "object",
       "properties": {
@@ -36,40 +36,59 @@
           "type": "object",
           "properties": {
             "chainId": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
             },
             "project": {
               "type": "string",
               "maxLength": 120
             },
             "projects": {
+              "maxItems": 8,
               "type": "array",
               "items": {
                 "type": "string",
                 "maxLength": 120
-              },
-              "maxItems": 8
+              }
             },
             "address": {
               "type": "string",
               "maxLength": 60
             },
+            "q": {
+              "type": "string",
+              "maxLength": 64
+            },
             "days": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
             },
             "types": {
+              "maxItems": 40,
               "type": "array",
               "items": {
-                "$ref": "#/definitions/AgentText/properties/source"
-              },
-              "maxItems": 40
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
             },
             "limit": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
             },
             "building": {
               "type": "string",
               "const": "only"
+            },
+            "ignoredParameters": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 40
+              }
             }
           },
           "required": [
@@ -81,7 +100,9 @@
           "type": "object",
           "properties": {
             "chainId": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
             },
             "name": {
               "type": "string",
@@ -112,19 +133,23 @@
                   "type": "object",
                   "properties": {
                     "slug": {
-                      "$ref": "#/definitions/AgentChange/properties/project/properties/slug"
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
                     },
                     "name": {
                       "$ref": "#/definitions/AgentText"
                     },
                     "url": {
-                      "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
                     },
                     "token": {
                       "type": "object",
                       "properties": {
                         "chainId": {
-                          "type": "integer"
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
                         },
                         "address": {
                           "type": "string",
@@ -146,26 +171,85 @@
                   "additionalProperties": false
                 },
                 "projects": {
+                  "maxItems": 4,
                   "type": "array",
                   "items": {
-                    "$ref": "#/anyOf/0/properties/subject/anyOf/0/properties/project"
-                  },
-                  "maxItems": 4
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                      },
+                      "name": {
+                        "$ref": "#/definitions/AgentText"
+                      },
+                      "url": {
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
+                      },
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "chainId": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "address": {
+                            "type": "string",
+                            "pattern": "^0x[0-9a-f]{40}$"
+                          }
+                        },
+                        "required": [
+                          "chainId",
+                          "address"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "name",
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  }
                 },
                 "contract": {
                   "type": "object",
                   "properties": {
                     "chainId": {
-                      "type": "integer"
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
                     },
                     "address": {
-                      "$ref": "#/anyOf/0/properties/subject/anyOf/0/properties/project/properties/token/properties/address"
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
                     }
                   },
                   "required": [
                     "chainId",
                     "address"
                   ],
+                  "additionalProperties": false
+                },
+                "resolvedFrom": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 120
+                    }
+                  },
                   "additionalProperties": false
                 }
               },
@@ -183,49 +267,57 @@
           "$ref": "#/definitions/AgentText"
         },
         "answerStatus": {
-          "$ref": "#/definitions/AgentClaim/properties/status"
+          "type": "string",
+          "enum": [
+            "FACT",
+            "DERIVED",
+            "UNKNOWN"
+          ]
         },
         "claims": {
+          "maxItems": 60,
           "type": "array",
           "items": {
             "$ref": "#/definitions/AgentClaim"
-          },
-          "maxItems": 60
+          }
         },
         "unknowns": {
+          "maxItems": 40,
           "type": "array",
           "items": {
             "$ref": "#/definitions/AgentUnknown"
-          },
-          "maxItems": 40
+          }
         },
         "freshness": {
+          "maxItems": 12,
           "type": "array",
           "items": {
             "$ref": "#/definitions/AgentFreshness"
-          },
-          "maxItems": 12
+          }
         },
         "evidence": {
+          "maxItems": 100,
           "type": "array",
           "items": {
             "$ref": "#/definitions/AgentEvidenceRef"
-          },
-          "maxItems": 100
+          }
         },
         "methodology": {
           "type": "object",
           "properties": {
             "rules": {
+              "maxItems": 12,
               "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
                   "id": {
-                    "$ref": "#/definitions/AgentText/properties/source"
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                   },
                   "version": {
-                    "$ref": "#/definitions/AgentText/properties/source"
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                   }
                 },
                 "required": [
@@ -233,11 +325,11 @@
                   "version"
                 ],
                 "additionalProperties": false
-              },
-              "maxItems": 12
+              }
             },
             "url": {
-              "$ref": "#/definitions/AgentText/properties/sourceUrl"
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
             }
           },
           "required": [
@@ -250,17 +342,24 @@
           "type": "object",
           "properties": {
             "self": {
-              "$ref": "#/definitions/AgentText/properties/sourceUrl"
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
             },
             "page": {
-              "$ref": "#/definitions/AgentText/properties/sourceUrl"
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "pageAttributed": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
             },
             "canonical": {
+              "maxItems": 12,
               "type": "array",
               "items": {
-                "$ref": "#/definitions/AgentText/properties/sourceUrl"
-              },
-              "maxItems": 12
+                "type": "string",
+                "pattern": "^https?:\\/\\/\\S{1,600}$"
+              }
             }
           },
           "required": [
@@ -286,7 +385,8 @@
                     "builder_status",
                     "verify_project",
                     "compare_builders",
-                    "unknowns"
+                    "unknowns",
+                    "chain_brief"
                   ]
                 },
                 "schemaVersion": {
@@ -294,16 +394,24 @@
                   "const": "1"
                 },
                 "url": {
-                  "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
                 },
                 "asOf": {
-                  "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                 },
                 "project": {
-                  "$ref": "#/definitions/AgentChange/properties/project/properties/slug"
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
                 },
                 "scoringVersion": {
-                  "$ref": "#/definitions/AgentText/properties/source"
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 400
                 }
               },
               "required": [
@@ -311,7 +419,8 @@
                 "capability",
                 "schemaVersion",
                 "url",
-                "asOf"
+                "asOf",
+                "text"
               ],
               "additionalProperties": false
             },
@@ -328,11 +437,12 @@
               "const": true
             },
             "notProvided": {
+              "maxItems": 20,
               "type": "array",
               "items": {
-                "$ref": "#/definitions/AgentText/properties/source"
-              },
-              "maxItems": 20
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
             },
             "marketIsContextOnly": {
               "type": "boolean",
@@ -354,13 +464,93 @@
           "type": "object",
           "properties": {
             "code": {
-              "$ref": "#/definitions/AgentText/properties/source"
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
             },
             "message": {
               "$ref": "#/definitions/AgentText"
             },
             "movedTo": {
-              "$ref": "#/definitions/AgentChange/properties/project/properties/slug"
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+            },
+            "candidates": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                  },
+                  "name": {
+                    "$ref": "#/definitions/AgentText"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/\\S{1,600}$"
+                  },
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "chainId": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      },
+                      "address": {
+                        "type": "string",
+                        "pattern": "^0x[0-9a-f]{40}$"
+                      }
+                    },
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "symbol": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/AgentText"
+                      }
+                    ]
+                  },
+                  "activityStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "catalogStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "candidatesTotal": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "atLeast": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "count",
+                "atLeast"
+              ],
+              "additionalProperties": false
             }
           },
           "required": [
@@ -370,14 +560,15 @@
           "additionalProperties": false
         },
         "disclosures": {
+          "maxItems": 4,
           "type": "array",
           "items": {
             "$ref": "#/definitions/AgentDisclosure"
-          },
-          "maxItems": 4
+          }
         },
         "asOf": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "capability": {
           "type": "string",
@@ -392,7 +583,8 @@
                   "type": "object",
                   "properties": {
                     "slug": {
-                      "$ref": "#/definitions/AgentChange/properties/project/properties/slug"
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
                     },
                     "name": {
                       "$ref": "#/definitions/AgentText"
@@ -408,13 +600,16 @@
                       ]
                     },
                     "projectKind": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "researchLevel": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "catalogStatus": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "narrative": {
                       "anyOf": [
@@ -422,7 +617,8 @@
                           "type": "object",
                           "properties": {
                             "slug": {
-                              "$ref": "#/definitions/AgentText/properties/source"
+                              "type": "string",
+                              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                             },
                             "name": {
                               "$ref": "#/definitions/AgentText"
@@ -440,12 +636,14 @@
                       ]
                     },
                     "firstRecordedByHeyAt": {
-                      "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                     },
                     "websiteUrl": {
                       "anyOf": [
                         {
-                          "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                          "type": "string",
+                          "pattern": "^https?:\\/\\/\\S{1,600}$"
                         },
                         {
                           "type": "null"
@@ -453,7 +651,8 @@
                       ]
                     },
                     "url": {
-                      "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
                     }
                   },
                   "required": [
@@ -474,7 +673,8 @@
                   "type": "object",
                   "properties": {
                     "activityStatus": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "activityMeasured": {
                       "type": [
@@ -485,7 +685,8 @@
                     "lastMeaningfulShipAt": {
                       "anyOf": [
                         {
-                          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                         },
                         {
                           "type": "null"
@@ -496,7 +697,8 @@
                       "anyOf": [
                         {
                           "type": "integer",
-                          "minimum": 0
+                          "minimum": 0,
+                          "maximum": 9007199254740991
                         },
                         {
                           "type": "null"
@@ -510,13 +712,15 @@
                       ]
                     },
                     "buildMomentumReason": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "stillBuilding": {
                       "type": "boolean"
                     },
                     "stillBuildingWithheld": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "stillBuildingState": {
                       "type": "string",
@@ -526,10 +730,42 @@
                         "NOT_MEASURED"
                       ]
                     },
+                    "underTheRadar": {
+                      "type": "object",
+                      "properties": {
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "HELD",
+                            "NOT_HELD",
+                            "NOT_MEASURED"
+                          ]
+                        },
+                        "reason": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                        }
+                      },
+                      "required": [
+                        "state"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "discoveryGap": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "discoveryGapWithheld": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                    },
                     "scoringVersion": {
                       "anyOf": [
                         {
-                          "$ref": "#/definitions/AgentText/properties/source"
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                         },
                         {
                           "type": "null"
@@ -537,7 +773,8 @@
                       ]
                     },
                     "explainUrl": {
-                      "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
                     }
                   },
                   "required": [
@@ -577,17 +814,19 @@
                       "type": "boolean"
                     },
                     "reason": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "items": {
+                      "maxItems": 50,
                       "type": "array",
                       "items": {
                         "$ref": "#/definitions/AgentChange"
-                      },
-                      "maxItems": 50
+                      }
                     },
                     "url": {
-                      "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
                     }
                   },
                   "required": [
@@ -606,15 +845,19 @@
                           "type": "object",
                           "properties": {
                             "chainId": {
-                              "type": "integer"
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
                             },
                             "address": {
-                              "$ref": "#/anyOf/0/properties/subject/anyOf/0/properties/project/properties/token/properties/address"
+                              "type": "string",
+                              "pattern": "^0x[0-9a-f]{40}$"
                             },
                             "verification": {
                               "anyOf": [
                                 {
-                                  "$ref": "#/definitions/AgentText/properties/source"
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                                 },
                                 {
                                   "type": "null"
@@ -624,12 +867,17 @@
                             "verificationReason": {
                               "anyOf": [
                                 {
-                                  "$ref": "#/definitions/AgentText/properties/source"
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                                 },
                                 {
                                   "type": "null"
                                 }
                               ]
+                            },
+                            "tickerContested": {
+                              "type": "boolean",
+                              "const": true
                             }
                           },
                           "required": [
@@ -649,7 +897,8 @@
                       "type": "boolean"
                     },
                     "contractsUrl": {
-                      "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
                     }
                   },
                   "required": [
@@ -691,7 +940,8 @@
                                 "observedAt": {
                                   "anyOf": [
                                     {
-                                      "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                                      "type": "string",
+                                      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                                     },
                                     {
                                       "type": "null"
@@ -715,7 +965,8 @@
                         "valuationWithheld": {
                           "anyOf": [
                             {
-                              "$ref": "#/definitions/AgentText/properties/source"
+                              "type": "string",
+                              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                             },
                             {
                               "type": "null"
@@ -729,7 +980,8 @@
                           ]
                         },
                         "liquidityKind": {
-                          "$ref": "#/definitions/AgentText/properties/source"
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                         },
                         "volume24hUsd": {
                           "type": [
@@ -740,15 +992,21 @@
                         "tokenMarketStatus": {
                           "anyOf": [
                             {
-                              "$ref": "#/definitions/AgentText/properties/source"
+                              "type": "string",
+                              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                             },
                             {
                               "type": "null"
                             }
                           ]
                         },
+                        "tokenMarketLabel": {
+                          "type": "string",
+                          "maxLength": 80
+                        },
                         "url": {
-                          "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                          "type": "string",
+                          "pattern": "^https?:\\/\\/\\S{1,600}$"
                         }
                       },
                       "required": [
@@ -777,15 +1035,19 @@
                           "const": true
                         },
                         "state": {
-                          "$ref": "#/definitions/AgentText/properties/source"
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                         },
                         "reason": {
-                          "$ref": "#/definitions/AgentText/properties/source"
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                         },
                         "windowDays": {
                           "anyOf": [
                             {
-                              "type": "integer"
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
                             },
                             {
                               "type": "null"
@@ -796,7 +1058,8 @@
                           "anyOf": [
                             {
                               "type": "integer",
-                              "minimum": 0
+                              "minimum": 0,
+                              "maximum": 9007199254740991
                             },
                             {
                               "type": "null"
@@ -807,7 +1070,8 @@
                           "anyOf": [
                             {
                               "type": "integer",
-                              "minimum": 0
+                              "minimum": 0,
+                              "maximum": 9007199254740991
                             },
                             {
                               "type": "null"
@@ -816,12 +1080,14 @@
                         },
                         "watchedContracts": {
                           "type": "integer",
-                          "minimum": 0
+                          "minimum": 0,
+                          "maximum": 9007199254740991
                         },
                         "observedAt": {
                           "anyOf": [
                             {
-                              "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                              "type": "string",
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                             },
                             {
                               "type": "null"
@@ -829,7 +1095,8 @@
                           ]
                         },
                         "url": {
-                          "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                          "type": "string",
+                          "pattern": "^https?:\\/\\/\\S{1,600}$"
                         }
                       },
                       "required": [
@@ -895,61 +1162,560 @@
       "type": "object",
       "properties": {
         "schema": {
-          "$ref": "#/anyOf/0/properties/schema"
+          "type": "string",
+          "const": "hey.agent-intelligence-response"
         },
         "schemaVersion": {
-          "$ref": "#/anyOf/0/properties/schemaVersion"
+          "type": "string",
+          "const": "1"
         },
         "status": {
-          "$ref": "#/anyOf/0/properties/status"
+          "type": "string",
+          "enum": [
+            "ok",
+            "not_found",
+            "moved",
+            "invalid_request",
+            "unavailable"
+          ]
         },
         "query": {
-          "$ref": "#/anyOf/0/properties/query"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "project": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "projects": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "address": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "q": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "days": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "types": {
+              "maxItems": 40,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "building": {
+              "type": "string",
+              "const": "only"
+            },
+            "ignoredParameters": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 40
+              }
+            }
+          },
+          "required": [
+            "chainId"
+          ],
+          "additionalProperties": false
         },
         "chain": {
-          "$ref": "#/anyOf/0/properties/chain"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 60
+            }
+          },
+          "required": [
+            "chainId",
+            "name"
+          ],
+          "additionalProperties": false
         },
         "subject": {
-          "$ref": "#/anyOf/0/properties/subject"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "project",
+                    "contract",
+                    "projects",
+                    "chain"
+                  ]
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                    },
+                    "name": {
+                      "$ref": "#/definitions/AgentText"
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
+                    },
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "chainId": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "address": {
+                          "type": "string",
+                          "pattern": "^0x[0-9a-f]{40}$"
+                        }
+                      },
+                      "required": [
+                        "chainId",
+                        "address"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "name",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                },
+                "projects": {
+                  "maxItems": 4,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                      },
+                      "name": {
+                        "$ref": "#/definitions/AgentText"
+                      },
+                      "url": {
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
+                      },
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "chainId": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "address": {
+                            "type": "string",
+                            "pattern": "^0x[0-9a-f]{40}$"
+                          }
+                        },
+                        "required": [
+                          "chainId",
+                          "address"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "name",
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "contract": {
+                  "type": "object",
+                  "properties": {
+                    "chainId": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    }
+                  },
+                  "required": [
+                    "chainId",
+                    "address"
+                  ],
+                  "additionalProperties": false
+                },
+                "resolvedFrom": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 120
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "answer": {
           "$ref": "#/definitions/AgentText"
         },
         "answerStatus": {
-          "$ref": "#/definitions/AgentClaim/properties/status"
+          "type": "string",
+          "enum": [
+            "FACT",
+            "DERIVED",
+            "UNKNOWN"
+          ]
         },
         "claims": {
-          "$ref": "#/anyOf/0/properties/claims"
+          "maxItems": 60,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentClaim"
+          }
         },
         "unknowns": {
-          "$ref": "#/anyOf/0/properties/unknowns"
+          "maxItems": 40,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentUnknown"
+          }
         },
         "freshness": {
-          "$ref": "#/anyOf/0/properties/freshness"
+          "maxItems": 12,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentFreshness"
+          }
         },
         "evidence": {
-          "$ref": "#/anyOf/0/properties/evidence"
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentEvidenceRef"
+          }
         },
         "methodology": {
-          "$ref": "#/anyOf/0/properties/methodology"
+          "type": "object",
+          "properties": {
+            "rules": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            }
+          },
+          "required": [
+            "rules",
+            "url"
+          ],
+          "additionalProperties": false
         },
         "links": {
-          "$ref": "#/anyOf/0/properties/links"
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "page": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "pageAttributed": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "canonical": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^https?:\\/\\/\\S{1,600}$"
+              }
+            }
+          },
+          "required": [
+            "self",
+            "canonical"
+          ],
+          "additionalProperties": false
         },
         "citation": {
-          "$ref": "#/anyOf/0/properties/citation"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "hey_agent_answer"
+                },
+                "capability": {
+                  "type": "string",
+                  "enum": [
+                    "research_project",
+                    "what_changed",
+                    "builder_status",
+                    "verify_project",
+                    "compare_builders",
+                    "unknowns",
+                    "chain_brief"
+                  ]
+                },
+                "schemaVersion": {
+                  "type": "string",
+                  "const": "1"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
+                },
+                "asOf": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+                },
+                "project": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                },
+                "scoringVersion": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 400
+                }
+              },
+              "required": [
+                "kind",
+                "capability",
+                "schemaVersion",
+                "url",
+                "asOf",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "boundaries": {
-          "$ref": "#/anyOf/0/properties/boundaries"
+          "type": "object",
+          "properties": {
+            "notAdvice": {
+              "type": "boolean",
+              "const": true
+            },
+            "notProvided": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "marketIsContextOnly": {
+              "type": "boolean",
+              "const": true
+            },
+            "disclaimer": {
+              "$ref": "#/definitions/AgentText"
+            }
+          },
+          "required": [
+            "notAdvice",
+            "notProvided",
+            "marketIsContextOnly",
+            "disclaimer"
+          ],
+          "additionalProperties": false
         },
         "error": {
-          "$ref": "#/anyOf/0/properties/error"
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+            },
+            "message": {
+              "$ref": "#/definitions/AgentText"
+            },
+            "movedTo": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+            },
+            "candidates": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                  },
+                  "name": {
+                    "$ref": "#/definitions/AgentText"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/\\S{1,600}$"
+                  },
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "chainId": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      },
+                      "address": {
+                        "type": "string",
+                        "pattern": "^0x[0-9a-f]{40}$"
+                      }
+                    },
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "symbol": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/AgentText"
+                      }
+                    ]
+                  },
+                  "activityStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "catalogStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "candidatesTotal": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "atLeast": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "count",
+                "atLeast"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
         },
         "disclosures": {
-          "$ref": "#/anyOf/0/properties/disclosures"
+          "maxItems": 4,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentDisclosure"
+          }
         },
         "asOf": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "capability": {
           "type": "string",
@@ -976,10 +1742,12 @@
                       "maximum": 30
                     },
                     "from": {
-                      "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                     },
                     "to": {
-                      "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                     },
                     "basis": {
                       "type": "string",
@@ -997,11 +1765,12 @@
                 "types": {
                   "anyOf": [
                     {
+                      "maxItems": 40,
                       "type": "array",
                       "items": {
-                        "$ref": "#/definitions/AgentText/properties/source"
-                      },
-                      "maxItems": 40
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                      }
                     },
                     {
                       "type": "null"
@@ -1010,23 +1779,28 @@
                 },
                 "total": {
                   "type": "integer",
-                  "minimum": 0
+                  "minimum": 0,
+                  "maximum": 9007199254740991
                 },
                 "countsAsBuilding": {
                   "type": "integer",
-                  "minimum": 0
+                  "minimum": 0,
+                  "maximum": 9007199254740991
                 },
                 "byType": {
+                  "maxItems": 40,
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
                       "type": {
-                        "$ref": "#/definitions/AgentText/properties/source"
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                       },
                       "count": {
                         "type": "integer",
-                        "minimum": 0
+                        "minimum": 0,
+                        "maximum": 9007199254740991
                       }
                     },
                     "required": [
@@ -1034,19 +1808,19 @@
                       "count"
                     ],
                     "additionalProperties": false
-                  },
-                  "maxItems": 40
+                  }
                 },
                 "shown": {
                   "type": "integer",
-                  "minimum": 0
+                  "minimum": 0,
+                  "maximum": 9007199254740991
                 },
                 "items": {
+                  "maxItems": 50,
                   "type": "array",
                   "items": {
                     "$ref": "#/definitions/AgentChange"
-                  },
-                  "maxItems": 50
+                  }
                 },
                 "ledger": {
                   "type": "object",
@@ -1054,7 +1828,8 @@
                     "projectorRanAt": {
                       "anyOf": [
                         {
-                          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                         },
                         {
                           "type": "null"
@@ -1064,7 +1839,8 @@
                     "newestRecordedAt": {
                       "anyOf": [
                         {
-                          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                         },
                         {
                           "type": "null"
@@ -1074,7 +1850,8 @@
                     "collectionStart": {
                       "anyOf": [
                         {
-                          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                         },
                         {
                           "type": "null"
@@ -1084,7 +1861,8 @@
                     "transitionsFrom": {
                       "anyOf": [
                         {
-                          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                         },
                         {
                           "type": "null"
@@ -1100,7 +1878,26 @@
                   "additionalProperties": false
                 },
                 "more": {
-                  "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
+                },
+                "resume": {
+                  "type": "object",
+                  "properties": {
+                    "cursor": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
+                    }
+                  },
+                  "required": [
+                    "cursor",
+                    "url"
+                  ],
+                  "additionalProperties": false
                 }
               },
               "required": [
@@ -1149,61 +1946,560 @@
       "type": "object",
       "properties": {
         "schema": {
-          "$ref": "#/anyOf/0/properties/schema"
+          "type": "string",
+          "const": "hey.agent-intelligence-response"
         },
         "schemaVersion": {
-          "$ref": "#/anyOf/0/properties/schemaVersion"
+          "type": "string",
+          "const": "1"
         },
         "status": {
-          "$ref": "#/anyOf/0/properties/status"
+          "type": "string",
+          "enum": [
+            "ok",
+            "not_found",
+            "moved",
+            "invalid_request",
+            "unavailable"
+          ]
         },
         "query": {
-          "$ref": "#/anyOf/0/properties/query"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "project": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "projects": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "address": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "q": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "days": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "types": {
+              "maxItems": 40,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "building": {
+              "type": "string",
+              "const": "only"
+            },
+            "ignoredParameters": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 40
+              }
+            }
+          },
+          "required": [
+            "chainId"
+          ],
+          "additionalProperties": false
         },
         "chain": {
-          "$ref": "#/anyOf/0/properties/chain"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 60
+            }
+          },
+          "required": [
+            "chainId",
+            "name"
+          ],
+          "additionalProperties": false
         },
         "subject": {
-          "$ref": "#/anyOf/0/properties/subject"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "project",
+                    "contract",
+                    "projects",
+                    "chain"
+                  ]
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                    },
+                    "name": {
+                      "$ref": "#/definitions/AgentText"
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
+                    },
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "chainId": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "address": {
+                          "type": "string",
+                          "pattern": "^0x[0-9a-f]{40}$"
+                        }
+                      },
+                      "required": [
+                        "chainId",
+                        "address"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "name",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                },
+                "projects": {
+                  "maxItems": 4,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                      },
+                      "name": {
+                        "$ref": "#/definitions/AgentText"
+                      },
+                      "url": {
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
+                      },
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "chainId": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "address": {
+                            "type": "string",
+                            "pattern": "^0x[0-9a-f]{40}$"
+                          }
+                        },
+                        "required": [
+                          "chainId",
+                          "address"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "name",
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "contract": {
+                  "type": "object",
+                  "properties": {
+                    "chainId": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    }
+                  },
+                  "required": [
+                    "chainId",
+                    "address"
+                  ],
+                  "additionalProperties": false
+                },
+                "resolvedFrom": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 120
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "answer": {
           "$ref": "#/definitions/AgentText"
         },
         "answerStatus": {
-          "$ref": "#/definitions/AgentClaim/properties/status"
+          "type": "string",
+          "enum": [
+            "FACT",
+            "DERIVED",
+            "UNKNOWN"
+          ]
         },
         "claims": {
-          "$ref": "#/anyOf/0/properties/claims"
+          "maxItems": 60,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentClaim"
+          }
         },
         "unknowns": {
-          "$ref": "#/anyOf/0/properties/unknowns"
+          "maxItems": 40,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentUnknown"
+          }
         },
         "freshness": {
-          "$ref": "#/anyOf/0/properties/freshness"
+          "maxItems": 12,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentFreshness"
+          }
         },
         "evidence": {
-          "$ref": "#/anyOf/0/properties/evidence"
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentEvidenceRef"
+          }
         },
         "methodology": {
-          "$ref": "#/anyOf/0/properties/methodology"
+          "type": "object",
+          "properties": {
+            "rules": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            }
+          },
+          "required": [
+            "rules",
+            "url"
+          ],
+          "additionalProperties": false
         },
         "links": {
-          "$ref": "#/anyOf/0/properties/links"
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "page": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "pageAttributed": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "canonical": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^https?:\\/\\/\\S{1,600}$"
+              }
+            }
+          },
+          "required": [
+            "self",
+            "canonical"
+          ],
+          "additionalProperties": false
         },
         "citation": {
-          "$ref": "#/anyOf/0/properties/citation"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "hey_agent_answer"
+                },
+                "capability": {
+                  "type": "string",
+                  "enum": [
+                    "research_project",
+                    "what_changed",
+                    "builder_status",
+                    "verify_project",
+                    "compare_builders",
+                    "unknowns",
+                    "chain_brief"
+                  ]
+                },
+                "schemaVersion": {
+                  "type": "string",
+                  "const": "1"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
+                },
+                "asOf": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+                },
+                "project": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                },
+                "scoringVersion": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 400
+                }
+              },
+              "required": [
+                "kind",
+                "capability",
+                "schemaVersion",
+                "url",
+                "asOf",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "boundaries": {
-          "$ref": "#/anyOf/0/properties/boundaries"
+          "type": "object",
+          "properties": {
+            "notAdvice": {
+              "type": "boolean",
+              "const": true
+            },
+            "notProvided": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "marketIsContextOnly": {
+              "type": "boolean",
+              "const": true
+            },
+            "disclaimer": {
+              "$ref": "#/definitions/AgentText"
+            }
+          },
+          "required": [
+            "notAdvice",
+            "notProvided",
+            "marketIsContextOnly",
+            "disclaimer"
+          ],
+          "additionalProperties": false
         },
         "error": {
-          "$ref": "#/anyOf/0/properties/error"
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+            },
+            "message": {
+              "$ref": "#/definitions/AgentText"
+            },
+            "movedTo": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+            },
+            "candidates": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                  },
+                  "name": {
+                    "$ref": "#/definitions/AgentText"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/\\S{1,600}$"
+                  },
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "chainId": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      },
+                      "address": {
+                        "type": "string",
+                        "pattern": "^0x[0-9a-f]{40}$"
+                      }
+                    },
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "symbol": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/AgentText"
+                      }
+                    ]
+                  },
+                  "activityStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "catalogStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "candidatesTotal": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "atLeast": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "count",
+                "atLeast"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
         },
         "disclosures": {
-          "$ref": "#/anyOf/0/properties/disclosures"
+          "maxItems": 4,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentDisclosure"
+          }
         },
         "asOf": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "capability": {
           "type": "string",
@@ -1215,22 +2511,30 @@
               "type": "object",
               "properties": {
                 "status": {
-                  "$ref": "#/definitions/AgentText/properties/source"
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                 },
                 "statusMeaning": {
                   "$ref": "#/definitions/AgentText"
                 },
                 "state": {
-                  "$ref": "#/definitions/AgentClaim/properties/status"
+                  "type": "string",
+                  "enum": [
+                    "FACT",
+                    "DERIVED",
+                    "UNKNOWN"
+                  ]
                 },
                 "methodology": {
                   "type": "object",
                   "properties": {
                     "ruleId": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "version": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "rule": {
                       "$ref": "#/definitions/AgentText"
@@ -1244,12 +2548,14 @@
                   "additionalProperties": false
                 },
                 "inputs": {
+                  "maxItems": 24,
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
                       "name": {
-                        "$ref": "#/definitions/AgentText/properties/source"
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                       },
                       "value": {
                         "anyOf": [
@@ -1267,6 +2573,7 @@
                             "type": "null"
                           },
                           {
+                            "maxItems": 50,
                             "type": "array",
                             "items": {
                               "anyOf": [
@@ -1278,8 +2585,7 @@
                                   "type": "number"
                                 }
                               ]
-                            },
-                            "maxItems": 50
+                            }
                           }
                         ]
                       },
@@ -1297,7 +2603,8 @@
                       "observedAt": {
                         "anyOf": [
                           {
-                            "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                           },
                           {
                             "type": "null"
@@ -1312,10 +2619,10 @@
                       "observedAt"
                     ],
                     "additionalProperties": false
-                  },
-                  "maxItems": 24
+                  }
                 },
                 "lineage": {
+                  "maxItems": 8,
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -1339,23 +2646,24 @@
                       "text"
                     ],
                     "additionalProperties": false
-                  },
-                  "maxItems": 8
+                  }
                 },
                 "supportingEvidence": {
+                  "maxItems": 100,
                   "type": "array",
                   "items": {
                     "$ref": "#/definitions/AgentEvidenceRef"
-                  },
-                  "maxItems": 100
+                  }
                 },
                 "excludedContext": {
+                  "maxItems": 12,
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
                       "item": {
-                        "$ref": "#/definitions/AgentText/properties/source"
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                       },
                       "statement": {
                         "$ref": "#/definitions/AgentText"
@@ -1366,15 +2674,15 @@
                       "statement"
                     ],
                     "additionalProperties": false
-                  },
-                  "maxItems": 12
+                  }
                 },
                 "unknownInputs": {
+                  "maxItems": 20,
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/AgentText/properties/source"
-                  },
-                  "maxItems": 20
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
                 },
                 "statusRestsOnCurrentEvidence": {
                   "type": [
@@ -1392,13 +2700,20 @@
                       ]
                     },
                     "state": {
-                      "$ref": "#/definitions/AgentClaim/properties/status"
+                      "type": "string",
+                      "enum": [
+                        "FACT",
+                        "DERIVED",
+                        "UNKNOWN"
+                      ]
                     },
                     "classification": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "explainUrl": {
-                      "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
                     }
                   },
                   "required": [
@@ -1419,10 +2734,16 @@
                       ]
                     },
                     "state": {
-                      "$ref": "#/definitions/AgentClaim/properties/status"
+                      "type": "string",
+                      "enum": [
+                        "FACT",
+                        "DERIVED",
+                        "UNKNOWN"
+                      ]
                     },
                     "classification": {
-                      "$ref": "#/definitions/AgentText/properties/source"
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                     },
                     "stillBuildingState": {
                       "type": "string",
@@ -1436,7 +2757,8 @@
                       "$ref": "#/definitions/AgentText"
                     },
                     "explainUrl": {
-                      "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
                     }
                   },
                   "required": [
@@ -1502,61 +2824,560 @@
       "type": "object",
       "properties": {
         "schema": {
-          "$ref": "#/anyOf/0/properties/schema"
+          "type": "string",
+          "const": "hey.agent-intelligence-response"
         },
         "schemaVersion": {
-          "$ref": "#/anyOf/0/properties/schemaVersion"
+          "type": "string",
+          "const": "1"
         },
         "status": {
-          "$ref": "#/anyOf/0/properties/status"
+          "type": "string",
+          "enum": [
+            "ok",
+            "not_found",
+            "moved",
+            "invalid_request",
+            "unavailable"
+          ]
         },
         "query": {
-          "$ref": "#/anyOf/0/properties/query"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "project": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "projects": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "address": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "q": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "days": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "types": {
+              "maxItems": 40,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "building": {
+              "type": "string",
+              "const": "only"
+            },
+            "ignoredParameters": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 40
+              }
+            }
+          },
+          "required": [
+            "chainId"
+          ],
+          "additionalProperties": false
         },
         "chain": {
-          "$ref": "#/anyOf/0/properties/chain"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 60
+            }
+          },
+          "required": [
+            "chainId",
+            "name"
+          ],
+          "additionalProperties": false
         },
         "subject": {
-          "$ref": "#/anyOf/0/properties/subject"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "project",
+                    "contract",
+                    "projects",
+                    "chain"
+                  ]
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                    },
+                    "name": {
+                      "$ref": "#/definitions/AgentText"
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
+                    },
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "chainId": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "address": {
+                          "type": "string",
+                          "pattern": "^0x[0-9a-f]{40}$"
+                        }
+                      },
+                      "required": [
+                        "chainId",
+                        "address"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "name",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                },
+                "projects": {
+                  "maxItems": 4,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                      },
+                      "name": {
+                        "$ref": "#/definitions/AgentText"
+                      },
+                      "url": {
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
+                      },
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "chainId": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "address": {
+                            "type": "string",
+                            "pattern": "^0x[0-9a-f]{40}$"
+                          }
+                        },
+                        "required": [
+                          "chainId",
+                          "address"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "name",
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "contract": {
+                  "type": "object",
+                  "properties": {
+                    "chainId": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    }
+                  },
+                  "required": [
+                    "chainId",
+                    "address"
+                  ],
+                  "additionalProperties": false
+                },
+                "resolvedFrom": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 120
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "answer": {
           "$ref": "#/definitions/AgentText"
         },
         "answerStatus": {
-          "$ref": "#/definitions/AgentClaim/properties/status"
+          "type": "string",
+          "enum": [
+            "FACT",
+            "DERIVED",
+            "UNKNOWN"
+          ]
         },
         "claims": {
-          "$ref": "#/anyOf/0/properties/claims"
+          "maxItems": 60,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentClaim"
+          }
         },
         "unknowns": {
-          "$ref": "#/anyOf/0/properties/unknowns"
+          "maxItems": 40,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentUnknown"
+          }
         },
         "freshness": {
-          "$ref": "#/anyOf/0/properties/freshness"
+          "maxItems": 12,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentFreshness"
+          }
         },
         "evidence": {
-          "$ref": "#/anyOf/0/properties/evidence"
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentEvidenceRef"
+          }
         },
         "methodology": {
-          "$ref": "#/anyOf/0/properties/methodology"
+          "type": "object",
+          "properties": {
+            "rules": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            }
+          },
+          "required": [
+            "rules",
+            "url"
+          ],
+          "additionalProperties": false
         },
         "links": {
-          "$ref": "#/anyOf/0/properties/links"
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "page": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "pageAttributed": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "canonical": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^https?:\\/\\/\\S{1,600}$"
+              }
+            }
+          },
+          "required": [
+            "self",
+            "canonical"
+          ],
+          "additionalProperties": false
         },
         "citation": {
-          "$ref": "#/anyOf/0/properties/citation"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "hey_agent_answer"
+                },
+                "capability": {
+                  "type": "string",
+                  "enum": [
+                    "research_project",
+                    "what_changed",
+                    "builder_status",
+                    "verify_project",
+                    "compare_builders",
+                    "unknowns",
+                    "chain_brief"
+                  ]
+                },
+                "schemaVersion": {
+                  "type": "string",
+                  "const": "1"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
+                },
+                "asOf": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+                },
+                "project": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                },
+                "scoringVersion": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 400
+                }
+              },
+              "required": [
+                "kind",
+                "capability",
+                "schemaVersion",
+                "url",
+                "asOf",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "boundaries": {
-          "$ref": "#/anyOf/0/properties/boundaries"
+          "type": "object",
+          "properties": {
+            "notAdvice": {
+              "type": "boolean",
+              "const": true
+            },
+            "notProvided": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "marketIsContextOnly": {
+              "type": "boolean",
+              "const": true
+            },
+            "disclaimer": {
+              "$ref": "#/definitions/AgentText"
+            }
+          },
+          "required": [
+            "notAdvice",
+            "notProvided",
+            "marketIsContextOnly",
+            "disclaimer"
+          ],
+          "additionalProperties": false
         },
         "error": {
-          "$ref": "#/anyOf/0/properties/error"
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+            },
+            "message": {
+              "$ref": "#/definitions/AgentText"
+            },
+            "movedTo": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+            },
+            "candidates": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                  },
+                  "name": {
+                    "$ref": "#/definitions/AgentText"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/\\S{1,600}$"
+                  },
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "chainId": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      },
+                      "address": {
+                        "type": "string",
+                        "pattern": "^0x[0-9a-f]{40}$"
+                      }
+                    },
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "symbol": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/AgentText"
+                      }
+                    ]
+                  },
+                  "activityStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "catalogStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "candidatesTotal": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "atLeast": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "count",
+                "atLeast"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
         },
         "disclosures": {
-          "$ref": "#/anyOf/0/properties/disclosures"
+          "maxItems": 4,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentDisclosure"
+          }
         },
         "asOf": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "capability": {
           "type": "string",
@@ -1568,10 +3389,13 @@
               "type": "object",
               "properties": {
                 "chainId": {
-                  "type": "integer"
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
                 },
                 "address": {
-                  "$ref": "#/anyOf/0/properties/subject/anyOf/0/properties/project/properties/token/properties/address"
+                  "type": "string",
+                  "pattern": "^0x[0-9a-f]{40}$"
                 },
                 "verdict": {
                   "type": "string",
@@ -1583,15 +3407,16 @@
                   ]
                 },
                 "reasonCode": {
-                  "$ref": "#/definitions/AgentText/properties/source"
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                 },
                 "reasons": {
+                  "minItems": 1,
+                  "maxItems": 8,
                   "type": "array",
                   "items": {
                     "$ref": "#/definitions/AgentText"
-                  },
-                  "minItems": 1,
-                  "maxItems": 8
+                  }
                 },
                 "recordedProject": {
                   "anyOf": [
@@ -1599,10 +3424,12 @@
                       "type": "object",
                       "properties": {
                         "slug": {
-                          "$ref": "#/definitions/AgentChange/properties/project/properties/slug"
+                          "type": "string",
+                          "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
                         },
                         "url": {
-                          "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                          "type": "string",
+                          "pattern": "^https?:\\/\\/\\S{1,600}$"
                         },
                         "role": {
                           "anyOf": [
@@ -1638,7 +3465,8 @@
                       "type": "object",
                       "properties": {
                         "slug": {
-                          "$ref": "#/definitions/AgentChange/properties/project/properties/slug"
+                          "type": "string",
+                          "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
                         },
                         "found": {
                           "type": "boolean"
@@ -1646,7 +3474,8 @@
                         "url": {
                           "anyOf": [
                             {
-                              "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                              "type": "string",
+                              "pattern": "^https?:\\/\\/\\S{1,600}$"
                             },
                             {
                               "type": "null"
@@ -1682,7 +3511,8 @@
                         "reason": {
                           "anyOf": [
                             {
-                              "$ref": "#/definitions/AgentText/properties/source"
+                              "type": "string",
+                              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                             },
                             {
                               "type": "null"
@@ -1708,10 +3538,12 @@
                   ]
                 },
                 "contractUrl": {
-                  "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
                 },
                 "scanUrl": {
-                  "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
                 }
               },
               "required": [
@@ -1762,61 +3594,560 @@
       "type": "object",
       "properties": {
         "schema": {
-          "$ref": "#/anyOf/0/properties/schema"
+          "type": "string",
+          "const": "hey.agent-intelligence-response"
         },
         "schemaVersion": {
-          "$ref": "#/anyOf/0/properties/schemaVersion"
+          "type": "string",
+          "const": "1"
         },
         "status": {
-          "$ref": "#/anyOf/0/properties/status"
+          "type": "string",
+          "enum": [
+            "ok",
+            "not_found",
+            "moved",
+            "invalid_request",
+            "unavailable"
+          ]
         },
         "query": {
-          "$ref": "#/anyOf/0/properties/query"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "project": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "projects": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "address": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "q": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "days": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "types": {
+              "maxItems": 40,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "building": {
+              "type": "string",
+              "const": "only"
+            },
+            "ignoredParameters": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 40
+              }
+            }
+          },
+          "required": [
+            "chainId"
+          ],
+          "additionalProperties": false
         },
         "chain": {
-          "$ref": "#/anyOf/0/properties/chain"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 60
+            }
+          },
+          "required": [
+            "chainId",
+            "name"
+          ],
+          "additionalProperties": false
         },
         "subject": {
-          "$ref": "#/anyOf/0/properties/subject"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "project",
+                    "contract",
+                    "projects",
+                    "chain"
+                  ]
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                    },
+                    "name": {
+                      "$ref": "#/definitions/AgentText"
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
+                    },
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "chainId": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "address": {
+                          "type": "string",
+                          "pattern": "^0x[0-9a-f]{40}$"
+                        }
+                      },
+                      "required": [
+                        "chainId",
+                        "address"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "name",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                },
+                "projects": {
+                  "maxItems": 4,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                      },
+                      "name": {
+                        "$ref": "#/definitions/AgentText"
+                      },
+                      "url": {
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
+                      },
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "chainId": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "address": {
+                            "type": "string",
+                            "pattern": "^0x[0-9a-f]{40}$"
+                          }
+                        },
+                        "required": [
+                          "chainId",
+                          "address"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "name",
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "contract": {
+                  "type": "object",
+                  "properties": {
+                    "chainId": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    }
+                  },
+                  "required": [
+                    "chainId",
+                    "address"
+                  ],
+                  "additionalProperties": false
+                },
+                "resolvedFrom": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 120
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "answer": {
           "$ref": "#/definitions/AgentText"
         },
         "answerStatus": {
-          "$ref": "#/definitions/AgentClaim/properties/status"
+          "type": "string",
+          "enum": [
+            "FACT",
+            "DERIVED",
+            "UNKNOWN"
+          ]
         },
         "claims": {
-          "$ref": "#/anyOf/0/properties/claims"
+          "maxItems": 60,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentClaim"
+          }
         },
         "unknowns": {
-          "$ref": "#/anyOf/0/properties/unknowns"
+          "maxItems": 40,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentUnknown"
+          }
         },
         "freshness": {
-          "$ref": "#/anyOf/0/properties/freshness"
+          "maxItems": 12,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentFreshness"
+          }
         },
         "evidence": {
-          "$ref": "#/anyOf/0/properties/evidence"
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentEvidenceRef"
+          }
         },
         "methodology": {
-          "$ref": "#/anyOf/0/properties/methodology"
+          "type": "object",
+          "properties": {
+            "rules": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            }
+          },
+          "required": [
+            "rules",
+            "url"
+          ],
+          "additionalProperties": false
         },
         "links": {
-          "$ref": "#/anyOf/0/properties/links"
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "page": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "pageAttributed": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "canonical": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^https?:\\/\\/\\S{1,600}$"
+              }
+            }
+          },
+          "required": [
+            "self",
+            "canonical"
+          ],
+          "additionalProperties": false
         },
         "citation": {
-          "$ref": "#/anyOf/0/properties/citation"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "hey_agent_answer"
+                },
+                "capability": {
+                  "type": "string",
+                  "enum": [
+                    "research_project",
+                    "what_changed",
+                    "builder_status",
+                    "verify_project",
+                    "compare_builders",
+                    "unknowns",
+                    "chain_brief"
+                  ]
+                },
+                "schemaVersion": {
+                  "type": "string",
+                  "const": "1"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
+                },
+                "asOf": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+                },
+                "project": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                },
+                "scoringVersion": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 400
+                }
+              },
+              "required": [
+                "kind",
+                "capability",
+                "schemaVersion",
+                "url",
+                "asOf",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "boundaries": {
-          "$ref": "#/anyOf/0/properties/boundaries"
+          "type": "object",
+          "properties": {
+            "notAdvice": {
+              "type": "boolean",
+              "const": true
+            },
+            "notProvided": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "marketIsContextOnly": {
+              "type": "boolean",
+              "const": true
+            },
+            "disclaimer": {
+              "$ref": "#/definitions/AgentText"
+            }
+          },
+          "required": [
+            "notAdvice",
+            "notProvided",
+            "marketIsContextOnly",
+            "disclaimer"
+          ],
+          "additionalProperties": false
         },
         "error": {
-          "$ref": "#/anyOf/0/properties/error"
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+            },
+            "message": {
+              "$ref": "#/definitions/AgentText"
+            },
+            "movedTo": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+            },
+            "candidates": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                  },
+                  "name": {
+                    "$ref": "#/definitions/AgentText"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/\\S{1,600}$"
+                  },
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "chainId": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      },
+                      "address": {
+                        "type": "string",
+                        "pattern": "^0x[0-9a-f]{40}$"
+                      }
+                    },
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "symbol": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/AgentText"
+                      }
+                    ]
+                  },
+                  "activityStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "catalogStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "candidatesTotal": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "atLeast": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "count",
+                "atLeast"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
         },
         "disclosures": {
-          "$ref": "#/anyOf/0/properties/disclosures"
+          "maxItems": 4,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentDisclosure"
+          }
         },
         "asOf": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "capability": {
           "type": "string",
@@ -1832,26 +4163,31 @@
                   "const": 30
                 },
                 "projects": {
+                  "maxItems": 4,
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
                       "slug": {
-                        "$ref": "#/definitions/AgentChange/properties/project/properties/slug"
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
                       },
                       "name": {
                         "$ref": "#/definitions/AgentText"
                       },
                       "url": {
-                        "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
                       },
                       "activityStatus": {
-                        "$ref": "#/definitions/AgentText/properties/source"
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                       },
                       "lastMeaningfulShipAt": {
                         "anyOf": [
                           {
-                            "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
                           },
                           {
                             "type": "null"
@@ -1862,7 +4198,8 @@
                         "anyOf": [
                           {
                             "type": "integer",
-                            "minimum": 0
+                            "minimum": 0,
+                            "maximum": 9007199254740991
                           },
                           {
                             "type": "null"
@@ -1873,7 +4210,8 @@
                         "anyOf": [
                           {
                             "type": "integer",
-                            "minimum": 0
+                            "minimum": 0,
+                            "maximum": 9007199254740991
                           },
                           {
                             "type": "null"
@@ -1883,7 +4221,8 @@
                       "velocityState": {
                         "anyOf": [
                           {
-                            "$ref": "#/definitions/AgentText/properties/source"
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                           },
                           {
                             "type": "null"
@@ -1896,7 +4235,8 @@
                             "type": "object",
                             "properties": {
                               "state": {
-                                "$ref": "#/definitions/AgentText/properties/source"
+                                "type": "string",
+                                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                               },
                               "medianIntervalDays": {
                                 "type": [
@@ -1925,7 +4265,8 @@
                                 "anyOf": [
                                   {
                                     "type": "integer",
-                                    "minimum": 0
+                                    "minimum": 0,
+                                    "maximum": 9007199254740991
                                   },
                                   {
                                     "type": "null"
@@ -1934,7 +4275,8 @@
                               },
                               "windowWeeks": {
                                 "type": "integer",
-                                "minimum": 1
+                                "minimum": 1,
+                                "maximum": 9007199254740991
                               }
                             },
                             "required": [
@@ -1968,7 +4310,8 @@
                                 "anyOf": [
                                   {
                                     "type": "integer",
-                                    "minimum": 0
+                                    "minimum": 0,
+                                    "maximum": 9007199254740991
                                   },
                                   {
                                     "type": "null"
@@ -1979,7 +4322,8 @@
                                 "anyOf": [
                                   {
                                     "type": "integer",
-                                    "minimum": 1
+                                    "minimum": 1,
+                                    "maximum": 9007199254740991
                                   },
                                   {
                                     "type": "null"
@@ -2017,11 +4361,13 @@
                         "properties": {
                           "verified": {
                             "type": "integer",
-                            "minimum": 0
+                            "minimum": 0,
+                            "maximum": 9007199254740991
                           },
                           "total": {
                             "type": "integer",
-                            "minimum": 0
+                            "minimum": 0,
+                            "maximum": 9007199254740991
                           }
                         },
                         "required": [
@@ -2036,15 +4382,18 @@
                             "type": "object",
                             "properties": {
                               "rulesVersion": {
-                                "$ref": "#/definitions/AgentText/properties/source"
+                                "type": "string",
+                                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                               },
                               "state": {
-                                "$ref": "#/definitions/AgentText/properties/source"
+                                "type": "string",
+                                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                               },
                               "cohort": {
                                 "anyOf": [
                                   {
-                                    "$ref": "#/definitions/AgentText/properties/source"
+                                    "type": "string",
+                                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                                   },
                                   {
                                     "type": "null"
@@ -2054,7 +4403,8 @@
                               "reason": {
                                 "anyOf": [
                                   {
-                                    "$ref": "#/definitions/AgentText/properties/source"
+                                    "type": "string",
+                                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
                                   },
                                   {
                                     "type": "null"
@@ -2076,7 +4426,8 @@
                         ]
                       },
                       "explainUrl": {
-                        "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
                       }
                     },
                     "required": [
@@ -2097,16 +4448,15 @@
                       "explainUrl"
                     ],
                     "additionalProperties": false
-                  },
-                  "maxItems": 4
+                  }
                 },
                 "missing": {
+                  "maxItems": 8,
                   "type": "array",
                   "items": {
                     "type": "string",
                     "maxLength": 120
-                  },
-                  "maxItems": 8
+                  }
                 },
                 "completeness": {
                   "type": "string",
@@ -2117,12 +4467,12 @@
                   ]
                 },
                 "ignored": {
+                  "maxItems": 8,
                   "type": "array",
                   "items": {
                     "type": "string",
                     "maxLength": 120
-                  },
-                  "maxItems": 8
+                  }
                 },
                 "sameCohort": {
                   "type": [
@@ -2138,11 +4488,25 @@
                   "$ref": "#/definitions/AgentText"
                 },
                 "excludedContext": {
+                  "maxItems": 12,
                   "type": "array",
                   "items": {
-                    "$ref": "#/anyOf/2/properties/data/anyOf/0/properties/excludedContext/items"
-                  },
-                  "maxItems": 12
+                    "type": "object",
+                    "properties": {
+                      "item": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                      },
+                      "statement": {
+                        "$ref": "#/definitions/AgentText"
+                      }
+                    },
+                    "required": [
+                      "item",
+                      "statement"
+                    ],
+                    "additionalProperties": false
+                  }
                 }
               },
               "required": [
@@ -2190,61 +4554,560 @@
       "type": "object",
       "properties": {
         "schema": {
-          "$ref": "#/anyOf/0/properties/schema"
+          "type": "string",
+          "const": "hey.agent-intelligence-response"
         },
         "schemaVersion": {
-          "$ref": "#/anyOf/0/properties/schemaVersion"
+          "type": "string",
+          "const": "1"
         },
         "status": {
-          "$ref": "#/anyOf/0/properties/status"
+          "type": "string",
+          "enum": [
+            "ok",
+            "not_found",
+            "moved",
+            "invalid_request",
+            "unavailable"
+          ]
         },
         "query": {
-          "$ref": "#/anyOf/0/properties/query"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "project": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "projects": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "address": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "q": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "days": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "types": {
+              "maxItems": 40,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "building": {
+              "type": "string",
+              "const": "only"
+            },
+            "ignoredParameters": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 40
+              }
+            }
+          },
+          "required": [
+            "chainId"
+          ],
+          "additionalProperties": false
         },
         "chain": {
-          "$ref": "#/anyOf/0/properties/chain"
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 60
+            }
+          },
+          "required": [
+            "chainId",
+            "name"
+          ],
+          "additionalProperties": false
         },
         "subject": {
-          "$ref": "#/anyOf/0/properties/subject"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "project",
+                    "contract",
+                    "projects",
+                    "chain"
+                  ]
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                    },
+                    "name": {
+                      "$ref": "#/definitions/AgentText"
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
+                    },
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "chainId": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "address": {
+                          "type": "string",
+                          "pattern": "^0x[0-9a-f]{40}$"
+                        }
+                      },
+                      "required": [
+                        "chainId",
+                        "address"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "name",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                },
+                "projects": {
+                  "maxItems": 4,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                      },
+                      "name": {
+                        "$ref": "#/definitions/AgentText"
+                      },
+                      "url": {
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
+                      },
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "chainId": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "address": {
+                            "type": "string",
+                            "pattern": "^0x[0-9a-f]{40}$"
+                          }
+                        },
+                        "required": [
+                          "chainId",
+                          "address"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "name",
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "contract": {
+                  "type": "object",
+                  "properties": {
+                    "chainId": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    }
+                  },
+                  "required": [
+                    "chainId",
+                    "address"
+                  ],
+                  "additionalProperties": false
+                },
+                "resolvedFrom": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 120
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "answer": {
           "$ref": "#/definitions/AgentText"
         },
         "answerStatus": {
-          "$ref": "#/definitions/AgentClaim/properties/status"
+          "type": "string",
+          "enum": [
+            "FACT",
+            "DERIVED",
+            "UNKNOWN"
+          ]
         },
         "claims": {
-          "$ref": "#/anyOf/0/properties/claims"
+          "maxItems": 60,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentClaim"
+          }
         },
         "unknowns": {
-          "$ref": "#/anyOf/0/properties/unknowns"
+          "maxItems": 40,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentUnknown"
+          }
         },
         "freshness": {
-          "$ref": "#/anyOf/0/properties/freshness"
+          "maxItems": 12,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentFreshness"
+          }
         },
         "evidence": {
-          "$ref": "#/anyOf/0/properties/evidence"
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentEvidenceRef"
+          }
         },
         "methodology": {
-          "$ref": "#/anyOf/0/properties/methodology"
+          "type": "object",
+          "properties": {
+            "rules": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            }
+          },
+          "required": [
+            "rules",
+            "url"
+          ],
+          "additionalProperties": false
         },
         "links": {
-          "$ref": "#/anyOf/0/properties/links"
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "page": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "pageAttributed": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "canonical": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^https?:\\/\\/\\S{1,600}$"
+              }
+            }
+          },
+          "required": [
+            "self",
+            "canonical"
+          ],
+          "additionalProperties": false
         },
         "citation": {
-          "$ref": "#/anyOf/0/properties/citation"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "hey_agent_answer"
+                },
+                "capability": {
+                  "type": "string",
+                  "enum": [
+                    "research_project",
+                    "what_changed",
+                    "builder_status",
+                    "verify_project",
+                    "compare_builders",
+                    "unknowns",
+                    "chain_brief"
+                  ]
+                },
+                "schemaVersion": {
+                  "type": "string",
+                  "const": "1"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
+                },
+                "asOf": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+                },
+                "project": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                },
+                "scoringVersion": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 400
+                }
+              },
+              "required": [
+                "kind",
+                "capability",
+                "schemaVersion",
+                "url",
+                "asOf",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "boundaries": {
-          "$ref": "#/anyOf/0/properties/boundaries"
+          "type": "object",
+          "properties": {
+            "notAdvice": {
+              "type": "boolean",
+              "const": true
+            },
+            "notProvided": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "marketIsContextOnly": {
+              "type": "boolean",
+              "const": true
+            },
+            "disclaimer": {
+              "$ref": "#/definitions/AgentText"
+            }
+          },
+          "required": [
+            "notAdvice",
+            "notProvided",
+            "marketIsContextOnly",
+            "disclaimer"
+          ],
+          "additionalProperties": false
         },
         "error": {
-          "$ref": "#/anyOf/0/properties/error"
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+            },
+            "message": {
+              "$ref": "#/definitions/AgentText"
+            },
+            "movedTo": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+            },
+            "candidates": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                  },
+                  "name": {
+                    "$ref": "#/definitions/AgentText"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/\\S{1,600}$"
+                  },
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "chainId": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      },
+                      "address": {
+                        "type": "string",
+                        "pattern": "^0x[0-9a-f]{40}$"
+                      }
+                    },
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "symbol": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/AgentText"
+                      }
+                    ]
+                  },
+                  "activityStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "catalogStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "candidatesTotal": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "atLeast": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "count",
+                "atLeast"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
         },
         "disclosures": {
-          "$ref": "#/anyOf/0/properties/disclosures"
+          "maxItems": 4,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentDisclosure"
+          }
         },
         "asOf": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "capability": {
           "type": "string",
@@ -2260,23 +5123,28 @@
                   "properties": {
                     "UNKNOWN": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "maximum": 9007199254740991
                     },
                     "NOT_MEASURED": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "maximum": 9007199254740991
                     },
                     "NOT_VERIFIED": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "maximum": 9007199254740991
                     },
                     "STALE": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "maximum": 9007199254740991
                     },
                     "INSUFFICIENT_EVIDENCE": {
                       "type": "integer",
-                      "minimum": 0
+                      "minimum": 0,
+                      "maximum": 9007199254740991
                     }
                   },
                   "required": [
@@ -2289,30 +5157,34 @@
                   "additionalProperties": false
                 },
                 "measured": {
+                  "maxItems": 40,
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/AgentText/properties/source"
-                  },
-                  "maxItems": 40
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
                 },
                 "notApplicable": {
+                  "maxItems": 40,
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/AgentText/properties/source"
-                  },
-                  "maxItems": 40
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
                 },
                 "withheld": {
+                  "maxItems": 40,
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/AgentText/properties/source"
-                  },
-                  "maxItems": 40
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
                 },
                 "coverageUrl": {
                   "anyOf": [
                     {
-                      "$ref": "#/definitions/AgentText/properties/sourceUrl"
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
                     },
                     {
                       "type": "null"
@@ -2326,6 +5198,799 @@
                 "notApplicable",
                 "withheld",
                 "coverageUrl"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "schemaVersion",
+        "status",
+        "query",
+        "chain",
+        "subject",
+        "answer",
+        "answerStatus",
+        "claims",
+        "unknowns",
+        "freshness",
+        "evidence",
+        "methodology",
+        "links",
+        "citation",
+        "boundaries",
+        "asOf",
+        "capability",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "hey.agent-intelligence-response"
+        },
+        "schemaVersion": {
+          "type": "string",
+          "const": "1"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ok",
+            "not_found",
+            "moved",
+            "invalid_request",
+            "unavailable"
+          ]
+        },
+        "query": {
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "project": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "projects": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "address": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "q": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "days": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "types": {
+              "maxItems": 40,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "building": {
+              "type": "string",
+              "const": "only"
+            },
+            "ignoredParameters": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 40
+              }
+            }
+          },
+          "required": [
+            "chainId"
+          ],
+          "additionalProperties": false
+        },
+        "chain": {
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 60
+            }
+          },
+          "required": [
+            "chainId",
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "subject": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "project",
+                    "contract",
+                    "projects",
+                    "chain"
+                  ]
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                    },
+                    "name": {
+                      "$ref": "#/definitions/AgentText"
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
+                    },
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "chainId": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "address": {
+                          "type": "string",
+                          "pattern": "^0x[0-9a-f]{40}$"
+                        }
+                      },
+                      "required": [
+                        "chainId",
+                        "address"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "name",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                },
+                "projects": {
+                  "maxItems": 4,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                      },
+                      "name": {
+                        "$ref": "#/definitions/AgentText"
+                      },
+                      "url": {
+                        "type": "string",
+                        "pattern": "^https?:\\/\\/\\S{1,600}$"
+                      },
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "chainId": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "address": {
+                            "type": "string",
+                            "pattern": "^0x[0-9a-f]{40}$"
+                          }
+                        },
+                        "required": [
+                          "chainId",
+                          "address"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "name",
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "contract": {
+                  "type": "object",
+                  "properties": {
+                    "chainId": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    }
+                  },
+                  "required": [
+                    "chainId",
+                    "address"
+                  ],
+                  "additionalProperties": false
+                },
+                "resolvedFrom": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "address": {
+                      "type": "string",
+                      "pattern": "^0x[0-9a-f]{40}$"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 120
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "answer": {
+          "$ref": "#/definitions/AgentText"
+        },
+        "answerStatus": {
+          "type": "string",
+          "enum": [
+            "FACT",
+            "DERIVED",
+            "UNKNOWN"
+          ]
+        },
+        "claims": {
+          "maxItems": 60,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentClaim"
+          }
+        },
+        "unknowns": {
+          "maxItems": 40,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentUnknown"
+          }
+        },
+        "freshness": {
+          "maxItems": 12,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentFreshness"
+          }
+        },
+        "evidence": {
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentEvidenceRef"
+          }
+        },
+        "methodology": {
+          "type": "object",
+          "properties": {
+            "rules": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            }
+          },
+          "required": [
+            "rules",
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "page": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "pageAttributed": {
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
+            },
+            "canonical": {
+              "maxItems": 12,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^https?:\\/\\/\\S{1,600}$"
+              }
+            }
+          },
+          "required": [
+            "self",
+            "canonical"
+          ],
+          "additionalProperties": false
+        },
+        "citation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "const": "hey_agent_answer"
+                },
+                "capability": {
+                  "type": "string",
+                  "enum": [
+                    "research_project",
+                    "what_changed",
+                    "builder_status",
+                    "verify_project",
+                    "compare_builders",
+                    "unknowns",
+                    "chain_brief"
+                  ]
+                },
+                "schemaVersion": {
+                  "type": "string",
+                  "const": "1"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
+                },
+                "asOf": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+                },
+                "project": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                },
+                "scoringVersion": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 400
+                }
+              },
+              "required": [
+                "kind",
+                "capability",
+                "schemaVersion",
+                "url",
+                "asOf",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "boundaries": {
+          "type": "object",
+          "properties": {
+            "notAdvice": {
+              "type": "boolean",
+              "const": true
+            },
+            "notProvided": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+              }
+            },
+            "marketIsContextOnly": {
+              "type": "boolean",
+              "const": true
+            },
+            "disclaimer": {
+              "$ref": "#/definitions/AgentText"
+            }
+          },
+          "required": [
+            "notAdvice",
+            "notProvided",
+            "marketIsContextOnly",
+            "disclaimer"
+          ],
+          "additionalProperties": false
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+            },
+            "message": {
+              "$ref": "#/definitions/AgentText"
+            },
+            "movedTo": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+            },
+            "candidates": {
+              "maxItems": 8,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+                  },
+                  "name": {
+                    "$ref": "#/definitions/AgentText"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/\\S{1,600}$"
+                  },
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "chainId": {
+                        "type": "integer",
+                        "minimum": -9007199254740991,
+                        "maximum": 9007199254740991
+                      },
+                      "address": {
+                        "type": "string",
+                        "pattern": "^0x[0-9a-f]{40}$"
+                      }
+                    },
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "symbol": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/AgentText"
+                      }
+                    ]
+                  },
+                  "activityStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  },
+                  "catalogStatus": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "candidatesTotal": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "atLeast": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "count",
+                "atLeast"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
+        },
+        "disclosures": {
+          "maxItems": 4,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentDisclosure"
+          }
+        },
+        "asOf": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "capability": {
+          "type": "string",
+          "const": "chain_brief"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "window": {
+                  "type": "object",
+                  "properties": {
+                    "days": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 31
+                    },
+                    "from": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+                    },
+                    "to": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+                    },
+                    "label": {
+                      "type": "string",
+                      "maxLength": 80
+                    }
+                  },
+                  "required": [
+                    "days",
+                    "from",
+                    "to",
+                    "label"
+                  ],
+                  "additionalProperties": false
+                },
+                "shipped": {
+                  "type": "object",
+                  "properties": {
+                    "ships": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "projects": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "rule": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
+                        },
+                        "counts": {
+                          "type": "string",
+                          "maxLength": 400
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "counts"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "ships",
+                    "projects",
+                    "rule"
+                  ],
+                  "additionalProperties": false
+                },
+                "newlyVerifiedBuilders": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "method": {
+                      "$ref": "#/definitions/AgentText"
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "method"
+                  ],
+                  "additionalProperties": false
+                },
+                "statusRecoveries": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "comparable": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "method": {
+                      "$ref": "#/definitions/AgentText"
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "comparable",
+                    "method"
+                  ],
+                  "additionalProperties": false
+                },
+                "stillBuilding": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "method": {
+                      "$ref": "#/definitions/AgentText"
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "method"
+                  ],
+                  "additionalProperties": false
+                },
+                "underTheRadar": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "method": {
+                      "$ref": "#/definitions/AgentText"
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "method"
+                  ],
+                  "additionalProperties": false
+                },
+                "building": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "shown": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "items": {
+                      "maxItems": 50,
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/AgentChange"
+                      }
+                    },
+                    "more": {
+                      "type": "string",
+                      "pattern": "^https?:\\/\\/\\S{1,600}$"
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "shown",
+                    "items",
+                    "more"
+                  ],
+                  "additionalProperties": false
+                },
+                "weekUrl": {
+                  "type": "string",
+                  "pattern": "^https?:\\/\\/\\S{1,600}$"
+                }
+              },
+              "required": [
+                "window",
+                "shipped",
+                "newlyVerifiedBuilders",
+                "statusRecoveries",
+                "stillBuilding",
+                "underTheRadar",
+                "building",
+                "weekUrl"
               ],
               "additionalProperties": false
             },
@@ -2398,27 +6063,6 @@
       ],
       "additionalProperties": false
     },
-    "AgentEvidenceRef": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 3,
-          "maxLength": 240
-        },
-        "receiptUrl": {
-          "$ref": "#/definitions/AgentText/properties/sourceUrl"
-        },
-        "sourceUrl": {
-          "$ref": "#/definitions/AgentText/properties/sourceUrl"
-        }
-      },
-      "required": [
-        "id",
-        "receiptUrl"
-      ],
-      "additionalProperties": false
-    },
     "AgentClaim": {
       "type": "object",
       "properties": {
@@ -2428,7 +6072,8 @@
           "maxLength": 260
         },
         "dimension": {
-          "$ref": "#/definitions/AgentText/properties/source"
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
         },
         "statement": {
           "$ref": "#/definitions/AgentText"
@@ -2505,7 +6150,8 @@
         "occurredAt": {
           "anyOf": [
             {
-              "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
             },
             {
               "type": "null"
@@ -2542,17 +6188,19 @@
           ]
         },
         "evidence": {
+          "maxItems": 12,
           "type": "array",
           "items": {
             "$ref": "#/definitions/AgentEvidenceRef"
-          },
-          "maxItems": 12
+          }
         },
         "explainUrl": {
-          "$ref": "#/definitions/AgentText/properties/sourceUrl"
+          "type": "string",
+          "pattern": "^https?:\\/\\/\\S{1,600}$"
         },
         "reason": {
-          "$ref": "#/definitions/AgentText/properties/source"
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
         },
         "contextOnly": {
           "type": "boolean",
@@ -2588,6 +6236,29 @@
       ],
       "additionalProperties": false
     },
+    "AgentEvidenceRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 240
+        },
+        "receiptUrl": {
+          "type": "string",
+          "pattern": "^https?:\\/\\/\\S{1,600}$"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "pattern": "^https?:\\/\\/\\S{1,600}$"
+        }
+      },
+      "required": [
+        "id",
+        "receiptUrl"
+      ],
+      "additionalProperties": false
+    },
     "AgentUnknown": {
       "type": "object",
       "properties": {
@@ -2602,7 +6273,8 @@
           ]
         },
         "dimension": {
-          "$ref": "#/definitions/AgentText/properties/source"
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
         },
         "statement": {
           "$ref": "#/definitions/AgentText"
@@ -2611,16 +6283,20 @@
           "$ref": "#/definitions/AgentText"
         },
         "coverageState": {
-          "$ref": "#/definitions/AgentText/properties/source"
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
         },
         "reason": {
-          "$ref": "#/definitions/AgentText/properties/source"
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
         },
         "asOf": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "detailUrl": {
-          "$ref": "#/definitions/AgentText/properties/sourceUrl"
+          "type": "string",
+          "pattern": "^https?:\\/\\/\\S{1,600}$"
         }
       },
       "required": [
@@ -2652,7 +6328,8 @@
         "observedAt": {
           "anyOf": [
             {
-              "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
             },
             {
               "type": "null"
@@ -2662,7 +6339,8 @@
         "dataAsOf": {
           "anyOf": [
             {
-              "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
             },
             {
               "type": "null"
@@ -2670,25 +6348,37 @@
           ]
         },
         "freshnessStatus": {
-          "$ref": "#/definitions/AgentClaim/properties/freshness"
+          "type": "string",
+          "enum": [
+            "live",
+            "recent",
+            "daily",
+            "weekly",
+            "stale",
+            "unknown"
+          ]
         },
         "staleAfterHours": {
           "type": "integer",
-          "exclusiveMinimum": 0
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
         },
         "refresh": {
           "type": "object",
           "properties": {
             "job": {
-              "$ref": "#/definitions/AgentText/properties/source"
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
             },
             "everyMinutes": {
               "type": "integer",
-              "exclusiveMinimum": 0
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
             },
             "slowestMinutes": {
               "type": "integer",
-              "exclusiveMinimum": 0
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
             },
             "basis": {
               "$ref": "#/definitions/AgentText"
@@ -2705,7 +6395,8 @@
         "nextExpectedRefresh": {
           "anyOf": [
             {
-              "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
             },
             {
               "type": "null"
@@ -2732,6 +6423,34 @@
       ],
       "additionalProperties": false
     },
+    "AgentDisclosure": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "hey_own_token"
+          ]
+        },
+        "statement": {
+          "$ref": "#/definitions/AgentText"
+        },
+        "projects": {
+          "maxItems": 8,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "statement",
+        "projects"
+      ],
+      "additionalProperties": false
+    },
     "AgentChange": {
       "type": "object",
       "properties": {
@@ -2741,18 +6460,22 @@
         },
         "revision": {
           "type": "integer",
-          "minimum": 1
+          "minimum": 1,
+          "maximum": 9007199254740991
         },
         "type": {
-          "$ref": "#/definitions/AgentText/properties/source"
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
         },
         "domain": {
-          "$ref": "#/definitions/AgentText/properties/source"
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
         },
         "occurredAt": {
           "anyOf": [
             {
-              "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
             },
             {
               "type": "null"
@@ -2760,25 +6483,41 @@
           ]
         },
         "precision": {
-          "$ref": "#/definitions/AgentClaim/properties/precision/anyOf/0"
+          "type": "string",
+          "enum": [
+            "EXACT",
+            "DATE",
+            "WEEK",
+            "WINDOW",
+            "OBSERVED",
+            "SCHEDULED"
+          ]
         },
         "detectedAt": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "recordedAt": {
-          "$ref": "#/definitions/AgentClaim/properties/observedAt/anyOf/0"
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
         },
         "summary": {
           "$ref": "#/definitions/AgentText"
         },
         "status": {
-          "$ref": "#/definitions/AgentClaim/properties/status"
+          "type": "string",
+          "enum": [
+            "FACT",
+            "DERIVED",
+            "UNKNOWN"
+          ]
         },
         "countsAsBuilding": {
           "type": "boolean"
         },
         "verification": {
-          "$ref": "#/definitions/AgentText/properties/source"
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:\\-/]{1,120}$"
         },
         "project": {
           "type": "object",
@@ -2788,7 +6527,8 @@
               "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"
             },
             "url": {
-              "$ref": "#/definitions/AgentText/properties/sourceUrl"
+              "type": "string",
+              "pattern": "^https?:\\/\\/\\S{1,600}$"
             }
           },
           "required": [
@@ -2798,15 +6538,61 @@
           "additionalProperties": false
         },
         "evidence": {
+          "maxItems": 12,
           "type": "array",
           "items": {
             "$ref": "#/definitions/AgentEvidenceRef"
-          },
-          "maxItems": 12
+          }
         },
         "source": {
           "type": "string",
           "maxLength": 120
+        },
+        "code": {
+          "type": "object",
+          "properties": {
+            "commits": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "commitsAtLeast": {
+              "type": "boolean"
+            },
+            "highlights": {
+              "maxItems": 2,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "subject": {
+                    "$ref": "#/definitions/AgentText"
+                  },
+                  "url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/\\S{1,600}$"
+                  }
+                },
+                "required": [
+                  "subject"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "commits",
+            "commitsAtLeast",
+            "highlights"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -2824,33 +6610,6 @@
         "project",
         "evidence",
         "source"
-      ],
-      "additionalProperties": false
-    },
-    "AgentDisclosure": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string",
-          "enum": [
-            "hey_own_token"
-          ]
-        },
-        "statement": {
-          "$ref": "#/definitions/AgentText"
-        },
-        "projects": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AgentChange/properties/project/properties/slug"
-          },
-          "maxItems": 8
-        }
-      },
-      "required": [
-        "code",
-        "statement",
-        "projects"
       ],
       "additionalProperties": false
     }
