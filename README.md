@@ -5,9 +5,9 @@ schemas, TypeScript types, vocabularies, a generated JSON Schema, recorded examp
 test vectors.
 
 [![CI](https://github.com/hey-research-lab/hey-agent-contract/actions/workflows/ci.yml/badge.svg)](https://github.com/hey-research-lab/hey-agent-contract/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-![Node >=18](https://img.shields.io/badge/node-%3E%3D18-informational)
-![Robinhood Chain 4663](https://img.shields.io/badge/Robinhood%20Chain-4663-informational)
+[![License: MIT](assets/badges/license-mit.svg)](./LICENSE)
+![Node >=18](assets/badges/node-18.svg)
+![Robinhood Chain 4663](assets/badges/robinhood-chain-4663.svg)
 
 ## Why it exists
 
