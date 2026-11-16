@@ -227,6 +227,8 @@ call. It refuses prototype-polluting keys, caps raw text before parsing it, boun
 and never mutates its input. The maintainer scripts in `scripts/` that refresh fixtures make
 read-only GET requests to `https://heyresearch.xyz` only, and only with `HEY_LIVE=1`.
 
+HEY Research Lab also reviews other projects' code and reports what it finds privately first: [security credits](https://github.com/hey-research-lab#security-credits).
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md). `pnpm lint && pnpm typecheck && pnpm test && pnpm build`
